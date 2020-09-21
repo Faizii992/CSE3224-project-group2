@@ -56,7 +56,7 @@ https://www.youtube.com/watch?v=MnLZuK2DME8&t=1s
       This video might also be helpful:
       https://www.youtube.com/watch?v=rhIr9Qf-oHw
       
-      In our case our mdf and ldf files are called "connection.mdf" and "connection.ldf". They will be find right underneath README.md.
+      In our case our mdf and ldf files are called "connection.mdf" and "connection.ldf". They will be found right underneath README.md.
   - If Visual Studio is installed then double click on productpagepr.sln to open our solution.
   - Then a database connection Of SQL Server is needed to be built with Visual Studio
   - Here is a link given how to connect sql server with visual studio. link - https://www.youtube.com/watch?v=jOjzoVTmLqo 
