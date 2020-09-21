@@ -51,7 +51,11 @@ https://www.youtube.com/watch?v=MnLZuK2DME8&t=1s
 ### Process to follow after the installation
 
   - First of all, the mdf file which was given is needed to be attached with the SQL server. This link is helpful for attaching mdfs:
+  
       https://www.c-sharpcorner.com/article/how-to-attach-mdf-and-ldf-file-in-ms-sql/ 
+      This video might also be helpful:
+      https://www.youtube.com/watch?v=rhIr9Qf-oHw
+      
       In our case our mdf and ldf files are called "connection.mdf" and "connection.ldf". They will be find right underneath README.md.
   - If Visual Studio is installed then double click on productpagepr.sln to open our solution.
   - Then a database connection Of SQL Server is needed to be built with Visual Studio
