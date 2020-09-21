@@ -1,0 +1,34 @@
+
+Index:
+This view is the main page for our product page where we have different kinds of products, two select options, a search bar and a side bar for medicine companies
+Details: 
+This view returns the detailed information or broad version of a particular product.That includes the product’s side effects,description,status etc.
+FindMedicineByCompanyName: 
+This view contains the products returned by the “FindMedicineByCompanyName” controller when a user clicks or chooses one of the companies in the left side bar according to his will.
+GetAllCompanies: 
+This is a partial view of the companies and it is shown as a left sidebar in the product page
+SortBy: 
+This view contains the products returned by the “SortBy” controller when a user clicks or chooses one of the options in the right select option according to his will. He can choose to see the products sorted according to their price,names in an ascending or descending order or he can see the newest products first.
+
+
+
+No_Products_toshow: 
+This view contains the products returned by the “No_Products_toshow” controller when a user clicks or chooses one of the options in the left select option according to his will. He can choose the number of products that he wants to see.
+FilterRegNonReg: 
+This view contains either regular products or non regular products based on what the customer clicks in the navbar element dropdown 
+ComponentSearchView
+This view shows the results when a customer searches a product using its component name
+SearchByComponent
+This view shows a search bar and a message to the customer saying that if the customer wants to search a medicine by its component name then he can use that provided search bar. This shows up when a customer gets zero results after searching a product by its name.
+BetterMedicineSuggestion: 
+This view contains medicine with less side effects when the customer clicks on “VIEW BETTER SOLUTIONS” from the modal that appears when the customer clicks “View Alternatives” of a particular medicine.
+CheaperMedicineSuggestion:
+ This view contains medicine which is less expensive when the customer clicks on “VIEW CHEAPER SOLUTIONS” from the modal that appears when the customer clicks “View Alternatives” of a particular medicine.
+Create:
+This view contains a form to add/create a new product
+Edit:
+This view contains a form to edit information of an existing product
+EditPropic:
+This view shows the product image and editing/changing options for that product image 
+ProductTables:
+This view contains the product tables,a button to add a new product and to search any existing product

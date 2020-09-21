@@ -488,7 +488,7 @@ namespace productpagepr.Controllers
          
             cmd.ExecuteNonQuery();
 
-            return RedirectToAction("Altindex");
+            return RedirectToAction("ProductTables");
         }
 
 
