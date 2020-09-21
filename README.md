@@ -51,6 +51,7 @@ https://www.youtube.com/watch?v=MnLZuK2DME8&t=1s
 ### Process to follow after the installation
 
   - First of all, the mdf file which was given is needed to be attached with the SQL server.
+  - If Visual Studio is installed then double click on productpagepr.sln to open our solution.
   - Then a database connection Of SQL Server is needed to be built with Visual Studio
   - Here is a link given how to connect sql server with visual studio. link - https://www.youtube.com/watch?v=jOjzoVTmLqo 
   - After connected succesfully, user needs go to the Server Explorer option in visual studio. Here all the databeses are found that were created in sql server studio. User needs to choose the database that were attached before and click on it. Then he will find some properties in the solution explorer.There the user can find a connection string from the Connection block. For example, in my computer, the connection string is "Data Source=DESKTOP-CIV7264\SQLEXPRESS;Initial Catalog=LifeServeBD_DB;Integrated Security=True"
@@ -74,6 +75,9 @@ https://www.youtube.com/watch?v=MnLZuK2DME8&t=1s
             
 - Now user needs to click on the AppData folder and open the mdf file before running. Then he needs to check if the database in the server explorer becomes green. If it becomes green then it is attached successfully.
 Now the project is ready to run. :D
+Inorder to run go to HomeController.cs and type ctrl+f5 or go to "Debug" in Visual Studio and click "Start without debugging"
+
+
 
 ### Website Overview
 - In the homepage user can see some of our products with an interactive UI
