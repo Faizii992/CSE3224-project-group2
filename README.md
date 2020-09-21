@@ -35,9 +35,9 @@ Our Website is built on MVC pattern
 
 * Asp.net - Framework
 * C# - Backend Language
-* HTML - Frontend Langulage
+* HTML - Frontend Language
 * CSS - Frontend Language
-* Bootstrap - Frontend Language
+* Bootstrap - Frontend Framework
 * Javascript - Frontend Language
 
 
@@ -72,7 +72,7 @@ https://www.youtube.com/watch?v=MnLZuK2DME8&t=1s
             - UserController
             - UserNotificationController
             
-- Now user needs to click on the AppData folder and open the mdf file. Then he needs to check if the database in the server explorer becomes green. If it becomes green then it is attached successfully.
+- Now user needs to click on the AppData folder and open the mdf file before running. Then he needs to check if the database in the server explorer becomes green. If it becomes green then it is attached successfully.
 Now the project is ready to run. :D
 
 ### Website Overview
