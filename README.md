@@ -57,6 +57,8 @@ https://www.youtube.com/watch?v=MnLZuK2DME8&t=1s
   - After connected succesfully, user needs go to the Server Explorer option in visual studio. Here all the databeses are found that were created in sql server studio. User needs to choose the database that were attached before and click on it. Then he will find some properties in the solution explorer.There the user can find a connection string from the Connection block. For example, in my computer, the connection string is "Data Source=DESKTOP-CIV7264\SQLEXPRESS;Initial Catalog=LifeServeBD_DB;Integrated Security=True"
   - The connection string needs to be copied and paste in all the Controllers. Already there are connection strings present in all the controllers. User needs to replace it with his own one.
   -In The controllers where the connectection string need to be pasted will be found after "public class ......Controller : Controller"
+  
+  These controllers are used in our project:
             - AboutUsController
             - AccountController
             - AdminController
