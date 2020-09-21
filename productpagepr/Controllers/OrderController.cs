@@ -16,7 +16,7 @@ using System.Web.ModelBinding;
 using System.Data.OleDb;
 using System.Web.UI;
 using Microsoft.AspNetCore.Http;
-using productpagepr.Models;
+
 
 namespace productpagepr.Controllers
 {

@@ -29,11 +29,11 @@ namespace productpagepr.Controllers
 
         }
 
-        private static List<FAQModel> GetFaqs()
+        public  List<FAQModel> GetFaqs()
         {
             List<FAQModel> faqs = new List<FAQModel>();
             string query = "SELECT * FROM FAQ";
-            string constring = @"Data Source=DESKTOP-K860ERO;Initial Catalog=connection;Integrated Security=True";
+         
             using (SqlConnection con = new SqlConnection(constring))
             {
                 using (SqlCommand cmd = new SqlCommand(query))
