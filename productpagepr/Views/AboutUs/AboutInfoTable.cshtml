@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/AdminDashboardLayout.cshtml";
 }
 
-    <div style="margin-top:10%; margin-left:20%;">
+    <div style="margin-top:10%;">
         <center><h2>About Info Table</h2></center>
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -33,10 +33,10 @@
 
                 <th> Department </th>
                 <th> Workplace</th>
-
+                 <th> Email</th>
                 <th> Image</th>
 
-                <th> Email</th>
+               
 
 
                 <th> Delete</th>
@@ -59,7 +59,7 @@
             <td>@Model.Rows[i][6]</td>
             <td style="width:500px;">
                 <img src="@Model.Rows[i][5]" id="AboutImage" style="height:150px;width:150px" />
-                <a href="@Url.Action("EditImg","AboutUs",new {@id=Model.Rows[i][0] })">Upload New</a>
+               
             </td>
             @* <td>@Model.Rows[i]6]</td>*@
 

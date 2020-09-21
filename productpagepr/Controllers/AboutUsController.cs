@@ -39,7 +39,7 @@ namespace productpagepr.Controllers
         public ActionResult AboutInfoTable()
         {
             SqlConnection con = new SqlConnection(constring);
-            string q = "select Id,Name, Position,Department,Workplace,imgid from AboutUs";
+            string q = "select Id,Name, Position,Department,Workplace,imgid,Email from AboutUs";
             SqlCommand cmd = new SqlCommand(q, con);
             DataTable dt = new DataTable();
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
