@@ -12,8 +12,9 @@ namespace productpagepr.Controllers
 {
     public class PolicyTermsController : Controller
     {
+		  string constring = @"Data Source=DESKTOP-K860ERO;Initial Catalog=connection;Integrated Security=True";
      //   GET: PolicyTerms
-       // string constring = @"Data Source=DESKTOP-A33P8HB;Initial Catalog=LIFESERVEBD;Integrated Security=True";
+       string constring = @"Data Source=DESKTOP-A33P8HB;Initial Catalog=LIFESERVEBD;Integrated Security=True";
 
         public ActionResult PolicyIndex()
         {
@@ -23,11 +24,11 @@ namespace productpagepr.Controllers
            
             return View(ob);
         }
-        private static List<PolicyModel> getPolicies()
+        public List<PolicyModel> getPolicies()
         {
             List<PolicyModel> Policy = new List<PolicyModel>();
             string query = "select policy_id,policyHead,policies from Policy";
-            string constring = @"Data Source=DESKTOP-K860ERO;Initial Catalog=connection;Integrated Security=True";
+
             using (SqlConnection con = new SqlConnection(constring))
             {
                 using (SqlCommand cmd = new SqlCommand(query))
@@ -96,7 +97,7 @@ namespace productpagepr.Controllers
             }
         }
 
-       string constring = @"Data Source=DESKTOP-K860ERO;Initial Catalog=connection;Integrated Security=True";
+     
 
 
 
