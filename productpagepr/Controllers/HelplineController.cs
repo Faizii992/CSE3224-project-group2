@@ -121,19 +121,7 @@ namespace productpagepr.Controllers
 
         }
 
-        public ActionResult FaqPartial()
-        {
-            SqlConnection con = new SqlConnection(constring);
-            string q = "select * from Faqs";
-            con.Open();
-            SqlCommand cmd = new SqlCommand(q, con);
-            DataTable dt = new DataTable();
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            adapter.Fill(dt);
-            return PartialView(dt);
-
-        }
-
+       
         public ActionResult CreateFaq()
         {
             FAQModel ob = new FAQModel();
