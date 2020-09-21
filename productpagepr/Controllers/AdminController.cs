@@ -14,6 +14,7 @@ namespace productpagepr.Controllers
     {
         string constring = @"Data Source=DESKTOP-K860ERO;Initial Catalog=connection;Integrated Security=True";
         // GET: Admin
+        //This is the admin homepage
         public ActionResult Index()
         {
             if (string.IsNullOrEmpty(Session["Email"] as string))
@@ -38,6 +39,8 @@ namespace productpagepr.Controllers
            
 
         }
+
+        //Gets the customer details to show in the notifications
         public List<customerModel> GetCustomers()
         {
             List<customerModel> customers = new List<customerModel>();
@@ -76,25 +79,8 @@ namespace productpagepr.Controllers
             }
         }
 
-        public ActionResult Homepage()
-        {
-
-            dynamic model = new ExpandoObject();
-
-            model.Customers = GetCustomers();
-            SqlConnection con = new SqlConnection(constring);
-           
-            string q = "select CustomerId,OrderId,Name,Address,Email,Phone,convert(varchar, Date_Time,9) as Datetm,DATENAME(dw, Date_Time) as Day,ID from CustomerTable";
-            con.Open();
-            SqlCommand cmd = new SqlCommand(q, con);
-            DataTable dt = new DataTable();
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            adapter.Fill(dt);
-            return View(model);
-
-        }
        
-       
+       //Shows details of a particular notification
         [HttpGet]
         public ActionResult NotificationDetails(string orderID)
         {
@@ -120,7 +106,7 @@ namespace productpagepr.Controllers
 
         }
 
-
+        //Gets the products ordered by customer
         public List<orderModel> GetOrderedProducts(string orderID)
         {
             List<orderModel> OrderedProducts = new List<orderModel>();
@@ -155,7 +141,7 @@ namespace productpagepr.Controllers
             }
         }
 
-
+        //Gets the customer info to show in a table while checking prescription
         public List<customerModel> GetCustomerInfo(string orderID)
         {
             List<customerModel> CustomerInfo = new List<customerModel>();
@@ -193,7 +179,7 @@ namespace productpagepr.Controllers
 
 
 
-
+        //Shows a partial view containing notification and admin account card
         public ActionResult Notification()
         {
 
@@ -204,6 +190,8 @@ namespace productpagepr.Controllers
 
             return PartialView(ob);
         }
+
+        //Gets the top 3 helpline messages to show in notif
         private static List<HelplineModel> getMsg()
         {
             List<HelplineModel> msg = new List<HelplineModel>();
@@ -236,7 +224,7 @@ namespace productpagepr.Controllers
 
 
 
-
+        //Gets the top 3 order notifications
         public List<customerModel> getNotif()
         {
             List<customerModel> notif = new List<customerModel>();
@@ -275,22 +263,7 @@ namespace productpagepr.Controllers
         }
 
 
-        //public ActionResult Notification()
-        //    {
-
-
-        //        SqlConnection con = new SqlConnection(constring);
-        //    String q = "select TOP 3 Name,Address,Email,Phone,convert(varchar, Date_Time, 5),DATENAME(dw, Date_Time) as Day,OrderId from CustomerTable order by ID desc";
-
-        //        con.Open();
-        //        SqlCommand cmd = new SqlCommand(q, con);
-        //        DataTable dt = new DataTable();
-        //        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-        //        adapter.Fill(dt);
-        //    return PartialView(dt);
-
-
-        //    }
+      //Shows all order notifications
 
         public ActionResult AllNotifications()
         {
@@ -319,7 +292,7 @@ namespace productpagepr.Controllers
             }
         }
 
-
+        //Gets total number of customers
         public int GetTotalCustomers()
         {
             int customerCount;
@@ -340,6 +313,7 @@ namespace productpagepr.Controllers
                     
                 
             }
+        //Gets total number of products
         public int GetTotalDoctors()
         {
             int DoctorCount;
@@ -358,7 +332,7 @@ namespace productpagepr.Controllers
             con.Close();
             return DoctorCount;
         }
-
+        //Gets total number of products
         public int GetTotalProducts()
         {
             int ProductCount;
@@ -377,7 +351,7 @@ namespace productpagepr.Controllers
             con.Close();
             return ProductCount;
         }
-
+        //Gets total message no
         public int GetTotalMessages()
         {
             int MessageCount;
@@ -396,7 +370,7 @@ namespace productpagepr.Controllers
             con.Close();
             return MessageCount;
         }
-
+        //Retrieves  the latest customer info
         public List<customerModel> GetLatestCustomer()
         {
             List<customerModel> CustomerInfo = new List<customerModel>();
@@ -432,7 +406,7 @@ namespace productpagepr.Controllers
         }
 
        
-
+        //Shows admin related information in cards
         public ActionResult AdminProfileCardShow()
         {
             SqlConnection con = new SqlConnection(constring);
@@ -444,6 +418,8 @@ namespace productpagepr.Controllers
             return View(dt);
         }
 
+
+        //Shows notifications of helpline messages
         public ActionResult Msg_notification()
         {
 
@@ -462,6 +438,8 @@ namespace productpagepr.Controllers
             return View(ddt);
 
         }
+
+        //view helpline messages
 
         public ActionResult HelplineMsg(int Id)
         {
@@ -499,6 +477,8 @@ namespace productpagepr.Controllers
 
 
         }
+
+        //the form to see helpline messages
         private static List<HelplineModel> GetHelpmsg(int Id)
         {
             List<HelplineModel> mesag = new List<HelplineModel>();
@@ -535,6 +515,8 @@ namespace productpagepr.Controllers
                 }
             }
         }
+
+        //The form to reply to a helpline message
         [HttpPost]
         public ActionResult ReplyMsg(ReplyModel ob, HttpPostedFileBase file, int Id)
         {
@@ -573,7 +555,7 @@ namespace productpagepr.Controllers
 
 
         [HttpGet]
-
+        //Opens up admin login form
         public ActionResult AdminLogin()
         {
             if (string.IsNullOrEmpty(Session["Email"] as string))
@@ -588,6 +570,7 @@ namespace productpagepr.Controllers
             }
         }
 
+        //Performs admin login
         //Login POST
         [HttpPost]
 
@@ -653,7 +636,7 @@ namespace productpagepr.Controllers
           
         }
 
-
+        //Performs logout
         public ActionResult Logout()
         {
             //FormsAuthentication.SignOut();

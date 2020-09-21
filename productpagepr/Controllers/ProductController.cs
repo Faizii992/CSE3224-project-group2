@@ -20,8 +20,8 @@ namespace productpagepr.Controllers
         [HttpGet]
 
         
-
-        public ActionResult Index(string searchString,string product_no_show)
+        //Primary homepage of the product page
+        public ActionResult Index(string searchString)
         {
 
 
@@ -54,7 +54,7 @@ namespace productpagepr.Controllers
             
 
         }
-
+        //Gives the result of clicking a company from the left side bar, shows medicines that falls under that company
         public ActionResult FindMedicineByCompanyName(string Company)
         {
 
@@ -78,7 +78,7 @@ namespace productpagepr.Controllers
         }
 
        
-
+        //Searches a medicine by component when the customer cant find it by its name
         [HttpGet]
         public ActionResult SearchByComponent(string SearchString)
         {
@@ -102,7 +102,10 @@ namespace productpagepr.Controllers
         }
 
         
-
+        //Sorts the medicines according to their
+        //names(A-z) (z-a)
+        //Price(high to low) (low to high)
+        //New in
 
         [HttpGet]
         public ActionResult SortBy(string searchString, string sort)
@@ -187,6 +190,8 @@ namespace productpagepr.Controllers
 
         }
 
+
+        //Gets the number of product to show from the left select bar
         [HttpGet]
         public ActionResult No_Products_toshow(string searchString, string product_no_show)
         {
@@ -335,7 +340,7 @@ namespace productpagepr.Controllers
 
         }
 
-
+        //Opens up the productTables containing all the product info
         [HttpGet]
 
         public ActionResult ProductTables(string searchString, string product_no_show)
@@ -471,6 +476,8 @@ namespace productpagepr.Controllers
             return RedirectToAction("ProductTables");
         }
 
+
+        //Deletes a particular product
         public ActionResult Delete(int id)
         {
             SqlConnection con = new SqlConnection(constring);
@@ -487,38 +494,10 @@ namespace productpagepr.Controllers
 
       
 
-        public ActionResult GetAdditionalMedicineSuggestions()
-        {
+        
 
-            SqlConnection con = new SqlConnection(constring);
-            String q = "select  Product_Name,Product_Price,Product_Strength,Product_Component,Product_ImagePath,Product.Product_ID,SideEffect,SideEffect_Percentage,Product_Category,Product_Status,Product_Description  from Product " +
-               " INNER JOIN ProductCategory ON Product.Product_ID=ProductCategory.Product_ID " +
-               "INNER JOIN SideEffects ON Product.Product_ID= SideEffects.Product_ID ";
-            con.Open();
-            SqlCommand cmd = new SqlCommand(q, con);
-            DataTable dt = new DataTable();
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            adapter.Fill(dt);
-            return PartialView(dt);
-
-
-        }
-
-        public ActionResult GetAllComponents()
-        {
-
-            SqlConnection con = new SqlConnection(constring);
-            string q = "select Product_Component from Product";
-            con.Open();
-            SqlCommand cmd = new SqlCommand(q, con);
-            DataTable dt = new DataTable();
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            adapter.Fill(dt);
-            return PartialView(dt);
-
-
-        }
-
+       
+        //Opens the form to edit product information
         public ActionResult Edit(int id)
         {
             SqlConnection con = new SqlConnection(constring);
@@ -556,7 +535,7 @@ namespace productpagepr.Controllers
         }
 
 
-
+        //Updates product info in the db
         [HttpPost]
         public ActionResult Edit(productModel ob,int status)
         {
@@ -587,6 +566,7 @@ namespace productpagepr.Controllers
             return RedirectToAction("ProductTables");
         }
 
+        //Opens the form to view and edit product picture
         public ActionResult EditPropic(int id)
         {
             SqlConnection con = new SqlConnection(constring);
@@ -614,7 +594,7 @@ namespace productpagepr.Controllers
         }
 
 
-
+        //Updates the picture of the product in the database
         [HttpPost]
         public ActionResult EditPropic(productModel ob, HttpPostedFileBase file)
         {
@@ -647,7 +627,7 @@ namespace productpagepr.Controllers
 
 
 
-
+        //Shows the details of the product clicked on
 
         public ActionResult Details(int id)
         {
