@@ -468,7 +468,7 @@ namespace productpagepr.Controllers
             cmd4.ExecuteNonQuery();
 
 
-            return RedirectToAction("Altindex");
+            return RedirectToAction("ProductTables");
         }
 
         public ActionResult Delete(int id)
@@ -640,7 +640,9 @@ namespace productpagepr.Controllers
 
 
             cmd.ExecuteNonQuery();
-            return View(ob);
+           con.Close();
+
+            return RedirectToAction("ProductTables");
         }
 
 
