@@ -308,7 +308,7 @@ namespace productpagepr.Controllers
         public ActionResult Edit(doctorModel ob)
         {
             SqlConnection con = new SqlConnection(constring);
-            String q = "Update DoctorInfo set Doctor=@name,description=@Description,speciality=@Speciality,chamber1=@Chamber1,chamber2=@Chamber2,chamber3=@Chamber3, phone=@ContactNo, email=@Email where DoctorId=@id";
+            String q = "Update DoctorInfo set DoctorName = @name, Descriptions = @Description, speciality = @Speciality, chamber1 = @Chamber1, chamber2 = @Chamber2, chamber3 = @Chamber3, phone = @ContactNo, email = @Email where DoctorId = @id";
             con.Open();
             SqlCommand cmd = new SqlCommand(q, con);
             cmd.Parameters.AddWithValue("@id", ob.id);

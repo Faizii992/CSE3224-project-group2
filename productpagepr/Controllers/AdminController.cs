@@ -230,7 +230,6 @@ namespace productpagepr.Controllers
             List<customerModel> notif = new List<customerModel>();
             string q = "select TOP 3 Name,Address,Email,Phone,convert(varchar, Date_Time, 5) as Date_Time,DATENAME(dw, Date_Time) as Day,OrderId from CustomerTable order by ID desc";
 
-            string constring = @"Data Source=DESKTOP-K860ERO;Initial Catalog=connection;Integrated Security=True";
             using (SqlConnection con = new SqlConnection(constring))
             {
                 using (SqlCommand cmd = new SqlCommand(q))
@@ -424,9 +423,6 @@ namespace productpagepr.Controllers
         {
 
 
-
-            string constring = @"Data Source=DESKTOP-K860ERO;Initial Catalog=connection;Integrated Security=True";
-
             SqlConnection con = new SqlConnection(constring);
             string qt = "select Id,Name, Email,Phone,Subject,Message,imgid,Prescription ,UserId from Helpline order by Id desc";
             con.Open();
@@ -479,12 +475,12 @@ namespace productpagepr.Controllers
         }
 
         //the form to see helpline messages
-        private static List<HelplineModel> GetHelpmsg(int Id)
+        public  List<HelplineModel> GetHelpmsg(int Id)
         {
             List<HelplineModel> mesag = new List<HelplineModel>();
             string query = "select Id,Name, Email,Phone,Subject,Message,imgid,Prescription,UserId from Helpline where Id like '" + Id + "'";
 
-            string constring = @"Data Source=DESKTOP-K860ERO;Initial Catalog=connection;Integrated Security=True";
+          
             using (SqlConnection con = new SqlConnection(constring))
             {
                 using (SqlCommand cmd = new SqlCommand(query))

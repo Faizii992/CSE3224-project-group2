@@ -469,6 +469,7 @@
     <Content Include="style\AccountPage.css" />
     <Content Include="style\bootstrap.min.css" />
     <Content Include="style\CartPage.css" />
+    <Content Include="style\commonelememntsaccount.css" />
     <Content Include="style\commonElements.css" />
     <Content Include="style\doctorDetail.css" />
     <Content Include="style\DoctorPage.css" />
