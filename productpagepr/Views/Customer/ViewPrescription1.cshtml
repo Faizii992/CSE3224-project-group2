@@ -1,0 +1,25 @@
+﻿@model productpagepr.Models.customerModel
+
+@{
+    ViewBag.Title = "ViewPrescription1";
+    Layout = "~/Views/Shared/AdminDashboardLayout.cshtml";
+}
+
+
+
+<div class="col-md-9">
+    <center>
+        <br />
+        <h2>View Prescription #1</h2>
+        <br />
+        <hr />
+        <img width="1000" src="@ViewData["img"]" />
+
+        <hr />
+
+        <div>
+            @Html.ActionLink("Back to List", "AdminCustomerInfo")
+        </div>
+    </center>
+
+</div>

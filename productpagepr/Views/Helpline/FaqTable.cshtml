@@ -1,0 +1,76 @@
+﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "FaqTable";
+    Layout = "~/Views/Shared/AdminDashboardLayout.cshtml";
+}
+
+
+    <div style="margin-top:10%; margin-left:20%;">
+        <center><h2>About Info Table</h2></center>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" type="text/css" />
+
+        <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+        <div style=" background-color: lightblue; margin: 2% 3% 2% 3%; text-align: center; border-radius: 4px 4px;">
+
+
+            <center>
+                <p>
+                    @Html.ActionLink("Create New", "Create")
+                </p>
+            </center>
+
+
+
+        </div>
+
+
+
+
+
+
+
+        <div class="table-responsive ">
+            <table class=" table table-hover table-fixed table-striped border-dark ">
+                <tr>
+
+                    <th> Qsn_no </th>
+                    <th>
+                        Question
+                    </th>
+                    <th>
+                        Answer
+                    </th>
+
+                    <th> Edit  </th>
+                    <th> Delete  </th>
+
+
+
+
+
+                </tr>
+
+
+                @for (int i = 0; i < Model.Rows.Count; i++)
+                {
+
+            <tr>
+
+                <td>@Model.Rows[i][0]</td>
+                <td>@Model.Rows[i][1]</td>
+                <td>@Model.Rows[i][2]</td>
+
+                <td><a href="@Url.Action("EditFaq","Helpline",new {@id=Model.Rows[i][0] })">Edit </a></td>
+                <td><a href="@Url.Action("Delete","Helpline",new {@id=Model.Rows[i][0] })">Delete</a></td>
+
+            </tr>
+                }
+
+            </table>
+        </div>
+        <script src="~/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+    </div>

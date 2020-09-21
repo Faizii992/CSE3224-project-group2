@@ -1,0 +1,143 @@
+﻿
+body { /*margin:0px;
+       padding:0px;*/
+       width:100%;
+}
+
+
+.carousel-inner > .item  {
+    
+    margin: 0;
+
+}
+#circularPic img {
+    transform: scale(0.9);
+}
+#websiteinfo .card {
+  
+    overflow: scroll !important;
+}
+
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    width: 100%;
+    margin: 0px;
+    height: 450px;
+}
+
+
+.PopularMeds img {
+    border-radius: 100%;
+}
+
+
+.PopularMeds
+{
+
+    background-color:rgba(170, 198, 163,0.15);
+    text-align:center;
+    padding:2% 2.5%;
+    margin:auto;
+  
+}
+
+    .PopularMeds .btn {
+        box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.1), 0 5px 4px 0 rgba(0, 0, 0, 0.12);
+    }
+
+.container
+{
+width:100%;
+
+}
+
+.slider
+{
+    margin:0px;
+    width:100%;
+}
+
+
+
+.slider .btn {
+    text-decoration: none;
+    background: #179269;
+    color: white;
+    padding: 16px 40px;
+    border-radius: 27px;
+    margin: 15px;
+    box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.2), 0 3px 7px 0 rgba(0, 0, 0, 0.2);
+}
+    .slider .btn:hover{
+        text-decoration: none;
+        background: #2f4a41;
+        color: white;
+        padding: 16px 40px;
+        border-radius: 27px;
+        margin: 15px;
+        box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.2), 0 3px 7px 0 rgba(0, 0, 0, 0.2);
+    }
+
+@media only screen and (max-width:600px) {
+    #social_links {
+        padding-bottom: 20% !important;
+        background-color: white !important;
+    }
+
+    #websiteinfo img{
+        max-width:300px !important;
+    }
+}
+
+
+@media only screen and (min-width:800px) {
+   
+
+    #websiteinfo img {
+        max-width: 320px !important;
+    }
+    #websiteinfo .card{
+       margin-left:8%;
+    }
+}
+
+
+
+@media only screen and (min-width:602px) {
+
+
+    #websiteinfo img {
+        max-width: 350px !important;
+    }
+}
+
+@media only screen and (min-width:1025px) {
+
+
+    #websiteinfo img {
+        max-width: 450px !important;
+    }
+}
+
+@media only screen and (max-width:1024px) {
+
+
+    #websiteinfo img {
+        max-width: 340px !important;
+    }
+
+    #websiteinfo .card {
+        margin-left:8%;
+        margin-right:-1%;
+        overflow:scroll;
+    }
+}
+@media only screen and (max-width:653px) {
+
+
+    #websiteinfo img {
+        max-width: 280px !important;
+        margin-left:-4%;
+    }
+
+}
+

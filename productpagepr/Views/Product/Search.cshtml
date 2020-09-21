@@ -1,0 +1,142 @@
+﻿
+@model System.Data.DataTable
+
+@{
+    ViewBag.Title = "Index";
+}
+<link href="~/style/ProductPage.css" rel="stylesheet" />
+<link href="~/style/commonElements.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<center>
+
+    <div class="searchbar">
+        @using (Html.BeginForm("Index", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <input class="search_input" type="text" name="search" placeholder="Type What You're looking for" />
+            <a href="#" class="search_icon">
+                <i class="fas fa-search"></i>
+            </a>
+
+            <a class="search_icon" href="@Url.Action("Edit","Product")">Edit</a>
+        }
+
+
+    </div>
+
+
+    @using (Html.BeginForm("Search", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+
+        <div class="form-group">
+
+            <div class="col-md-10">
+                <input type="text" name="file" />
+            </div>
+        </div>
+        <div class="form-group">
+            @*<div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Search" class="btn btn-default" />
+                </div>*@
+
+            <div class="col-md-offset-2 col-md-10">
+                <a href="@Url.Action("Search","Product",new {@file=FormMethod.Post})">SEARCH</a>
+            </div>
+
+        </div>
+
+    }
+
+</center>
+
+<div class="list-group col-md-3">
+    <a href="#" class="list-group-item">First item</a>
+    <a href="#" class="list-group-item">Second item</a>
+    <a href="#" class="list-group-item">Third item</a>
+    <a href="#" class="list-group-item">First item</a>
+    <a href="#" class="list-group-item">Second item</a>
+    <a href="#" class="list-group-item">Third item</a>
+</div>
+
+<div class="container col-md-9" style="line-height:16px;">
+    <div class="row">
+
+
+        @for (int i = 0; i < Model.Rows.Count; i++)
+        {
+            <div class="col-md-4 col-sm-12" style="min-height:650px;">
+                <div class="box">
+
+                    <img src="@Model.Rows[i][4]" id="productImage" style="max-height:200px;" />
+                    <p> <b> @Model.Rows[i][0] </b></p>
+                    <p style="color:forestgreen;"><b> BDT </b> @Model.Rows[i][1] </p>
+
+                    <p> @Model.Rows[i][2] </p>
+                    <p> @Model.Rows[i][3] </p>
+                    <center> <input type="number" class="form-control" style="width:200px;" /> </center>
+                    <div class="Product_btns" style="margin:2%;">
+
+                        <a class="btn btn-success" href="@Url.Action("Details","Product",new {@id=Model.Rows[i][5] })">View Details </a>
+                        <a class="btn btn-success" href="@Url.Action("Details","Product",new {@id=Model.Rows[i][5] })">Add to Cart </a>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+<table class="table table-bordered table-striped">
+
+    <tr>
+
+        <th> ID  </th>
+        <th> Name </th>
+        <th> PRice </th>
+        <th> Quantity  </th>
+        <th> imgpath </th>
+
+        <th> Details  </th>
+        <th> Delete</th>
+        <th> Edit</th>
+        <th> Image </th>
+    </tr>
+
+    @for (int i = 0; i < Model.Rows.Count; i++)
+    {
+
+        <tr>
+            <td>@Model.Rows[i][0]</td>
+            <td>@Model.Rows[i][1]</td>
+            <td>@Model.Rows[i][2]</td>
+            <td>@Model.Rows[i][3]</td>
+            <td>@Model.Rows[i][4]</td>
+            <td><a href="@Url.Action("Details","Product",new {@id=Model.Rows[i][5] })">Details </a></td>
+            <td><a href="@Url.Action("Delete","Product",new {@id=Model.Rows[i][5] })">Delete </a></td>
+            <td><a href="@Url.Action("Edit","Product",new {@id=Model.Rows[i][5] })">Edit</a></td>
+
+
+
+
+
+
+        </tr>
+    }
+
+
+
+</table>
+

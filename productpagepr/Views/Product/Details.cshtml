@@ -1,0 +1,166 @@
+﻿
+@model System.Data.DataTable
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<link href="~/style/commonElements.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;1,200&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<center>
+    @using (Html.BeginForm("Index", "Product", FormMethod.Get))
+    {<div class="searchbar">
+            <input class="search_input" type="text" name="searchString" placeholder="Type What You're looking for" />
+            <button class="search_icon" type="submit" name="searchString" style="border:none;">
+                <img style="width:16px;" src="https://www.flaticon.com/svg/static/icons/svg/93/93642.svg" />
+            </button>
+
+
+        </div>
+    }
+    <style>
+        * {
+            font-family: "Poppins", sans-serif !important;
+        }
+
+    </style>
+</center>
+
+<script language="Javascript">
+    function IsEmpty() {
+
+
+        alert('Item has been added to Cart.');
+        return true;
+
+
+    }
+</script>
+
+
+
+<body>
+    <div class="modal" tabindex="-1" role="dialog" id="nonreg_alert">
+        <div class="modal-dialog" role="document" style="">
+            <div class="modal-content" style="text-align:center;">
+                <div class="modal-header" style="background-color:#90BAA9;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                    <h3 class="modal-title" style="color:white;"><b>ACTION  NOT  POSSIBLE</b></h3>
+
+                </div>
+                <div class="modal-body">
+
+                    <h4><b>You need to login to avail this feature!</b></h4>
+
+                    <h4 style="color:blue;"><u> @Html.ActionLink("Click on this link to go to the login page", "Login", "User")</u></h4>
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">CLOSE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <center><h2>Product Details</h2></center>
+
+    <div class="container detailsContainer" >
+        <div class="row">
+            @for (int i = 0; i < Model.Rows.Count; i++)
+            {
+                using (Html.BeginForm("Cart", "Cart", new { name = @Model.Rows[i][0], price = @Model.Rows[i][1], category = @Model.Rows[i][8], userid = Session["userId"], }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="col-md-4">
+                        <img height="380" width="380 " src="@Model.Rows[i][4]" />
+
+                    </div>
+
+
+                    <div class="col-md-4" id="FormRow">
+
+                        <h2> @Model.Rows[i][0]</h2>
+                        <h3 style="color:green;">
+                            <b>
+                                BDT  @Model.Rows[i][2]
+                                @Html.HiddenFor(model => Model.Rows[i][2])
+                            </b>
+                        </h3>
+
+
+
+
+                        <p>
+                            @Model.Rows[i][3]
+                            @Html.HiddenFor(model => Model.Rows[i][3])
+                        </p>
+                        <p>
+                            @Model.Rows[i][1] mg
+                            @Html.HiddenFor(model => Model.Rows[i][1])
+                        </p>
+                        <h3>
+                            @Model.Rows[i][11]
+                            @Html.HiddenFor(model => Model.Rows[i][11])
+                        </h3>
+                        <hr />
+                        <p><b>Side Effect Percentage:</b> @Model.Rows[i][7] </p>
+                        <p><b>Category:</b> @Model.Rows[i][8] </p>
+                        <p><b>Status:</b> @Model.Rows[i][9] </p>
+
+
+
+                        <div>
+                            <form class="form-inline">
+
+                                <input type="number" id="quantity" name="quantity" min="1" max="20" placeholder="Place Quantity here" class="form-control" style="width:200px;" />
+
+                                @if (@Model.Rows[i][9].ToString() == "Available")
+                                {
+                                    if (Session["userId"] == null)
+                                    {
+                                        <button type="button" class="btn btn-success" style="padding:2%;" data-toggle="modal" data-target="#nonreg_alert">
+                                            ADD TO CART
+                                        </button>
+
+                                    }
+                                    else
+                                    {
+                                        <input type="submit" id="btSubmit" value="Add to Cart" onClick="IsEmpty();" class="btn btn-success" style="padding:2%; margin-left:205px; margin-top:-58px;" />
+                                    }
+
+                                }
+                                else
+                                { <input type="submit" id="btSubmit" disabled value="Add to Cart" class="btn btn-success" style="padding:2%; margin-left:205px; margin-top:-58px;" />
+
+                                }
+
+
+
+
+                            </form>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="col-md-4">
+                        <h3> Description </h3>
+                        <p> @Model.Rows[i][10] </p>
+                        <h3>Side-effects </h3>
+                        <p> @Model.Rows[i][6] </p>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
+
+</body>

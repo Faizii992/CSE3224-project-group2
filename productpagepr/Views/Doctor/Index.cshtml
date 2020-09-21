@@ -1,0 +1,117 @@
+﻿@model System.Data.DataTable
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+}
+
+
+
+<link href="~/style/DoctorPage.css" rel="stylesheet" />
+<link href="~/style/commonElements.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" />
+
+
+<body>
+
+
+    <div class="container" style="width:100%;">
+
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <!-- for showing image -->
+                    <img class="d-block w-100 slider-image" height="500" src="~/doctorimages/doctor_slider.jpg" alt="First slide">
+
+                    <div>
+                        <div class="transparent-box">
+                            <div class="head">
+
+                                <p class="semester display-1 font-weight-bolder">DOCTOR'S INFORMATION</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="note">
+                    Here we have informations of the renowned doctors of our country. We always care about your healthy and sound life. You will get all kinds of doctors' information according to your desired criteria.
+                </p>
+                <hr>
+                <p class="semester display-4 font-weight-bolder head2">FIND A DOCTOR</p>
+                <hr>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="col-md-12">
+        <h4 style="font-weight:bold ">Doctor's Category</h4>
+        @Html.Action("CategoryList", "Doctor")
+
+        <div class="container col-md-9" id="row">
+            <div class="row">
+
+
+                @for (int i = 0; i < Model.Rows.Count; i++)
+                {
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                        <div class="box">
+
+                            <img src="@Model.Rows[i][2]" height="210" width="210" id="doctorImage" />
+
+                            <p class="info"> @Model.Rows[i][0] </p>
+                            <p class="info"> @Model.Rows[i][1] </p>
+
+
+                        </div>
+                        <div class="view-button-div">
+                            <center>
+                                <a class="btn btn-info view-button" href="@Url.Action("Details","Doctor",new { @id = @Model.Rows[i][3] })" style="color:white"> View Detail </a>
+                            </center>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12 black-box" style="width:100%">
+        <h1 class="heading3 text-center">Be Healthy!!!</h1>
+        <div class="col-md-6 list-sugg">
+            <div class="card1">
+                <ul>
+                    <li style="margin-bottom:25px;">Do you have a health problem or risk factor, such as high blood pressure or high cholesterol?</li>
+
+                    <li style="margin-bottom:25px;">Did your doctor tell you that you can improve your condition with better nutrition?</li>
+
+                    <li style="margin-bottom:25px;">Do diabetes, cancer, heart disease, or osteoporosis run in your family?</li>
+
+                    <li style="margin-bottom:25px;">Are you overweight?</li>
+
+                    <li>Do you think that you would benefit from seeing a registered doctor or someone who specializes in your problem?</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <iframe class="video" width="520" height="400" src="https://www.youtube.com/embed/hgEj2rtxGIQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    
+    
+</body>

@@ -1,0 +1,187 @@
+﻿@using productpagepr.Models;
+
+@model dynamic
+@{
+    ViewBag.Title = "Index";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <link href="~/style/commonElements.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <style>
+
+        .img {
+            position: absolute;
+        }
+
+        .img1 {
+            position: relative;
+        }
+
+        .collapsible {
+            color: black;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 22px;
+            border-radius: 4px;
+        }
+
+            .active, .collapsible:hover {
+                background-color: #555;
+            }
+
+        .content {
+            padding: 1% 1.5% 1% 1.5%;
+            display: none;
+            overflow: hidden;
+            background-color: #f1f1f1;
+            font-size: 20px;
+            color: #663300;
+        }
+    </style>
+    <link href="~/style/commonElements.css" rel="stylesheet" />
+
+</head>
+
+<body style="width:100%">
+    <div class="img" style=" position: relative; margin: 5% 5% 5% 5%;border: 2px solid grey;align-content: space-evenly;left: 0;top: 0;">
+        <img src="~/images/14776.png" class="img1" style="margin: 3%% 3% 3% 3%;width: 95%;height: 450px" />
+
+
+        <div style="margin: 2% 3% 5% 3%;background-color: #D8D7D6;color: black;padding: 3% 3% 3% 3%;font: 20px;border-radius: 5px 5px;">
+
+            <center>  <p style="font-size:28px;color:darkblue;border-bottom:2px solid grey;"><strong> LifeServeBD Privacy Policy</strong></p></center>
+
+            <p style="font-size:26px;color: #000066;margin-top:3%;margin-bottom:2%"> Privacy Policy :</p>
+            <div style="font-size:24px;background-color: #e0e0eb;padding:2%">
+                <p>
+                    Your privacy is important to us, and it is lifeServeBD's policy to respect your privacy regarding any information we may collect while operating our websites. Accordingly, we have developed this Policy in order for you to understand how we collect, use, communicate and disclose and make use of personal information.
+                </p>
+                <br />
+                <p style="color:seagreen;font-weight:bolder"> The following outlines our privacy policy : </p>
+                <br />
+
+
+                @foreach (PolicyModel pol in Model.policy)
+                {
+                    <button type="button" class="collapsible" style="        background-color: #e0ebeb;
+        border-bottom: 1px solid #dcc6e0">
+                        @pol.policyHead
+                    </button>
+
+                    <div class="content">
+                        <p>
+                            @pol.policies
+                        </p>
+                    </div>
+                }
+                @*   <p># Before or at the time of collecting personal information, we will identify the purposes for which information is being collected.</p>
+                    <p># We will collect and use of personal information solely with the objective of fulfilling those purposes specified by us and for other compatible purposes, unless we obtain the consent of the individual concerned or as required by law.</p>
+                    <p>
+                        # We will only retain personal information as long as necessary for the fulfillment of those purposes.
+                    </p>
+                    <p>
+                        # We will collect personal information by lawful and fair means and, where appropriate, with the knowledge or consent of the individual concerned.
+                    </p>
+                    <p>
+                        # Personal data should be relevant to the purposes for which it is to be used, and, to the extent necessary for those purposes, should be accurate, complete, and up-to-date.
+                    </p>
+                    <p># We will protect personal information by reasonable security safeguards against loss or theft, as well as unauthorized access.</p>   *@
+            </div>
+            <script>
+                var coll = document.getElementsByClassName("collapsible");
+                var i;
+
+                for (i = 0; i < coll.length; i++) {
+                    coll[i].addEventListener("click", function () {
+                        this.classList.toggle("active");
+                        var content = this.nextElementSibling;
+                        if (content.style.display === "block") {
+                            content.style.display = "none";
+                        } else {
+                            content.style.display = "block";
+                        }
+                    });
+                }
+            </script>
+
+
+        </div>
+
+
+
+    </div>
+
+</body>
+</html>
+@*
+
+
+    LifeServeBD Terms of Service and Privacy Policy
+
+
+
+    1. Terms
+    By accessing the web site at http://www.lifeservebd.com you are agreeing to be bound by these web site Terms and Conditions of Use, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this site. The materials contained in this web site are protected by applicable copyright and trademark law.
+
+
+
+    2. Use License
+    Permission is granted to temporarily download one copy of the materials (information or software) on lifeServeBD's web site for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:
+    modify or copy the materials;
+    use the materials for any commercial purpose, or for any public display (commercial or non-commercial);
+    attempt to decompile or reverse engineer any software contained on lifeServeBD's web site;
+    remove any copyright or other proprietary notations from the materials; or
+    transfer the materials to another person or "mirror" the materials on any other server.
+    This license shall automatically terminate if you violate any of these restrictions and may be terminated by lifeServeBD at any time. Upon terminating your viewing of these materials or upon the termination of this license, you must destroy any downloaded materials in your possession whether in electronic or printed format.
+
+
+    3. Disclaimer
+    The materials on lifeServeBD's web site are provided "as is". lifeServeBD makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties, including without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights. Further, lifeServeBD does not warrant or make any representations concerning the accuracy, likely results, or reliability of the use of the materials on its Internet web site or otherwise relating to such materials or on any sites linked to this site.
+
+
+    4. Limitations
+    In no event shall lifeServeBD or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption,) arising out of the use or inability to use the materials on lifeServeBD's Internet site, even if lifeServeBD or a lifeServeBD authorized representative has been notified orally or in writing of the possibility of such damage. Because some jurisdictions do not allow limitations on implied warranties, or limitations of liability for consequential or incidental damages, these limitations may not apply to you.
+
+
+
+    5. Revisions and Errata
+    The materials appearing on lifeServeBD's web site could include technical, typographical, or photographic errors. Biomed Pharmacy does not warrant that any of the materials on its web site are accurate, complete, or current. lifeServeBD may make changes to the materials contained on its web site at any time without notice. lifeServeBD does not, however, make any commitment to update the materials.
+
+
+
+    6. Links
+    lifeServeBD has not reviewed all of the sites linked to its Internet web site and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by lifeServeBD of the site. Use of any such linked web site is at the user's own risk.
+
+
+
+    7. Site Terms of Use Modifications
+    lifeServeBD may revise these terms of use for its web site at any time without notice. By using this web site you are agreeing to be bound by the then current version of these Terms and Conditions of Use.
+
+
+
+    Privacy Policy
+    Your privacy is important to us, and it is lifeServeBD's policy to respect your privacy regarding any information we may collect while operating our websites. Accordingly, we have developed this Policy in order for you to understand how we collect, use, communicate and disclose and make use of personal information. The following outlines our privacy policy.
+
+    Before or at the time of collecting personal information, we will identify the purposes for which information is being collected.
+    We will collect and use of personal information solely with the objective of fulfilling those purposes specified by us and for other compatible purposes, unless we obtain the consent of the individual concerned or as required by law.
+    We will only retain personal information as long as necessary for the fulfillment of those purposes.
+    We will collect personal information by lawful and fair means and, where appropriate, with the knowledge or consent of the individual concerned.
+    Personal data should be relevant to the purposes for which it is to be used, and, to the extent necessary for those purposes, should be accurate, complete, and up-to-date.
+    We will protect personal information by reasonable security safeguards against loss or theft, as well as unauthorized access.
+*@

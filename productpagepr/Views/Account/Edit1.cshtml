@@ -1,0 +1,136 @@
+﻿@model productpagepr.Models.User
+@{
+    ViewBag.Title = "Edit1";
+    Layout = null;
+}
+
+<link href="~/style/AccountEditPage.css" rel="stylesheet" />
+<link href="~/style/commonElements.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+@using (Html.BeginForm("Edit1", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+
+    @Html.AntiForgeryToken()
+
+
+
+    <div class="container bg-picture">
+        <img src="~/accountimage/account.jpg" style=" border-width: thick; height: 300px;
+       border-radius: 20px; width: 500px; margin-left:-45px;margin-top:-20px;" />
+
+
+
+
+        <div class="form-horizontal">
+
+            <p class="note1">
+                Upload Profile Picture!!!
+
+            </p>
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.UserID)
+
+
+            <div class="form-group">
+                <div class="label1">
+                    @Html.LabelFor(model => model.ImageAdd, "", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="file" name="file" id="filename" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group ">
+                <div class="button">
+                    <input type="submit" value="Upload" class="btn btn-success upload" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+}
+<style>
+ 
+</style>
+
+
+
+<style type="text/css" media="screen  and (min-width:769px) ">
+    .note1 {
+        font-size: 60px;
+        font-weight: bolder;
+        margin-top: -270px;
+        margin-left: -20px;
+        font-family: Gabriola;
+        color: #C70039;
+    }
+
+
+    .label1 {
+        margin-left: 150px;
+        margin-top: 50px;
+    }
+
+    .upload {
+        margin-left: -130px;
+        margin-top: 0px;
+        margin-bottom: 20px;
+    }
+
+    .col-md-2 {
+        color: #330099;
+        margin-top: 30px;
+    }
+
+    
+
+
+</style>
+
+<style type="text/css" media="screen and (max-width:768px) and (min-width:100px) ">
+
+    img{
+        margin-bottom:-100px;
+        
+    }
+    .note1 {
+        font-size: 40px;
+        font-weight: bolder;
+        margin-top: -170px;
+        margin-left: 50px;
+        font-family: Gabriola;
+        color: #C70039;
+    }
+
+
+    .label1 {
+        margin-left: 150px;
+        margin-top: 50px;
+    }
+
+    .upload {
+        margin-left: -130px;
+        margin-top: 0px;
+        margin-bottom: 20px;
+    }
+
+    .col-md-2 {
+        color: #330099;
+        margin-top: 5px;
+    }
+
+   
+
+
+</style>
+
+
+

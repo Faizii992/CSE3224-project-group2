@@ -1,0 +1,119 @@
+﻿@model System.Data.DataTable
+
+@{
+
+    Layout = "~/Views/Shared/AdminDashboardLayout.cshtml";
+    ViewBag.Title = "AdminCustomerInfo";
+}
+<div style=" margin-left:2%;">
+    <br />
+    <center>  <h2>Payment Details</h2> </center>
+    <hr />
+    <br />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" type="text/css" />
+
+
+
+   
+
+
+
+
+    <div class="my-3" style="display:flex;justify-content:space-around;">
+        <div>
+            <form class="form-inline" action="Index" method="get">
+                <input class="form-control" style="width:300px;border:none;" type="text" name="searchString" placeholder="Search order" />
+                <button class="btn btn-primary" type="submit">
+                    <i class="zmdi zmdi-search"></i>
+                </button>
+            </form>
+        </div>
+
+    </div>
+
+
+    <div class="table-responsive ">
+        <table id="example" class=" table table-hover table-fixed table-striped border-dark w-auto table1" style="background-color: white;">
+            <thead class="thead-dark">
+                <tr>
+
+                    <th> Payment ID </th>
+                    <th> Customer ID </th>
+                    <th> Order ID  </th>
+                    <th> Amount  </th>
+                    <th> Delivery Charge  </th>
+                    <th> Total Amount  </th>                    
+                    <th> Received Date  </th>
+                    <th> Received  </th>
+                   
+                    <th> Delete  </th>
+
+
+
+
+
+                </tr>
+            </thead>
+
+
+            @for (int i = 0; i < Model.Rows.Count; i++)
+            {
+
+
+                <tbody>
+                    <tr>
+                        <td>@Model.Rows[i][6]</td>
+                        <td>@Model.Rows[i][0]</td>
+                        <td>@Model.Rows[i][1]</td>
+                        <td>@Model.Rows[i][2]</td>
+                        <td>@Model.Rows[i][3]</td>
+
+
+                        <td>@Model.Rows[i][4]</td>
+                        <td>@Model.Rows[i][5]</td>
+                        
+
+                        
+
+                       
+                        <td><a href="@Url.Action("ReceivedDate","Payment",new {id=Model.Rows[i][6] })" class="button btn-success">Received</a></td>
+                       
+                        <td><a href="@Url.Action("Delete","Payment",new {id=Model.Rows[i][6] })"><p style="color:red;">Delete</p></a></td>
+
+
+
+
+
+
+
+                    </tr>
+                </tbody>
+
+
+            }
+
+
+        </table>
+
+    </div>
+
+
+
+</div>
+
+
+<style>
+
+    .table-responsive {
+        width: 1030px;
+        height: 550px;
+        font-size: 12px;
+    }
+
+    thead tr:first-child th {
+        position: sticky;
+        top: 0;
+    }
+</style>

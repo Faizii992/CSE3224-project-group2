@@ -1,0 +1,244 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    
+   
+ 
+
+</head>
+<body>
+
+   
+    <h6 style="background-color:black; color:white; text-align:center; padding:0.5% 0% 0.5% 0%; margin:0px;">Exciting New Deals and Offers!</h6>
+    <div style="display:flex;justify-content:center;margin-top:0.6%;">
+        <a href="@Url.Action("Index", "Home")">
+            <img class="lifeServeLogo" src="~/productimages/lifeservelogo.jpg" style="transform:scale(1.1)" />
+        </a>
+    </div>
+    <div style="display:flex;justify-content:flex-end;margin-top:-3%;margin-bottom:1%;margin-right:1%;">
+        @if (Session["userId"] == null)
+        {
+            <button style="background-color:transparent; border:none;width:60px; height:50px;margin-left:400px;outline-color:transparent;" onclick='alert("Please Login first!!!");'>
+                <img src="~/productimages/MEdicineImageRes/cart-icon-28341.png" style="width:45px; height:45px;" />
+            </button>
+            <button style="background-color:transparent; border:none;width:60px; height:50px;margin-left:10px; outline-color:transparent;" onclick='alert("Please Login first!!!");'>
+                <img src="~/images/icon/message.png" style="width:45px; height:45px;" />
+            </button>
+            <button style="background-color:transparent; border:none;width:60px; height:50px;margin-left:10px;outline-color:transparent;" onclick='alert("Please Login first!!!");'>
+                <img src="~/images/helpline.png" style="width:45px; height:45px;" />
+            </button>
+        }
+        else
+        {
+            <a href="@Url.Action("Index", "Cart")">
+
+                <img src="~/productimages/MEdicineImageRes/cart-icon-28341.png" style="width:45px; height:45px; margin-left:400px;" />
+            </a>
+            <a href="@Url.Action("message", "Customer")">
+
+                <img src="~/images/icon/message.png" style="width:45px; height:45px; margin-left:15px;" />
+            </a>
+            <a href= @Url.Action("AllUserNotif", "UserNotification")>
+
+                <img src="~/images/helpline.png" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm" style="margin-left:10px; outline-color:transparent;border:none;background-color:transparent;height: 45px; width: 45px ;display:inline-block;background-color:#013243;padding:0%;" />
+
+            </a>
+
+        }
+
+
+
+
+    </div>
+
+    <div class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+            <style>
+
+                dropdown {
+                    float: left;
+                    overflow: hidden;
+                }
+
+                .dropdown .dropbtn {
+                    font-size: 17px;
+                    border: none;
+                    outline: none;
+                    color: white;
+                    padding: 14px 16px;
+                    background-color: inherit;
+                    font-family: inherit;
+                    margin: 0;
+                }
+
+                .dropdown-content {
+                    display: none;
+                    position: absolute;
+                    background-color: #f9f9f9;
+                    min-width: 160px;
+                    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                    z-index: 1;
+                }
+
+                    .dropdown-content a {
+                        float: none;
+                        color: black;
+                        padding: 12px 16px;
+                        text-decoration: none;
+                        display: block;
+                        text-align: left;
+                    }
+
+                .dropdown:hover .dropbtn {
+                    background-color: #555;
+                    color: white;
+                }
+
+                .dropdown-content a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
+
+                .dropdown:hover .dropdown-content {
+                    display: block;
+                }
+
+                ul.nav.navbar-nav {
+                    display: flex;
+                    justify-content: center;
+                    float: none !important;
+                }
+
+               
+            </style>
+        
+
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("HOME", "Index", "Home")</li>
+                    <li class="dropdown">
+                        <a href="@Url.Action("Index", "Product")" class="dropbtn">MEDICINE</a>
+                        <div class="dropdown-content">
+
+                            <a href="@Url.Action("FilterRegNonReg","Product",new {@id=1})">REGULAR</a>
+                            <a href="@Url.Action("FilterRegNonReg","Product",new {@id=2})">NON REGULAR</a>
+                            @*<a href="@Url.Action("FilterRegNonReg","Product",new {@id=3})">PRODUCT PAGE</a>*@
+
+                        </div>
+                    </li>
+                    <li>@Html.ActionLink("DOCTOR'S INFORMATION", "Index", "Doctor")</li>
+                    <li>@Html.ActionLink("HELPLINE", "Index", "Helpline")</li>
+                    <li>@Html.ActionLink("ABOUT", "Index", "AboutUs")</li>
+                    <li>@Html.ActionLink("TERMS AND CONIDITIONS", "TermsIndex", "PolicyTerms")</li>
+
+
+                    @*@if (Session["Email"] == null)
+                    {
+                        <li>@Html.ActionLink("ADMIN PANEL", "AdminLogin", "Admin")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("ADMIN PANEL", "Index", "Admin")</li>
+
+                    }*@
+             
+
+
+
+
+
+
+
+                    @if (Session["userId"] == null)
+                    {
+                        <li>@Html.ActionLink("SIGN UP", "Registration", "User")</li>
+                        <li>@Html.ActionLink("LOGIN", "Login", "User")</li>
+
+                    }
+
+                    else
+                    {
+                        <li>@Html.ActionLink("ACCOUNT", "Index", "Account")</li>
+                    }
+
+
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        @* <hr />*@
+
+    </div>
+
+
+
+    <footer>
+        <div class="container-fluid footer" style="background-color:#9dc79f">
+            <div class="row">
+                <div class="col-md-4" style="text-align:center; ">
+
+                    <h3>COMPANY</h3>
+                    <a href="@Url.Action("Index","AboutUs")"> About Us</a> <br />
+                    <a href="#"> Contact Us</a> <br />
+                    <a href="#">Our Services</a> <br />
+                    <a href="@Url.Action("PolicyIndex","PolicyTerms")"> Policies</a>  <br />
+                    <a href="@Url.Action("TermsIndex","PolicyTerms")"> Terms and Conditions  </a>  <br />
+
+                </div>
+
+
+
+                <div class="col-md-4" style="text-align:center;">
+
+                    <h3>ADDRESS</h3>
+
+                    <p> 221b,Baker Street</p>
+                    <p>DownTown Abbey</p>
+                    <p>London,UK</p>
+
+
+                </div>
+
+                <div class="col-md-4" style="text-align:center; ">
+                    <h3>OUR SERVICES</h3>
+                    <p> <a href="@Url.Action("Index", "Product")" class="dropbtn">MEDICINE</a></p>
+                    <p>   @Html.ActionLink("DOCTOR'S INFORMATION", "Index", "Doctor")</p>
+                    <p>  @Html.ActionLink("HELPLINE", "Index", "Helpline")</p>
+
+                </div>
+            </div>
+        </div>
+        <h6 style="background-color:rgba(0,0,0,0.1);color:#9DC79F; padding:0% 0% 0.5% 0.1%; width:100%;  text-align:center;">&copy; @DateTime.Now.Year -LifeServeBD</h6>
+
+
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+
+</body>
+</html>

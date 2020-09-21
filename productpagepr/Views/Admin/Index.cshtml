@@ -1,0 +1,248 @@
+﻿@model dynamic
+@using productpagepr.Models;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminDashboardLayout.cshtml";
+}
+@Html.Action("Notification", "Admin")
+
+
+<div class="modal" tabindex="-1" role="dialog" id="dropdown_mobile">
+    <div class="modal-dialog" role="document" style="">
+        <div class="modal-content">
+            <div class="card-header" style="text-align:center">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="navbar-mobile card" style="text-align:center;">
+                <div class="container-fluid">
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="@Url.Action("Index", "Admin")">
+                                <i class="fas fa-tachometer-alt"></i>
+                                <span>
+                                    <strong>Dashboard</strong>
+                                </span>
+                            </a>
+
+                        </li>
+
+                        <li>
+                            <a href="@Url.Action("ProductTables", "Product")">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>
+                                    Product Tables
+                                </span>
+                            </a>
+
+                        </li>
+
+                        <li>
+                            <a href="@Url.Action("AdminDoctorInfo", "Doctor")">
+                                <i class="fas fa-desktop"></i>
+                                <span>
+                                    Doctor's Info
+                                </span>
+                            </a>
+
+                        </li>
+                        <li>
+                            <a href="@Url.Action("AdminDoctorCategory", "Doctor")">
+                                <i class="fas fa-desktop"></i>
+                                <span>
+                                    Doctors Category
+                                </span>
+                            </a>
+
+                        </li>
+
+                        <li>
+                            <a href="@Url.Action("ShowAllUsers", "Account")">
+                                <i class="fas fa-copy"></i>
+                                <span>
+                                    User Accounts
+                                </span>
+                            </a>
+
+                        </li>
+                        <li>
+                            <a href="@Url.Action("AdminCustomerInfo", "Customer")">
+                                <i class="fas fa-table"></i>
+                                <span>
+                                    Customer Info
+                                </span>
+                            </a>
+
+                        </li>
+
+                        <li>
+                            <a href="@Url.Action("AdminOrderInfo", "AdminOrder")">
+                                <i class="fas fa-check-square"></i>
+                                <span>
+                                    Order List
+                                </span>
+                            </a>
+
+                        </li>
+
+                        <li>
+                            <a href="@Url.Action("Index", "Payment")">
+                                <i class="fas fa-check-square"></i>
+                                <span>
+                                    Payment Details
+                                </span>
+                            </a>
+
+                        </li>
+
+                        <li>
+                            <a href="@Url.Action("AdminProfileCardShow", "Admin")">
+                                <i class="fas fa-check-square"></i>
+                                <span>
+                                    Admin Information
+                                </span>
+                            </a>
+
+                        </li>
+
+
+
+
+
+
+                        <li>
+                            <a href="@Url.Action("Create", "AboutUs")" class="btn btn-info btn-sm" style="color:white;">
+                                <i class="fas fa-desktop"></i>
+                                <span>
+                                    REGISTER A NEW USER
+                                </span>
+                            </a>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mobile-header-div d-lg-none  d-block" style="position:absolute;top:-5%;right:6%;z-index:3;">
+    <button style="color:black;" data-toggle="modal" data-target="#dropdown_mobile">
+        <i style="font-size:30px;color:black;"  class="fas fa-bars"></i>
+    </button>
+
+    @*<span class="quantity">3</span>*@
+</div>
+
+
+<div class="container" id="AdminIndex" style="margin-top:0%;background-color:#DFDFDF">
+    <div class="alert alert-danger" style="color:black;text-align:center;margin-top:10%;" id="welcometxtAdmin">
+       
+        <h3> WELCOME ADMIN, @Session["Name"] !</h3>
+        <p>Here are your recent statistics.</p>
+    </div>
+    <div class="box" style="display: flex;
+        justify-content:space-around;">
+        <div class="row my-4">
+            <div class="col-md-4 mt-1">
+                <div class="card TotalSales mx-1  text-center mt-1">
+                    <div class="card-header bg-dark text-light">
+                        TOTAL NUMBER OF PRODUCTS
+
+
+
+                    </div>
+                    <div class="card-body">
+                        <h1>
+                            @Model.TotalProducts
+                        </h1>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="col-md-4 mt-1">
+                <div class="card TotalMessages  text-center mt-1">
+                    <div class="card-header bg-dark text-light">
+                        TOTAL NUMBER OF CUSTOMERS
+                    </div>
+                    <div class="card-body">
+                        <h1> @Model.TotalCustomers</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mt-1">
+                <div class="card TotalDoctors mx-1 text-center mt-1">
+                    <div class="card-header bg-dark text-light">
+                        TOTAL NUMBER OF DOCTORS
+
+                    </div>
+                    <div class="card-body">
+                        <h1> @Model.TotalDoctors</h1>
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box">
+        <div class="row" style="display:flex;justify-content:center;">
+
+            <div class="col-md-5">
+                <div class="card mx-1 text-center my-2">
+                    <div class="card-header bg-dark text-light">
+                        LATEST ORDER
+                    </div>
+                    <div class="card-body">
+                        <div style="display:flex;justify-content:space-around;">
+                            <div>
+                                @foreach (customerModel customer in Model.LatestCustomer)
+                                {
+
+
+                                    <img class="card-img-top" src="@customer.imgpath" />
+
+                                }
+
+                            </div>
+                            <div style="line-height:15px;text-align:left;" class="mx-1;">
+
+                                @foreach (customerModel customer in Model.LatestCustomer)
+                                {
+
+
+                                    <p> @customer.name</p>
+                                    <p> @customer.phone</p>
+                                    <p> @customer.email</p>
+
+                                    <p> @customer.address</p>
+                                }
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="card TotalMessages mx-1 text-center my-2">
+                    <div class="card-header bg-dark text-light">
+                        TOTAL NUMBER OF MESSAGES
+                    </div>
+                    <div class="card-body">
+                        <h1> @Model.TotalMessages</h1>
+                        <br />
+
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+</div>

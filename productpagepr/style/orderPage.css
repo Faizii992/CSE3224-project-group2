@@ -1,0 +1,208 @@
+﻿@media only screen and (min-width:1300px) {
+    .box {
+        width: 600px;
+    }
+}
+
+@media only screen and (max-width:1299px) and (min-width:1100px){
+    .box {
+        width: 500px;
+    }
+}
+
+@media only screen and (max-width:1099px) and (min-width:450px) {
+    .box {
+        width: 400px;
+    }
+}
+
+@media only screen and (max-width:459px) {
+    .box {
+        width: auto;
+    }
+}
+    .table1 {
+        margin-top: 30px;
+        align-content: center;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .heading {
+        background-color: #33CAFF;
+    }
+
+    .upper-heading {
+        color: #CD1919;
+        font-weight: bold;
+        margin-left: -20px;
+    }
+
+    table-2 {
+        margin-top: 30px;
+    }
+@media only screen and (min-width:1300px) {
+    .box-2 {
+        width: 300px;
+        margin-left: -300px;
+    }
+}
+
+@media only screen and (max-width:1299px) and (min-width:1100px) {
+    .box-2 {
+        width: 300px;
+        margin-left: -200px;
+    }
+}
+    .note {
+        margin-top: 20px;
+        font-size: 20px;
+        font-weight: bold;
+        font-family: cursive;
+    }
+
+    .row1 {
+        margin-top: 50px;
+    }
+
+    .row3 {
+        margin-top: 20px;
+    }
+
+    .prescription {
+        width: 180px;
+        color: #CD1919;
+    }
+
+    .prescription2 {
+        width: 180px;
+        color: #0B770B;
+    }
+
+
+    @media only screen and (min-width:550px) {
+        .form-box {
+            width: 500px;
+            background-color: #D6DCD6;
+            margin-top: 20px;
+            height: 350px;
+            border-radius: 25px;
+        }
+    }
+
+    @media only screen and (max-width:549px) and (min-width:20px) {
+        .form-box {
+            width: 350px;
+            background-color: #D6DCD6;
+            margin-top: 20px;
+            height: 350px;
+            border-radius: 25px;
+        }
+    }
+
+    .form {
+        margin-left: 50px;
+    }
+
+    .panel1 {
+        margin-top: 30px;
+        margin-right: 5px;
+        background-color: #D6DCD6;
+    }
+
+    .panel2 {
+        background-color: #D6DCD6;
+        margin-top: 20px;
+        margin-right: 5px;
+    }
+
+    @media only screen and (min-width:550px) {
+        .first {
+            width: 300px;
+            height: 30px;
+            border-radius: 2px;
+            border: none;
+            margin-top: 30px;
+        }
+    }
+
+    @media only screen and (max-width:549px) and (min-width:20px) {
+        .first {
+            width: 200px;
+            height: 30px;
+            border-radius: 2px;
+            border: none;
+            margin-top: 30px;
+        }
+    }
+
+    @media only screen and (min-width:550px) {
+        .second {
+            width: 300px;
+            height: 30px;
+            margin-top: 20px;
+            border-radius: 2px;
+            border: none;
+        }
+    }
+
+    @media only screen and (max-width:549px) and (min-width:20px) {
+        .second {
+            width: 200px;
+            height: 30px;
+            margin-top: 20px;
+            border-radius: 2px;
+            border: none;
+        }
+    }
+
+    .customer-detail {
+        color: #CD1919;
+        font-weight: bold;
+        margin-top: 50px;
+    }
+
+
+    .row2 {
+        margin-left: 50px;
+    }
+
+
+
+    .modal {
+        position: fixed;
+    }
+
+    #scrollbox {
+        border: 2px solid #0B5345;
+        overflow-y: auto;
+        height: 300px;
+    }
+
+
+
+    .headings tr:first-child th {
+        position: sticky;
+        top: 0;
+        background-color: #48C9B0;
+    }
+
+    @media only screen and (min-width:550px) {
+        .confirm {
+            margin-top: 20px;
+            margin-left: 420px;
+        }
+    }
+
+    @media only screen and (max-width:549px) and (min-width:20px) {
+        .confirm {
+            margin-top: 20px;
+            margin-left: 280px;
+        }
+    }
+
+    .span {
+        margin-left: 80px;
+    }

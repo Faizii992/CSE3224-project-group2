@@ -1,0 +1,48 @@
+﻿@model productpagepr.Models.PolicyModel
+
+@{
+    ViewBag.Title = "PolicyTable";
+    Layout = "~/Views/Shared/AdminDashboardLayout.cshtml";
+}
+
+<div style="margin-top:10%; margin-left:20%;">
+
+    <h2>PolicyTable</h2>
+
+    @using (Html.BeginForm("CreatePolicy", "PolicyTerms", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>PolicyModel</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.policies, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.policies, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.policies, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.policyHead, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.policyHead, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.policyHead, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+    }
+    </div>
+    <div>
+        @Html.ActionLink("Back to List", "CreatePolicy")
+    </div>

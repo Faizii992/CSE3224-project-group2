@@ -1,0 +1,139 @@
+﻿@model System.Data.DataTable
+
+@{
+
+    Layout = "~/Views/Shared/AdminDashboardLayout.cshtml";
+    ViewBag.Title = "AdminCustomerInfo";
+}
+    <div style=" margin-left:2%;">
+        <br />
+        <center>  <h2>Customers' Information</h2> </center>
+        <hr />
+        <br />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" type="text/css" />
+
+
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css" />
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap.min.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+        
+
+
+        <div class="my-3" style="display:flex;justify-content:space-around;">
+            <div>
+                <form class="form-inline" action="AdminCustomerInfo" method="get">
+                    <input class="form-control" style="width:300px;border:none;" type="text" name="searchString" placeholder="Search Customer" />
+                    <button class="btn btn-primary" type="submit">
+                        <i class="zmdi zmdi-search"></i>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+
+        <div class="table-responsive ">
+            <table id="example" class=" table table-hover table-fixed table-striped border-dark w-auto table1" style="background-color: white;">
+                
+                <thead class="thead-dark">
+                    <tr>
+
+                        <th> ID </th>
+                        <th> Customer ID </th>
+                        <th> Order ID  </th>
+                        <th> Name  </th>
+                        <th> Address  </th>
+                        <th> Email  </th>
+                        <th> Contact No. </th>
+                        <th> Prescription 1 </th>
+                        <th> Prescription 2  </th>
+                        <th> Prescription 3  </th>
+                        <th> Date &amp; Time  </th>
+                        <th> Day  </th>
+                        <th style="width:200px;"> Order Status  </th>
+                        <th>Accept</th>
+                        <th>Reject</th>
+                        <th> Delete  </th>
+
+
+
+
+
+                    </tr>
+                </thead>
+
+
+                @for (int i = 0; i < Model.Rows.Count; i++)
+                {
+
+
+                    <tbody>
+                        <tr>
+                            <td>@Model.Rows[i][12]</td>
+                            <td>@Model.Rows[i][0]</td>
+                            <td>@Model.Rows[i][1]</td>
+                            <td>@Model.Rows[i][2]</td>
+                            <td>@Model.Rows[i][3]</td>
+
+
+                            <td>@Model.Rows[i][4]</td>
+                            <td>@Model.Rows[i][5]</td>
+
+                            <td><img src="@Model.Rows[i][6]" style="width:80px; " /> <a href="@Url.Action("ViewPrescription1","Customer",new {@id=Model.Rows[i][12] })">View Prescription</a></td>
+                            <td><img src="@Model.Rows[i][7]" style="width:80px;" /> <a href="@Url.Action("ViewPrescription2","Customer",new {@id=Model.Rows[i][12] })">View Prescription</a></td>
+                            <td><img src="@Model.Rows[i][8]" style="width:80px;" /> <a href="@Url.Action("ViewPrescription3","Customer",new {@id=Model.Rows[i][12] })">View Prescription</a></td>
+
+                            <td>@Model.Rows[i][9]</td>
+                            <td>@Model.Rows[i][10]</td>
+                            <td>@Model.Rows[i][11]</td>
+
+                            <td><a href="@Url.Action("Accept","Customer",new {id=Model.Rows[i][12] })" class="button btn-success">Accept</a></td>
+                            <td><a href="@Url.Action("Reject","Customer",new {id=Model.Rows[i][12] })" class="button btn-danger">Reject</a></td>
+
+                            <td><a href="@Url.Action("Delete","Customer",new {id=Model.Rows[i][12] })"><p style="color:red;">Delete</p></a></td>
+
+
+
+
+
+
+
+                        </tr>
+                    </tbody>
+
+
+                }
+
+
+            </table>
+
+        </div>
+
+      
+
+    </div>
+
+
+<style>
+
+   .table-responsive{
+       width:1030px;
+       height:550px;
+       font-size:12px;
+   }
+
+    thead tr:first-child th {
+        position: sticky;
+        top: 0;
+        
+    }
+    
+      
+</style>

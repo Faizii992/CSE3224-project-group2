@@ -1,0 +1,124 @@
+﻿body {
+   
+    /*line-height:15px;*/
+}
+* {
+    font-family: "Poppins", sans-serif !important;
+}
+
+
+
+
+.list-group {
+    color: white;
+}
+.list-group-item {
+    background: #74a994;
+    opacity: 0.8;
+    color: white;
+   
+    font-size: 16px;
+}
+
+.navbar-inverse {
+    background-color: #179269;
+    color: white;
+    border: none;
+    text-align: center;
+}
+
+.container .navbar-brand {
+    padding: 50%;
+    text-align: center;
+    margin: auto;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: white;
+    font-size: 16px;
+}
+
+.navbar-inverse .navbar-brand {
+    color: white;
+}
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+}
+
+
+
+
+
+
+
+.card-img-top {
+    width: 100%;
+    border-top-left-radius: calc(.25rem - 1px);
+    border-top-right-radius: calc(.25rem - 1px);
+    min-height:250px;
+    max-height:250px;
+}
+
+
+ .list-group-item .a
+{
+
+    color:white;
+}
+.list-group-item:hover{
+    
+}
+
+
+.box {
+    text-align: center;
+    max-height: 600px;
+    min-height: 400px;
+    max-width: 300px;
+    min-width: 200px;
+    background: white;
+ 
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
+}
+.searchbar{
+    margin:2.4%;
+}
+
+
+
+a.list-group-item, button.list-group-item {
+    color: white;
+}
+
+.contact_join
+{
+
+    width:100%;
+}
+
+input{
+    background-color: #4CAF50;
+    border: none;
+    color: black;   
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+#AlternativeMed .modal-content{
+    min-height: 600px !important;
+}
+
+
+@media only screen and (max-width:1050px) {
+    .flex-cont {
+        transform:translateX(0%) !important;
+    }
+}

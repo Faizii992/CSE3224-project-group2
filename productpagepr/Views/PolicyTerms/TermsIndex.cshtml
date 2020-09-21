@@ -1,0 +1,177 @@
+﻿@using productpagepr.Models;
+@model dynamic
+
+@{
+    ViewBag.Title = "TermsIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<html>
+<head>
+    <link href="~/style/commonElements.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <style>
+
+        .img {
+            position: absolute;
+        }
+
+        .img1 {
+            position: relative;
+        }
+
+        .collapsible {
+            color: black;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 22px;
+            border-radius: 4px;
+        }
+
+            .active, .collapsible:hover {
+                background-color: #555;
+            }
+
+        .content {
+            padding: 1% 1.5% 1% 1.5%;
+            display: none;
+            overflow: hidden;
+            background-color: #f1f1f1;
+            font-size: 20px;
+            color: #663300;
+        }
+    </style>
+    <link href="~/style/commonElements.css" rel="stylesheet" />
+
+</head>
+
+<body style="width:100%">
+    <div class="img" style=" position: relative; margin: 5% 5% 5% 5%;border: 2px solid grey;align-content: space-evenly;left: 0;top: 0;">
+        <img src="~/images/terms-and-condition-20190411095914.jpg" class="img1" style="margin: 3% 3% 3% 3%;width: 95%;height: 450px" />
+
+
+
+
+        <div style="margin: 2% 3% 5% 3%;background-color: #D8D7D6;color: black;padding: 3% 3% 3% 3%;font: 20px;border-radius: 5px 5px;">
+
+            <center>  <p style="font-size:28px;color:darkblue;border-bottom:2px solid grey;"><strong> LifeServeBD Terms of Services</strong></p></center>
+
+            <br />
+
+            @foreach (termsModel tos in Model.terms)
+            {
+                
+                    <p style="     font-weight:700;   font-size: 24px; color: #d35400" >
+                        @tos.terms_head  </p>
+
+                    <p style=" font-weight: 500;  font-size: 22px;  color: #2e3131">  &nbsp; @tos.terms </p>
+                    <br/>
+                }
+            
+            </div>
+
+
+            @*
+
+                
+
+
+        1.    Creating an Account
+
+        1.1   To use certain features of the Website (e.g. ordering Products, posting rating/reviews, receiving Biomeds newsletters), you must set up an account with lifeServeBD (“lifeServeBD Account”) and provide certain information about yourself as prompted by the Customer Information form, including, your name, email address, account password, mobile phone number and billing/shipping address. All of your registration information is protected by our Privacy Policy.
+
+        1.2    You represent and warrant that the information you submit during registration is truthful and accurate and that you will maintain the accuracy of such information.
+
+        1.3     Your lifeServeBD Account username and password are personal to you. You may not transfer your account and you will be responsible for the activities associated with your Biomeds Account.
+
+        1.4     lifeServeBD.com will not be liable for any loss or damages as a result of your failure to maintain the confidentiality of your account credentials. If you suspect any unauthorized use of your lifeServeBD account, you shall immediately notify lifeServeBD.com
+
+        1.5    It is your responsibility to keep your email address up-to-date on your account setup at lifeServeBD so that we can communicate with you  electronically.
+
+        2.    Security Policy
+        All your transactions are 100% secure when you place an order online at lifeServeBD.com Your personal information is encrypted by using Secure Sockets Layer (SSL) surjomukhi (Pay Point) before being sent over the Internet, which ensures the privacy and high level of security of all your information.
+
+
+        3.      Price and Payments
+
+        3.1    lifeServeBD shall try and keep the maximum retail price (“MRP”) of all of its Products as accurate as possible. However, there may be instances where the MRPs shown on the website may vary from the actual MRPs on lifeServeBD bill.
+
+        3.2    We make every effort to make sure that the pricing and availability of Products on our Website is accurate and up to date. However, rarely, there may be an error on the pricing of a product or an error related to product availability. In such cases, we are not responsible for any typographical errors and we reserve the right to cancel the order.
+
+        3.3    We reserve the right to correct any inaccuracies or omissions related to pricing and product availability/descriptions, even after you have submitted your order, and to change or update any other information at any time without prior notice.
+
+        3.4    BDT 50 will be charged for orders less than BDT 500. FREE HOME Delivery for order over BDT 500 in Dhaka City.
+
+        3.5    Outside Dhaka city, BDT 100 will be charged for Deliver.
+
+        3.6    BDT 175 will be charged for emagency Delivery. For emargency delivery one must be order placed before 12 pm.
+
+        3.7    You can make the payment via  Cash on Delivery.
+
+
+        4.      Delivery and Shipping
+        4.1    On average, it may take about 24 Hours after placing orders to deliver within Dhaka city.
+
+        4.2    48 Hours after placing orders to deliver within other District towns and City corporation area.
+
+        4.3     It may take 72 hours Rest of Bangladesh. For emargency delivery it depands on traffic and destination of the delivery.
+
+        4.5    Delivery times may vary depending on the shipping destination.
+
+        4.6    Please note that delivery times are estimates only and are not guaranteed, due to circumstances out of our control.
+
+        4.7   We are unable to receive order for some cold chain items, such as vaccines, insulin, biotech products for HOME DELIVERY because those products need to maintain certain minimum temperature range.
+
+
+        5.    Our Site Update regularly
+
+        We aim to update our Site regularly, and may change the content at any time. If the need arises, we may suspend access to our Site, or close it indefinitely. Any of the material on our Site may be out of date at any given time, and we are under no obligation to update such material.
+
+        6.     Return and cancellation Policy
+        6.1    A payment confirmation email will be sent to you at the time you place an order. You can see the details of the order in your Account area.
+
+        6.2    Once a prescription and non-prescription products have been delivered it cannot be returned for any reason.
+
+
+
+                </div>*@
+
+
+
+            <script>
+                var coll = document.getElementsByClassName("collapsible");
+                var i;
+
+                for (i = 0; i < coll.length; i++) {
+                    coll[i].addEventListener("click", function () {
+                        this.classList.toggle("active");
+                        var content = this.nextElementSibling;
+                        if (content.style.display === "block") {
+                            content.style.display = "none";
+                        } else {
+                            content.style.display = "block";
+                        }
+                    });
+                }
+            </script>
+
+
+        </div>
+
+
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,368 @@
+﻿@using productpagepr.Models
+@model  HelplineModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <head>
+        <link href="~/style/commonElements.css" rel="stylesheet" />
+        <link href="~/style/Helpline.css" rel="stylesheet" />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+              integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">*@
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" crossorigin="anonymous"></script>
+        <style>
+
+            #sendmsg {
+                background-image: url('../../Prescriptions/heart-medical-dust-mask-copy-space_23-2148439076.jpg');
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+            }
+
+            #qsn {
+                border-top: none;
+                border-bottom: 0.3px solid gray;
+                border-left: hidden;
+                border-right: none;
+                outline: none;
+                background-color: transparent;
+                color: #d91e18;
+                width: 100%;
+                text-align: left;
+                font-size: 24px;
+            }
+
+            .collapsible {
+                color: black;
+                cursor: pointer;
+                padding: 18px;
+                width: 100%;
+                border: none;
+                text-align: left;
+                outline: none;
+                font-size: 22px;
+                border-radius: 4px;
+            }
+
+                .active, .collapsible:hover {
+                    background-color: #555;
+                }
+
+                .collapsible:after {
+                    font-family: FontAwesome;
+                    content: "\f150";
+                    color: #8c14fc;
+                    font-weight: bold;
+                    float: right;
+                    margin-left: 5px;
+                }
+
+            .active:after {
+                content: "\f151";
+            }
+
+            .content {
+                padding: 1% 1.5% 1% 1.5%;
+                display: none;
+                overflow: hidden;
+                background-color: #f1f1f1;
+                font-size: 20px;
+                color: #663300;
+            }
+        </style>
+    </head>
+    <div class="row" id="sendmsg" style="margin:5% 5% 5% 5%;">
+        <center><p style="background-color:black;color:aliceblue;font-size:36px;height:50px;font-family:'ROG Fonts'">HELPLINE</p></center>
+
+        <div style="text-align:left; font-size: 24px; color: #4d13d1;padding: 2% 0% 1% 6%;border-bottom: 3px inset; ">
+            <strong>
+                PLEASE NOTE THAT :-
+            </strong>
+            <br /><p style="        color: red; font-size: 22px">
+                <strong>Make sure to provide a valid email address else you won't be notified when the admin replies to your message .</strong>
+            </p>
+            <p style="        color: red;  font-size: 22px"> All messages will be  moderated & deleted if they are -</p>
+            <div style="text-align:left;padding :0% 0% 0% 15%;color:darkred;font-size:21px">
+                &#8226;   Not relavant to your health , order & prescrition <br />
+                &#8226;   Spam <br />
+                &#8226;   Not relavant to your health , order & prescrition <br />
+                &#8226;   Not relavant to your health , order & prescrition <br />
+            </div>
+
+        </div>
+        <div class="col-md-6" id="faq " style="padding: 2% 2% 0% 2%;">
+            @*
+            @foreach (FAQModel faqs in Model.Faqs)
+            {
+                <div class="content" style="border-bottom:1px solid gray">
+                    <button type="button" class="collapsible" style="  background-color: transparent;color:#d91e18;cursor: pointer;width: 100%;text-align: left;outline:none;font-size: 24px;">@faqs.Question</button>
+                    <p style="color:#013243;font-size:20px;padding-left:4%;margin-top:2%">
+                        @faqs.Answer
+                    </p>
+                </div>
+            }
+            *@
+            <p style=" text-align: left; font-size: 22px; color: #013243; font-style: oblique;   ">
+                <strong>
+                    Kindly Read the FAQ's Before Sending Any Message
+                </strong>
+            </p>
+
+
+            <div style="padding-top:2%;background-color:transparent">
+
+
+                @foreach (FAQModel faqs in Model.Faqs)
+                {
+
+                    <button type="button" class="collapsible" style="        background-color: transparent;
+        color: #d91e18;
+        cursor: pointer;
+        width: 100%;
+        text-align: left;
+        outline: none;
+        font-size: 24px;
+        background-color: transparent;
+        border-radius: 0px;
+        border-top: 2px solid grey;
+        border-bottom: 1px solid grey
+">
+                        @faqs.Question
+                    </button>
+                    <div class="content" style="        border-bottom: 1px solid gray;
+        background-color: transparent
+">
+
+                        <p style="color:#013243;font-size:20px;padding-left:4%;margin-top:2%;background-color:transparent ">
+                            @faqs.Answer
+                        </p>
+                    </div>
+                }
+
+            </div>
+
+
+
+
+            <script>
+                var coll = document.getElementsByClassName("collapsible");
+                var i;
+
+                for (i = 0; i < coll.length; i++) {
+                    coll[i].addEventListener("click", function () {
+                        this.classList.toggle("active");
+                        var content = this.nextElementSibling;
+                        if (content.style.display === "block") {
+                            content.style.display = "none";
+                        } else {
+                            content.style.display = "block";
+                        }
+                    });
+                }
+            </script>
+
+
+            @* <div class="panel-group" id="accordionY" style="padding-top:2.5%;background-color:transparent">
+
+
+
+                @foreach (FAQModel faqs in Model.Faqs)
+                {
+
+                    <script type="text/javascript">
+
+                        $(document).ready(function () {
+                            $('.collapse.in').each(function () {
+                                $(this).parent().find(".glyphicon").removeClass("glyphicon-collapse-down").addClass("glyphicon-collapse-up");
+                            });
+
+                            $('.collapse').on('shown.bs.collapse', function () {
+                                $(this).parent().find(".glyphicon-collapse-down").removeClass("glyphicon-collapse-down").addClass("glyphicon-collapse-up");
+                            }).on('hidden.bs.collapse', function () {
+                                $(this).parent().find(".glyphicon-collapse-up").removeClass("glyphicon-collapse-up").addClass("glyphicon-collapse-down");
+                            });
+                        });
+                    </script>
+
+
+                    <div class="panel panel-default" id="panel" style=" background-color: transparent;border:hidden;border-radius:0px">
+                        <div class="panel-heading" style="        background-color: transparent; border-radius: 0px; border-top: 1px solid grey; border-bottom: 1px solid grey">
+                            <h4 class="panel-title" style=" background-color: transparent;">
+                                <a href="#." style="background-color: transparent; border: hidden; border-radius: 0px">
+
+                                    <span id="qsn" data-toggle="collapse" href="  @faqs.Qsn_no" data-parent="#accordionY" style="        background-color: transparent;border: hidden; border-radius: 0px">
+                                        @faqs.Question
+                                        <span class="glyphicon glyphicon-collapse-down" style="float: right;margin-left: 1px;font-size: 24px; background-color: transparent; border: hidden; border-radius: 0px"></span>
+                                    </span>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="@faqs.Qsn_no" class="panel-collapse collapse in" style=" background-color: transparent;">
+                            <div class="panel-body" style="border-bottom: 1px solid grey">
+                                <p style="color: #013243;font-size: 20px;padding-left: 4%;margin-top: 2%; background-color: transparent">  @faqs.Answer</p>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+
+            </div>*@
+
+        </div>
+
+
+        @using (Html.BeginForm("Index", "Helpline", FormMethod.Post, new { @id = "Form1", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+
+
+            <div class="col-md-6" id="msg">
+
+
+                <div class="form-horizontal" style=" padding:4% 4% 4% 4% ">
+
+                    <h4 class="col-xl-10 " style="text-align: center; margin: 1% 8% 2% -1%; font-size: 24px; color: #013243; font-style: oblique; border-bottom: 0.5px solid grey"><strong>Write your Problem here ....</strong></h4>
+
+
+
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-6", @style = "font-size:20px;color:#01664E;text-align:left" })
+                        <div class="col-md-11">
+                            @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "ex : Abcd Alam", @pattern = "[A-Za-z]{}", @style = "font-size:20px", @validate = "RequiredField" })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-6", @style = "font-size:20px;color:#01664E;text-align:left" })
+                        <div class="col-md-11">
+                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "ex :xyz@gmail.com", @pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$", @style = "font-size:20px" })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-6", @style = "font-size:20px;color:#01664E;text-align:left" })
+                        <div class="col-md-11">
+                            @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", @placeholder = "ex : 017*******", @pattern = "[0-9]{11,11}", @style = "font-size:20px", @validate = "RequiredField" })
+                            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Subject, htmlAttributes: new { @class = "control-label col-md-6", @style = "font-size:20px;color:#01664E;text-align:left" })
+                        <div class="col-md-11">
+                            @Html.TextBoxFor(model => model.Subject, new { @class = "form-control", @placeholder = "ex : For prescription", @pattern = "[A-Za-z]{}", @style = "font-size:20px", @validate = "RequiredField" })
+                            @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label col-md-6", @style = "font-size:20px;color:#01664E;text-align:left" })
+                        <div class="col-md-11">
+                            @Html.TextAreaFor(model => model.Message, new { rows = 10, cols = 100, @class = "form-control", style = "font-size:20px;", placeholder = "ex : I can't understand what is written in the prescription", pattern = "[A-Za-z0-9]{}", @validate = "RequiredField" })
+                            @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    @* <div class="form-group">
+                        <label class="control-label col-md-4" style="font-size:20px;color:#01664E;text-align:left"> Add Prescription :</label>
+                        <div class="col-md-6">
+
+                            <label class="radio-inline" style="font-size:20px">
+                                <input type="radio" name="optradio" id="yes">Yes
+                            </label>
+                            <label class="radio-inline" style="font-size:20px">
+                                <input type="radio" name="optradio" id="no" style="font-size:20px" checked>No
+                            </label>
+
+                        </div>
+
+                    </div>*@
+
+                    <div class="form-group">
+
+                        @Html.LabelFor(model => model.Prescription, htmlAttributes: new { @class = "control-label col-md-6", @style = "font-size:20px;color:#01664E;text-align:left" })
+
+                        <div class="col-md-10" style="font-size: 20px;    color: #2d436b;padding:1% 3%">
+                            @Html.RadioButtonFor(model => model.Prescription, "No Prescription", new { style = "size:20px", id = "no", @checked = "checked", name = "btn1", onclick = " myFunc(0)", AutoPostBack = "true" })
+                            No Prescription
+                        </div>
+
+                        <div class="col-md-10" style=" font-size: 20px;  color: #2d436b; padding:1% 3% ">
+
+                            @Html.RadioButtonFor(model => model.Prescription, "Add Prescription", new { name = "btn1", id = "yes", onclick = " myFunc(1)", })
+                            Add  Prescription
+
+                        </div>
+
+
+
+
+                        <div class="col-md-11" id="pres" style="display:none">
+                            <input class="form-control" type="file" name="file" style="font-size:20px ;height:auto" />
+
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Send Message" onclick='alert("YOUR MESSAGE HAS BEEN SENT")'  id="Submit" class="btn btn-default" style="font-size:24px;position:relative" />
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        }
+     
+        
+     
+        <script>
+            new WOW().init();
+        </script>
+
+        <script>
+
+            function myFunc(x) {
+                if (x == 1) {
+                    document.getElementById('pres').style.display = 'block';
+                }
+                else {
+                    document.getElementById('pres').style.display = 'none';
+                }
+                return;
+            }
+         
+            
+
+        </script>
+        <div>
+            <center>
+                <p style=" font-size: 28px; color: #663399;background-color: transparent;"> One of our executives will be 24/7 available for you . </p>
+            </center>
+        </div>
+    </div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/modernizr")
+}
+
+
+

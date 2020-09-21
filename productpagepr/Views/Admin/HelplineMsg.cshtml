@@ -1,0 +1,195 @@
+﻿@model System.Data.DataTable
+
+@{
+    ViewBag.Title = "HelplineMsg";
+    Layout = "~/Views/Shared/AdminDashboardLayout.cshtml";
+}
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+
+    <style>
+        body{
+            width:100%;
+            background-color:#E5E5E5 !important;
+        }
+        .text {
+            font-size: 20px;
+        }
+
+        .box2 {
+            text-align: center;
+            width: 80%;
+            background-color: #EBF4FA;
+            border-color: black;
+            border: thick;
+            border-width: 10px;
+           
+            margin:auto;
+            display:block;
+            margin-bottom: 20%;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
+        }
+
+    </style>
+    <body>
+        @using (Html.BeginForm("HelplineMsg", "Admin", FormMethod.Get))
+        {
+
+
+
+
+
+            if (Model.Rows.Count != 0)
+            {
+                <br />
+                <h2 class="text-center" style="color:#065F41; font-weight:bolder">Message Details</h2>
+                <br />
+                <br />
+
+
+                for (int i = 0; i < Model.Rows.Count; i++)
+                {
+                    <div class="col-md-9 box2">
+                        <br />
+                        @if (@Model.Rows[i][8].ToString() != null)
+                        {
+
+                            <h2 style="color:#006633"><b><u>User Id</u></b></h2>
+
+                            <p class="text">@Model.Rows[i][8]  </p>
+
+                        }
+
+
+                        <h2 style="color:#006633"><b><u>Name</u></b></h2>
+                        <p class="text"> @Model.Rows[i][1] </p>
+
+
+
+                        <h2 style="color:#006633"><b><u>Email</u></b></h2>
+                        <br />
+                        <p class="text"> @Model.Rows[i][2]</p>
+                        <br />
+
+                        <h2 style="color:#006633"><b><u>Phone No</u></b></h2>
+                        <br />
+
+                        <p class="text"> @Model.Rows[i][3] </p>
+                        <br />
+
+                        <h2 style="color:#006633"><b><u>Subject</u></b></h2>
+                        <br />
+                        <p class="text"> @Model.Rows[i][4] </p>
+                        <br />
+                        <h2 style="color:#006633"><b><u>Message</u></b></h2> <br />
+                        <p class="text"> @Model.Rows[i][5] </p> <br />
+
+
+                        <h2 style="color:#006633"><b><u>Prescription</u></b></h2> <br />
+                        @if (@Model.Rows[i][7].ToString() != "No Prescription")
+                        {
+                            <img src=" @Model.Rows[i][6]" style="max-height :500px;max-width :500px" />
+                        }
+                        else
+                        {
+                            <p class="text"> @Model.Rows[i][7] </p> <br />
+
+                        }
+
+                        <br />
+
+
+                        @if (!string.IsNullOrEmpty(@Model.Rows[i][8] as string))
+
+                        {
+                            <center>
+                                <a class="btn btn-success" href="@Url.Action("ReplyMsg", "Admin", new { @Id = Model.Rows[i][0] })" style="color:white">
+                                    Reply Message
+                                </a>
+                            </center>
+                        }
+                        else
+                        {
+                            <center>
+                                <a class="btn btn-success" href="https://mail.google.com/" style="color:white" type="submit"
+                                   id="runReport"
+                                   target="_blank">
+                                    Send Email
+                                </a>
+                            </center>
+
+                        }
+
+                        @*else
+                                {
+                        < p class="alert alert-warning" style="font-size:30px ;color:darkred;font-weight:800">The Message Has Already been Replied.</p>
+
+
+                        <button data-toggle= "collapse" data-target= "#demo" style= "color:#006633;font-size:24px" > View Reply</button>
+
+                        <div id = "demo" class="collapse">
+                        <p class="text"> @Model.Rows[i][10] </p> <br />
+
+                        </div>*@
+                        @* <div class="dropdown show">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                View Reply
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" sstyle="margin-top:2px">
+                                <h2 style="color:#006633"><b><u>Reply</u></b></h2> <br />
+                                <p class="text"> @Model.Rows[i][10] </p> <br />
+
+                            </div>
+                        </div>*@
+
+                        @*}*@
+
+
+
+
+                        <br />
+                        @*  <a href="@Url.Action("RunReport", "Performance", new { reportView = Model.ReportView.ToString() })"
+                           type="submit"
+                           id="runReport"
+                           target="_blank"
+                           class="button Secondary">
+                            @Reports.RunReport
+                        </a>*@
+                        <p>
+
+                            @Html.ActionLink("Back to List", "Index")
+                        </p>
+
+                        <br />
+                        <br />
+
+                    </div>
+
+                }
+            }
+            else
+            {
+                <div class="alert alert-danger" style="display:block;justify-content:center;margin-top:10%;height:80px;width:90%;margin-left:5%;text-align:center;">
+                    <h3>ALREADY REPLIED</h3> 
+                </div>
+            }
+
+            @*  <a href="@Url.Action("Details","Doctor",new {@id=Model.Rows[i][9] })">Detail View </a></td>
+                           <p>
+                @Html.ActionLink("Reply", "ReplyMsg", new { Msg_Id = Model.Rows[i][0]) |
+            </p>
+            *@
+        }
+    </body>
+        
+<script>
+    setTimeout(function () {
+        $('#runReport').attr('disabled', 'disabled');
+    }, 1);
+</script>

@@ -1,0 +1,212 @@
+﻿@model System.Data.DataTable
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+
+}
+
+
+
+
+<html>
+<head>
+    <link href="~/style/HomePage.css" rel="stylesheet" />
+    <link href="~/style/commonElements.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;1,200&display=swap" rel="stylesheet">
+   
+
+    <style>
+
+
+        .carousel-inner > .item > img,
+        .carousel-inner > .item > a > img {
+            width: 100%;
+            /*margin: auto;*/
+        }
+
+        * {
+            font-family: "Poppins", sans-serif !important;
+        }
+
+        /*.container{
+            padding-left:0px !important;
+
+            margin-right:0px !important;
+        }*/
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="slider" style="width:100%; margin:0px">
+        <div class="container" style="width:100%;">
+
+            <div id="myCarousel" class="carousel slide" style="width: 100%; margin: 0px" data-ride="carousel" data-interval="2000">
+
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <div class="carousel-caption" style="top: 50%; transform: translateY(-50%); background:rgba(0,0,0,0.35); padding:5% 3% 18% 3%;">
+                            <h2>VIEW EXCITING DEALS AND OFFERS</h2>
+                            <h3>GET AUTHENTIC PRODUCTS AT THE CHEAPEST RATE</h3>
+                            <a href="@Url.Action("Index","Product")" id="#ViewShopbtn" class="btn"> VIEW SHOP </a>
+                        </div>
+
+
+                        <img src="~/productimages/MEdicineImageRes/bg1.jpg" alt="Chania" max-height="245">
+                    </div>
+
+                    <div class="item">
+                        <div class="carousel-caption" style="top: 50%; transform: translateY(-50%); background:rgba(0,0,0,0.35); padding:5% 3% 18% 3%;">
+                            <h2>VIEW EXCITING DEALS AND OFFERS</h2>
+                            <h3>GET AUTHENTIC PRODUCTS AT THE CHEAPEST RATE</h3>
+                            <a href="@Url.Action("Index","Product")" id="#ViewShopbtn" class="btn"> VIEW SHOP </a>
+                        </div>
+
+                        <img src="~/productimages/MEdicineImageRes/bg2.jpg" alt="Chania" max-height="245">
+                    </div>
+
+                    <div class="item">
+                        <div class="carousel-caption" style="top: 50%; transform: translateY(-50%); background:rgba(0,0,0,0.35); padding:5% 3% 18% 3%;">
+                            <h2>VIEW EXCITING DEALS AND OFFERS</h2>
+                            <h3>GET AUTHENTIC PRODUCTS AT THE CHEAPEST RATE</h3>
+                            <a href="@Url.Action("Index","Product")" id="#ViewShopbtn" class="btn"> VIEW SHOP </a>
+                        </div>
+
+                        <img src="~/productimages/MEdicineImageRes/bg3.jpg" alt="Flower" max-height="245">
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+    <div style="background-color: #179269; color:white; text-align:center; width:100%; padding:0.3% 0%; margin:0px;">
+        <h5>
+
+            SOME OF OUR PRODUCTS!
+        </h5>
+    </div>
+    <div class="PopularMeds row col-md-12" style="background-color:#E5E5E5;">
+        @for (int i = 0; i < Model.Rows.Count; i++)
+        {
+            <div class="col-md-4">
+                <img src="@Model.Rows[i][7]" style="box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.2), 0 3px 7px 0 rgba(0, 0, 0, 0.2); border-radius:100%;height:250px;width:250px; " />
+                <h2> @Model.Rows[i][1] @Model.Rows[i][3]mg</h2>
+                <h5> BDT @Model.Rows[i][6]</h5>
+                <p><a class="btn btn-success" href="@Url.Action("Details", "Product", new { @id = Model.Rows[i][0] })">Learn more &raquo;</a></p>
+            </div>
+
+
+        }
+
+
+
+    </div>
+
+    <center>
+        <div id="websiteinfo" class="container" style="background-color:#BDF6FF">
+            <div class="row">
+
+
+
+                @*<div class="col-md-4 col-sm-12">
+            <div class="card" style="background-color:#99c2b3;height:420px;margin-top:0%;">
+                <div class="card-body" style="padding-top:15%;">
+                    <ul style="list-style-type:none;  font-size:20px;">
+
+                        <li>✔ Fast Home Delivery</li>
+                        <li>✔ Helpine Service Available</li>
+                        <li>✔ 99.9% Medicine Availability</li>
+                        <li>✔ Information About the Best Physicians in the country</li>
+
+
+
+
+
+                        <li>✔ Suggestions regarding medicines</li>
+
+                        <li>✔Medicine related help available</li>
+
+                    </ul>
+                </div>
+
+            </div>
+
+
+        </div>*@
+                <div class="col-md-4 col-sm-12" id="circularPic">
+
+                    <img src="~/images/icon/rx6.png" style="width:100%;" />
+
+                </div>
+
+                <div class="col-md-4 col-sm-12" style="margin-top:1%;margin-bottom:1%;" >
+
+                    <img src="~/images/icon/healthcare2.jpg" style="width:100%;" />
+
+
+                </div>
+                <div class="col-md-4 col-sm-12" id="circularPic">
+
+                    <img src="~/productimages/MEdicineImageRes/pharmacy-online-poster-vector-20636100.jpg" style="width:100%;" />
+
+                </div>
+
+            </div>
+        </div>
+
+    </center>
+
+
+
+    <div style="background-color:black;color:wheat;" class="container py-2">
+        <div class="row">
+            <div style="text-align:center;" class="col-md-6">
+                <img src="~/productimages/MEdicineImageRes/pencil_symbol.png" width="44" style="margin-top:2%;" ; />
+                <h6>Join Our Team</h6>
+
+                @if (Session["userId"] == null)
+                {
+                    
+                    <a  style="color:white;"  href="@Url.Action("Registration", "User")">
+                        SIGN UP
+                    </a>
+
+                }
+
+                else
+                {
+                    <h6>Thankyou for joining!</h6>
+                }
+
+            </div>
+            <div style="text-align:center;" class="col-md-6 ">
+                <img src="~/productimages/MEdicineImageRes/white_love_symbol.png" width="50" style="margin-top:2%;"; />
+                <h6>
+                    Follow us
+                </h6>
+                <h6> <a style="color:white;" href="https://www.facebook.com/anika1394">FACEBOOK</a> | <a style="color:white;" href="https://www.twitter.com/AftabAnika">TWITTER</a>| <a style="color:white;" href="https://www.instagram.com/anikabinteeaftab">INSTAGRAM</a></h6>
+            </div>
+          
+        </div>
+    </div>
+
+ 
+
+
+
+</body>
+
+
+</html>

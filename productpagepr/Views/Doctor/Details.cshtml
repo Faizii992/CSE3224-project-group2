@@ -1,0 +1,95 @@
+﻿
+@model System.Data.DataTable
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Details";
+}
+
+
+<link href="~/style/doctorDetail.css" rel="stylesheet" />
+<link href="~/style/commonElements.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+@using (Html.BeginForm("Index", "Doctor", FormMethod.Get))
+{
+    <body>
+
+        <br />
+        <h2 class="text-center" style="color:#065F41; font-weight:bolder">PROFESSIONAL DETAIL</h2>
+        <br />
+        <br />
+
+
+        <div class="col-lg-12 col-md-12">
+            <div class="col-lg-4 col-md-4 col-sm-12 row">
+                @for (int i = 0; i < Model.Rows.Count; i++)
+                {
+
+                    <div class="col-md-12 box ">
+                        <img src="@Model.Rows[i][4]" height="350" width="350" />
+                        <h3><b>Name</b></h3>
+                        <p class="text"> @Model.Rows[i][1] </p>
+                        <br />
+                        <h3><b>Description</b></h3>
+                        <p class="text">  @Model.Rows[i][2] </p>
+                        <br />
+                        <h3><b>Speciality</b></h3>
+                        <p class="text"> @Model.Rows[i][3] </p>
+                        <br />
+
+                    </div>
+                }
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 row">
+                
+               @for (int i = 0; i < Model.Rows.Count; i++)
+               {
+                <div class="col-md-12 box2">
+                    <h2><img src="~/doctorimages/location_icon.png" height="40" width="30" /><b> CHAMBER DETAILS</b></h2>
+
+                    <h2 style="color:#006633"><b><u>Chamber 1</u></b></h2>
+                    <p class="text"> @Model.Rows[i][5] </p>
+
+
+
+                    <h2 style="color:#006633"><b><u>Chamber 2</u></b></h2>
+                    <p class="text"> @Model.Rows[i][6]</p>
+
+
+                    <h2 style="color:#006633"><b><u>Chamber 3</u></b></h2>
+                    <p class="text"> @Model.Rows[i][7] </p>
+
+                    <br /><br />
+                    <h2><img src="~/doctorimages/telephone_icon.png" height="40" width="30" /><b> CONTACT INFORMATION</b> </h2>
+
+                    <h2 style="color:#006633"><b><u>Mobile No.</u></b></h2>
+                    <p class="text"> @Model.Rows[i][9] </p>
+                    <h2 style="color:#006633"><b><u>Email</u></b></h2>
+                    <p class="text"> @Model.Rows[i][8] </p>
+
+                    <br /><br /><br />
+                </div>
+
+                }
+
+               
+            </div>
+
+
+            
+
+        </div>
+
+
+
+
+       
+    </body>
+
+}
+
+

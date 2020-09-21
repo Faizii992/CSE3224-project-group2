@@ -1,0 +1,32 @@
+﻿.box {
+    text-align: center;
+    
+    background:white;
+    border-color:black;
+    border:thick;
+    border-width:10px;
+    margin-left:25px;
+    margin-right:20px;
+    margin-bottom: 20%;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
+}
+
+.text{
+    font-size:20px;
+  
+}
+
+
+
+.box2 {
+    text-align: center;
+    
+    background-color: #EBF4FA;
+    border-color: black;
+    border: thick;
+    border-width: 10px;
+    margin-left:35px;
+    margin-bottom: 20%;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
+}
+

@@ -1,0 +1,32 @@
+﻿@model System.Data.DataTable
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetAllCompanies</title>
+</head>
+<body>
+    <div class="list-group col-md-3 col-sm-6" style="line-height:16px;">
+
+        @for (int i = 0; i < Model.Rows.Count; i++)
+        {
+
+            using (Html.BeginForm("FindMedicineByCompanyName", "Product", FormMethod.Get))
+            {
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="Company" value="@Model.Rows[i][0]" />
+                <button type="submit" class="list-group-item">@Model.Rows[i][0]</button>
+
+            }
+
+        }
+
+
+    </div>
+</body>
+</html>

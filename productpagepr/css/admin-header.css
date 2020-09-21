@@ -1,0 +1,72 @@
+﻿body {
+}
+
+#notification_card {
+    transform: translate(-10%,-40%);
+    width: 350px;
+}
+.account-div {
+    position: absolute;
+    top: 20%;
+    display: flex;
+    right: 35%;
+    justify-content: space-around;
+}
+
+#account_card {
+    transform: translate(30%,20%);
+}
+@media only screen and (max-width:980px) {
+    .notification-div{
+        left:5% !important;
+    }
+    
+    .account-div{
+       right:0% !important;
+    }
+
+    #notification_card {
+        transform: translate(-25%,-40%) !important;
+    }
+
+    #account_card {
+        transform: translate(20%,26%);
+    }
+
+}
+
+@media only screen and (max-width:680px) {
+    .notification-div {
+       right: 15% !important;
+    }
+
+    .account-div {
+        right: 0% !important;
+    }
+
+    #notification_card {
+        transform: translate(-25%,-40%) !important;
+    }
+
+    #account_card {
+        transform: translate(20%,26%);
+    }
+}
+
+@media only screen and (max-width:580px) {
+    .notification-div {
+        right: 35% !important;
+    }
+
+    .account-div {
+        right: 0% !important;
+    }
+
+    #notification_card {
+        transform: translate(-25%,-40%) !important;
+    }
+
+    #account_card {
+        transform: translate(20%,26%);
+    }
+}

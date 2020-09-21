@@ -1,0 +1,116 @@
+﻿@model System.Data.DataTable
+
+@{
+
+    Layout = "~/Views/Shared/AdminDashboardLayout.cshtml";
+}
+
+
+    <html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+              integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" />
+    </head>
+    <body style="background-color:#E5E5E5;">
+
+
+        <div style="margin-top: 0%;
+        margin-left: 2.5%;">
+            <center>  <h2>Product Table</h2> </center>
+
+
+
+
+
+            <div class="my-3 AddandSearchBar">
+                <div class="col-md-6 formProductTable">
+                    <div class="mb-2 mb-md-0 ">
+                        <form class="form-inline " action="ProductTables" method="get">
+                            <input class="form-control productTableSearch" style="width:300px;border:none;" type="text" name="searchString" placeholder="Search a product by it's Name" />
+                            <button class="btn btn-primary" type="submit">
+                                <i class="zmdi zmdi-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6 offset-md-9 addproduct ">
+                    <a class="btn btn-primary" href="@Url.Action("Create", "Product")">
+                        <i class="fas fa-plus"></i>
+                        <span>
+                            Add Product
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+
+
+
+            <table class="table table-bordered table-striped table-responsive" style="width:98%;background-color:white;height:600px;overflow:scroll;">
+
+                <tr>
+
+                    <th> ID  </th>
+                    <th> Edit Photo</th>
+                    <th> Name </th>
+                    <th> Status </th>
+                    <th> Strength </th>
+
+                    <th> Component </th>
+                    <th>Price</th>
+
+                    <th> Category</th>
+
+
+                    <th> Details  </th>
+                    <th> Delete</th>
+                    <th> Edit</th>
+
+
+                </tr>
+
+                @for (int i = 0; i < Model.Rows.Count; i++)
+                {
+
+                    <tr>
+                        <td>@Model.Rows[i][0]</td>
+                        <td style="width:400px;">
+                            <img src="@Model.Rows[i][7]" id="productImage" style="max-height:100px;" />
+                            <a href="@Url.Action("EditPropic","Product",new {@id=Model.Rows[i][0] })">View/Edit</a>
+                        </td>
+                        <td>@Model.Rows[i][1]</td>
+                        <td>@Model.Rows[i][2]</td>
+                        <td>@Model.Rows[i][3]mg</td>
+
+                        <td>@Model.Rows[i][4]</td>
+
+                        <td>BDT @Model.Rows[i][6]</td>
+                        <td>@Model.Rows[i][10]</td>
+
+
+                        <td><a href="@Url.Action("Details","Product",new {@id=Model.Rows[i][0] })">Details </a></td>
+                        <td><a href="@Url.Action("Delete","Product",new {@id=Model.Rows[i][0] })">Delete </a></td>
+                        <td><a href="@Url.Action("Edit","Product",new {@id=Model.Rows[i][0] })">Edit</a></td>
+
+
+
+
+
+
+
+                    </tr>
+                }
+
+
+
+
+
+            </table>
+
+
+        </div>
+
+
+    </body>
+    </html>

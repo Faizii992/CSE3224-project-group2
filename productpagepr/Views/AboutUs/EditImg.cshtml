@@ -1,0 +1,47 @@
+﻿@model productpagepr.Models.AboutUsModel
+
+@{
+    ViewBag.Title = "EditImg";
+    Layout = "~/Views/Shared/AdminDashboardLayout.cshtml";
+}
+
+<h2>Edit Image</h2>
+<div class="col-md-9" style="margin:10%;">
+    <center>
+        <img width="460" src="@ViewData["img"]" />
+
+        @using (Html.BeginForm("EditImg", "AboutUs", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>AboutUsModel</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Id)
+
+
+                <div class="form-group">
+                    <div>
+                        @Html.LabelFor(model => model.imgid, "", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input type="file" name="file" id="filename" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <div class="button">
+                        <input type="submit" value="Upload" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>
+
+        }
+
+        <div>
+            @Html.ActionLink("Back to List", "AboutInfoTable")
+        </div>
+    </center>
+
+ </div>

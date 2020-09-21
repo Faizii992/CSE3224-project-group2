@@ -1,0 +1,84 @@
+﻿@model productpagepr.Models.cartModel
+@{
+    Layout = null;
+    ViewBag.Title = "Edit";
+
+}
+
+
+
+@using (Html.BeginForm("Edit", "Cart", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+   
+     
+        <div class="form-horizontal">
+            <center class="headline">Change Quantity</center>
+            
+            <hr />
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.name,"Product Name: ", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control label1", disabled = "disabled" } })
+                    @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.quantity,"Quantity: ", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.quantity, new { htmlAttributes = new { @class = "form-control label1", max="10" , min="1", required="required" } })
+                    @Html.ValidationMessageFor(model => model.quantity, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <hr />
+
+
+            <div class="block">
+                <div class="form-group save-btn">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save Changes" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+}
+
+<style>
+    .block{
+        margin-right:20px;
+    }
+
+    .save-btn{
+        float:right;
+       
+    }
+    
+    .headline {
+        font-family: Apple Chancery, cursive;
+        font-size: 35px;
+        color: #0A836C;
+        font-weight:bolder;
+    }
+
+    .col-md-2 {
+        width: 200px;
+        font-size: 20px;
+        color: #8D1D15;
+    }
+
+
+    .label1{
+        width:200px;
+        margin-left:200px;
+        margin-top:-30px;
+        font-size:18px;
+        font-weight:bold;
+        
+    }
+</style>

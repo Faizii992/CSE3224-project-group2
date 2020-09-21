@@ -1,0 +1,27 @@
+﻿
+.panel {
+    height: 50px;
+    border-width: thin;
+    border-color: #009999;
+    background-color: white;
+    margin-top: 50px;
+    opacity: 0.6;
+    width: 100%;
+}
+
+.heading {
+    font-weight: 200;
+    color: forestgreen;
+    margin-top: 5px;
+}
+
+
+.background {
+    opacity: 0.8;
+    width: 100%;
+    
+}
+
+.control-label {
+    color: darkblue;
+}

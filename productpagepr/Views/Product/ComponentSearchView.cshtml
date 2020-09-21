@@ -1,0 +1,61 @@
+﻿@model System.Data.DataTable
+
+@{
+    ViewBag.Title = "Index";
+}
+<link href="~/style/ProductPage.css" rel="stylesheet" />
+<link href="~/style/commonElements.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" type="text/css" />
+
+
+<style>
+    body{
+        /*background-color:#f4f4f4 !important;*/
+    }
+</style>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+
+<center>
+
+
+    <div style="color:green;margin-top:2%;">
+        <h5>
+            Couldn't Find what you were looking for?
+        </h5>
+        <h4> Contact us if you need any kind of help </h4>
+        <p>  OR</p>
+        <h4>
+            You can consider searching using the Medicine's component.
+        </h4>
+
+
+    </div>
+
+    <div>
+        @using (Html.BeginForm("SearchByComponent", "Product", FormMethod.Get))
+        {
+        <div class="form-group" style="display:flex;justify-content:center;">
+            <input class="form-control form-inline" type="text"  name="searchString" placeholder="Search Medicine By it's component" />
+
+            <button type="submit" class="btn btn-primary" style="border:none;">
+                <img style="width:16px;" src="https://www.flaticon.com/svg/static/icons/svg/93/93642.svg" />
+            </button>
+        </div>
+        }
+
+    </div>
+
+
+</center>
+
+
+
+
+<hr style="width:80%;">
+
+

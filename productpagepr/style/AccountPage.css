@@ -1,0 +1,204 @@
+﻿.panel {
+    height: 50px;
+    border-width: thin;
+    border-color: #009999;
+    background-color: #00CC99;
+    margin-top: 50px;
+    opacity:0.6;
+    width: 90%;
+    margin-bottom: 0 !important;
+}
+
+.heading{
+    font-weight:200;
+    color:white;
+    margin-top:5px;
+
+}
+
+.background {
+    opacity: 0.5;
+    width: 100%;
+    margin-top: -20px;
+    
+}
+
+.background-img {
+    background: url('/accountimage/account_background.jpg') no-repeat center center / cover;
+    height: 100%;
+    opacity: 0.8;
+}
+
+.user-info-box {
+    opacity: 0.9;
+    background-color: #EBF5FB;
+    padding:25px;
+    margin-top: 20px;
+    border-radius: 20px;
+    margin-bottom:50px;
+}
+
+.transparent-box {
+    width: 350px;
+    height: 650px;
+    background-color: #EBF5FB;
+    border-radius: 10%;
+    margin-left: 50px;
+    border-color: black;
+    border-width: thick;
+    opacity: 0.9;
+}
+
+.profile-pic {
+    background: lightblue;
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    border-width:thick;
+    border-color:black;
+    margin-top:50px;
+    margin-left:10px;
+ 
+    
+}
+
+.profile-pic-real {
+    width: 300px;
+    height: 300px;
+    border-width:thick;
+    border-color: black;
+    border-radius: 50%;
+    margin-top: -320px;
+    margin-left: 10px;
+}
+
+.null{
+    background-color:aquamarine;
+    margin-top:-400px;
+}
+
+.name-tag {
+    font-family: 'Segoe UI';
+    font-weight: bolder;
+    font-size: 30px;
+    margin-top:30px;
+    color: #006666;
+}
+
+.view-button {
+    border-radius: 8px;
+    background-color: #51D9B6;
+    height: 40px;
+    width: 100px;
+    font-weight: bolder;
+    font-size: 15px;
+    color:white;
+}
+
+.transparent-box2 {
+    height: 250px;
+    width:550px;
+    background-color: #EBF5FB;
+    border-radius: 10%;
+    margin-left: 500px;
+    margin-top: -1050px;
+    border-color: black;
+    border-width: thick;
+    opacity:0.9;
+}
+
+.heading2 {
+    color: #990000;
+    font-size: 30px;
+    font-weight: bolder;
+   
+}
+
+.edit-link {
+    font-size: 15px;
+   float: right;
+
+}
+
+.card1{
+    height:200px;
+    margin-top: 20px;
+}
+
+.heading3{
+    color:darkblue;
+    font-weight:bold;
+    font-size:20px;
+    margin-right:50px;
+}
+.content{
+    font-size:20px;
+    font-weight:bold;
+
+}
+
+.heading4 {
+    color: darkblue;
+    font-weight: bold;
+    font-size: 20px;
+    margin-right: 25px;
+}
+
+.card2 {
+    height: 250px;
+    width: 550px;
+    background-color: #EBF5FB;
+    border-radius: 10%;
+    margin-right:-20px;
+    margin-top:-20px;
+   
+}
+
+
+.transparent-box3 {
+    height: 250px;
+    width: 550px;
+    background-color: #EBF5FB;
+    border-radius: 10%;
+    margin-left: 500px;
+    margin-top: -750px;
+    border-color: black;
+    border-width: thick;
+    opacity: 0.9;
+}
+
+.heading5 {
+    color: darkblue;
+    font-weight: bold;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.heading6 {
+    color: darkblue;
+    font-weight: bold;
+    font-size: 20px;
+    margin-right: 35px;
+}
+
+.transparent-box4 {
+    height: 200px;
+    width: 550px;
+    background-color: #EBF5FB;
+    border-radius: 10%;
+    margin-left: 500px;
+    margin-top: -450px;
+    border-color: black;
+    border-width: thick;
+    opacity: 0.9;
+}
+
+.pic-link {
+    font-size: 15px;
+    display: block;
+}
+
+.camera-icon{
+    height:50px;
+    width:50px;
+}

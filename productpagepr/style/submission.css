@@ -1,0 +1,69 @@
+﻿
+.con {
+    color: #088608;
+    font-family: Brush Script MT, Brush Script Std, cursive;
+    position: center;
+    
+    font-weight:bolder;
+    font-size:65px;
+}
+
+
+
+.place {
+    position: center;
+
+    font-family: Apple Chancery, cursive;
+    font-weight: bold;
+    font-size: 35px;
+    color: #051468;
+
+}
+.detail {
+    position: center;
+    font-size:30px;
+    font-family: New Century Schoolbook, TeX Gyre Schola, serif;
+    font-size: 25px;
+    color: black;
+    font-weight:bold;
+}
+
+
+
+.shop {
+    position: center;
+    font-size: 30px;
+    font-family: New Century Schoolbook, TeX Gyre Schola, serif;
+    font-size: 20px;
+    color:lightseagreen;
+    font-weight: bold;
+}
+.shop:hover{
+    color:darkgreen;
+}
+
+.modal {
+    position: fixed;
+    
+}
+
+#scrollbox {
+    border: 2px solid #0B5345;
+    overflow-y: auto;
+    height: 300px;
+}
+
+tr:nth-child(even) {
+    background-color: #EBEDEF;
+}
+
+.heading {
+    background-color: #48C9B0;
+   
+}
+
+thead tr:first-child th {
+    position: sticky;
+    top: 0;
+    background-color: #48C9B0;
+}

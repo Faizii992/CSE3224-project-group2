@@ -1,0 +1,34 @@
+﻿@model System.Data.DataTable
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CategoryList</title>
+</head>
+<body>
+    <div>
+
+        @for (int i = 0; i < Model.Rows.Count; i++)
+        {
+            <div class="heading"><p>@Model.Rows[i][0]</p></div>
+
+
+        }
+    </div>
+</body>
+</html>
+
+<style>
+    .heading {
+        font-weight: bolder;
+        font-family: Apple Chancery, cursive;
+        color: #10278C;
+        font-size: 40px;
+        opacity: 0.8;
+    }
+</style>

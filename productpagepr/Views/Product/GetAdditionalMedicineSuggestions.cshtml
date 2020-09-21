@@ -1,0 +1,175 @@
+﻿@model System.Data.DataTable
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetAdditionalMedicineSuggestions</title>
+</head>
+<body>
+    <div class="container col-md-9 col-sm-6" style="line-height:16px;">
+        <div class="row">
+
+            @for (int i = 0; i < Model.Rows.Count; i++)
+            {
+
+
+                <div class="col-md-4" style="margin-bottom:5%">
+                    <div class="card" style="text-align:center;">
+                        <img class="card-img-top" src="@Model.Rows[i][4]" alt="Card image cap" style="min-height:280px;">
+
+                        <div class="card-body">
+
+
+
+                            <p>
+                                <b>
+                                    @Model.Rows[i][0]
+                                </b>
+                            </p>
+
+                            <p style="color:forestgreen;">
+                                <b> BDT </b>  @Model.Rows[i][1]
+                            </p>
+
+                            <p>
+                                @Model.Rows[i][2]; mg
+
+                            </p>
+
+                            <p>
+                                @Model.Rows[i][3]
+                            </p>
+
+                            <p>
+                                @Model.Rows[i][4]    @Model.Rows[i][5] @Model.Rows[i][6] @Model.Rows[i][7] 
+                            </p>
+
+                            <div class="Product_btns" style="margin:2%;">
+
+                                @using (Html.BeginForm("Cart", "Cart", new
+                                {
+                                    id = "cartform",
+                                    name = @Model.Rows[i][4],
+                                    price = @Model.Rows[i][4],
+                                    category = Model.Rows[i][7]
+                                }))
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    <center>
+                                        <input type="number" id="quantity" onkeyup="manage(this)" name="quantity" min="1" max="20" required placeholder="place quantity here"
+                                               class="form-control" style="width:200px;" />
+                                    </center>
+                                    <a class="btn btn-success" href="@Url.Action("Details", "Product", new { @id = @Model.Rows[i][5]})">View Details </a>
+
+                                    if (@Model.Rows[i][9].ToString() == "Available")
+                                    {
+
+                                        <button name="quantity" class="btn btn-success" style="padding:2%;">ADD TO CART</button>
+                                    }
+                                    else
+                                    { <button name="quantity" class="btn btn-danger" disabled style="padding:2%;">ADD TO CART</button>
+                                    }
+
+                                }
+
+
+
+
+
+                                <a href="#AlternativeMed" data-component="@Model.Rows[i][3]" data-id="@Model.Rows[i][5]" data-sideeffect="@Model.Rows[i][6]" data-sideeffectpercentage="@Model.Rows[i][7]" data-toggle="modal" name="quantity" class="btn btn-success my-3 btn-block openmodal" style="padding:2%;margin-top:2%">VIEW ALTERNATIVES</a>
+                                <script>
+                                    $(document).on('click', '.openmodal', function () {
+
+                                        var MainMedicineId = $(this).data('id');
+                                        var MainMedicineComponent = $(this).data('component');
+
+                                        $(".sideEffect").html($(this).data('sideeffect'));
+                                        $(".MainMedicineID").val(MainMedicineId);
+                                        $(".MainMedicineComponent").val(MainMedicineComponent);
+                                        $("#MainMedicineNAME").val(MainMedicineName);
+                                        $("#MainMedicinePRICE").val(MainMedicinePrice);
+
+
+
+
+                                    });
+
+
+                                </script>
+
+
+
+
+                            </div>
+
+                            <div class="modal" id="AlternativeMed" style="margin-top:3%;">
+                                <div class="modal-dialog" style="width:48%;">
+                                    <div class="modal-content">
+                                        <div class="modal-header" style="background-color: #74a994;color:white;text-transform:uppercase">
+
+                                            <div class="modal-title">
+                                                Alternative Medicine
+                                            </div>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="alert alert-success">
+
+                                                <h4>You can consider some alternatives for this medicine we picked out for you.</h4>
+                                                <h5>Because the product you chose has the following side effects: </h5>
+                                            </div>
+                                            <div>
+                                                <p class="sideEffect" style="margin-top:2%;">
+
+                                                </p>
+
+                                            </div>
+
+                                            <div class="container">
+                                                <div class="flex-cont" style="display:flex;justify-content:center;transform:translateX(-26%)">
+
+                                                    @using (Html.BeginForm("BetterMedicineSuggestion", "Product", FormMethod.Get))
+                                                    {<input type="hidden" name="MainMedicineComponent" class="MainMedicineComponent" />
+                                                        <input type="hidden" name="MainMedicineID" class="MainMedicineID" />
+                                                        <button style="margin-top:2%;margin-right:2%" type="submit" class="btn btn-primary  my-4">SEE ALTERNATIVE SOLUTIONS.</button>
+
+                                                    }
+
+                                                    @using (Html.BeginForm("CheaperMedicineSuggestion", "Product", FormMethod.Get))
+                                                    {<input type="hidden" name="MainMedicineComponent" class="MainMedicineComponent" />
+                                                        <input type="hidden" name="MainMedicineID" class="MainMedicineID" />
+                                                        <button style="margin-top:2%;margin-left:5%" type="submit" class="btn btn-info mx-2  my-4">SEE cHEAPER SOLUTIONS.</button>
+
+                                                    }
+
+                                                </div>
+
+
+
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+
+        </div>
+
+
+
+    </div>
+</body>
+</html>

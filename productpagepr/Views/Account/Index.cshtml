@@ -1,0 +1,108 @@
+﻿@model productpagepr.Models.User
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/style/modal.css" rel="stylesheet" />
+<link href="~/style/AccountPage.css" rel="stylesheet" />
+<link href="~/style/commonElements.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+<!-- jQuery Modal -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+
+
+
+<div class="container panel">
+    <h1 class="heading text-center"><b> MY PROFILE </b></h1>
+</div>
+
+<div class="container ">
+    <div class="col-md-12 background-img">
+
+       
+        <div class="col-md-5">
+
+            <div class="user-info-box text-center">
+                <img src="~/accountimage/profile_icon.png" class="profile-pic" />
+                <div>
+
+
+
+                    <img src="@Session["imageAdd"].ToString()" alt="profile" id="profileImage" class="profile-pic-real" />
+                    <a href="@Url.Action("Edit1", "Account", new { @userID= Session["userId"].ToString() })" rel="modal:open" class="pic-link">
+                        <img src="~/accountimage/camera-icon.png " class="camera-icon" />
+                    </a>
+
+
+                    <p class="name-tag">Hello, @Session["firstName"].ToString() !!!! </p>
+
+
+                    <button class="view-button">@Html.ActionLink("LOGOUT", "Logout", "Account")</button>
+
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+        <div class="col-md-7">
+            <div class="user-info-box">
+                <p class="heading2">PERSONAL DETAIL <a href="@Url.Action("Edit2", "Account", new {@userID= Session["userId"].ToString()})" rel="modal:open" class="edit-link">Edit</a></p>
+
+
+                <div class="card card1">
+
+                    <p class="content"><b class="heading3">Name: </b> @Session["firstName"].ToString() @Session["lastName"].ToString() </p>
+                    <p class="content"><b class="heading4">Address: </b> @Session["address"].ToString() </p>
+
+
+                </div>
+
+
+            </div>
+            <div class="user-info-box">
+                <p class="heading2">ACCOUNT SETTINGS <a href="@Url.Action("Edit3", "Account", new { @userID= Session["userId"].ToString()})" rel="modal:open" class="edit-link">Edit</a></p>
+
+
+                <div class="card card1">
+
+
+                    <p class="content"><b class="heading5">Email Address:</b> @Session["emailId"].ToString() </p>
+                    <p class="content"><b class="heading6">Contact No.: </b> @Session["phoneNo"].ToString() </p>
+
+
+                </div>
+            </div>
+            <div class="user-info-box">
+
+                <p class="heading2">SECURITY <a href="@Url.Action("Edit4", "Account", new { @userID= Session["userId"].ToString() })" rel="modal:open" class="edit-link">Edit</a></p>
+
+
+                <div class="card card1">
+
+
+                    <p class="content"><b class="heading5">Password:</b><input type="password" style="border:none;" value="@Session["password"].ToString()" disabled /></p>
+
+
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+</div>
+<br />
+<br />
+
+

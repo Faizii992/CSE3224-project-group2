@@ -1,0 +1,122 @@
+﻿
+
+
+    @media only screen and (min-width:993px) {
+        .box {
+            width: 800px;
+        }
+    }
+
+@media only screen  and (min-width:993px) {
+    table {
+        margin-top: 50px;
+        align-content: center;
+    }
+}
+
+    @media only screen and (max-width:992px) and (min-width:769px) {
+        .box {
+            width: 600px;
+        }
+    }
+
+@media only screen and (max-width:992px) and (min-width:769px) {
+    table {
+        margin-top: 50px;
+        width: 100%;
+        align-content: center;
+    }
+}
+
+    @media only screen and (max-width:991px) and (min-width:500px) {
+        .box {
+            width: 400px;
+        }
+    }
+
+@media only screen and (max-width:991px) and (min-width:500px) {
+    table {
+        margin-top: 50px;
+        width: 100%;
+        align-content: center;
+        margin-left: -50px;
+    }
+}
+
+    @media only screen and (max-width:459px) and (min-width:100px) {
+        .box {
+            width: 200px;
+        }
+    }
+
+@media only screen and (max-width:459px) and (min-width:100px) {
+    table {
+        margin-top: 50px;
+        width: 200px;
+        align-content: center;
+        margin-left: -120px;
+    }
+}
+
+    
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .heading {
+        background-color: #33CAFF;
+    }
+
+    a {
+        color: #FFFFFF;
+        font-weight: bold;
+    }
+
+        a:hover {
+            color: #FFFFFF;
+            font-weight: bold;
+        }
+
+
+
+    .btn-dark {
+        background-color: #50575A;
+    }
+
+    .Remove {
+        color: red;
+        font-weight: normal;
+    }
+
+        .Remove:hover {
+            color: red;
+        }
+
+
+    .Change {
+        color: blue;
+        font-weight: normal;
+    }
+
+        .Change:hover {
+            color: blue;
+        }
+
+    .modal {
+        position: relative;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1050;
+        display: none;
+        /*overflow: hidden;*/
+        outline: 0;
+    }
+
+    .modal-open .modal {
+        /*overflow-x: hidden;
+  overflow-y: auto;
+  */
+    }

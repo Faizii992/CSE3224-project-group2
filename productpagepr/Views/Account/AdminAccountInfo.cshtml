@@ -1,0 +1,102 @@
+﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "AdminAccountInfo";
+    Layout = "~/Views/Shared/AdminDashboardLayout.cshtml";
+}
+
+
+
+<div style="margin-top:10%; margin-left:2%;">
+    <center>  <h2>User Accounts</h2> </center>
+    <hr />
+    <br />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" type="text/css" />
+
+    <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+
+    @using (Html.BeginForm("AdminAccountInfo", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+
+        @Html.AntiForgeryToken()
+
+
+       
+
+        <div class="table-responsive ">
+            <table class=" table table-hover table-fixed table-striped border-dark ">
+                <thead class="thead-dark">
+                    <tr>
+
+                        <th> ID </th>
+                        <th> Name </th>
+                        <th> Address  </th>
+                        <th> Email Address  </th>
+                        <th> Phone  </th>
+                        <th> Password  </th>
+                        <th> Image </th>
+                       
+                        <th> Delete  </th>
+
+
+
+
+
+                    </tr>
+                </thead>
+
+                @for (int i = 0; i < Model.Rows.Count; i++)
+                {
+                    <tbody>
+                        <tr>
+
+                            <td>@Model.Rows[i][7]</td>
+                            <td>@Model.Rows[i][0]</td>
+                            <td>@Model.Rows[i][1]</td>
+                            <td>@Model.Rows[i][2]</td>
+
+                            <td>@Model.Rows[i][3]</td>
+                            <td>@Model.Rows[i][4]</td>
+                            <td><img src="@Model.Rows[i][5]" height="100" width="100" id="doctorImage" /> </td>
+                            
+                            <td><a href="@Url.Action("Delete","Account",new {@id=Model.Rows[i][6] })">Delete</a></td>
+
+
+
+
+
+
+                        </tr>
+                    </tbody>
+                }
+
+
+
+            </table>
+        </div>
+
+        <script src="~/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+
+
+    }
+
+</div>
+
+
+<style>
+
+    .table-responsive {
+        width: 1030px;
+        height: 550px;
+        font-size: 12px;
+    }
+
+    thead tr:first-child th {
+        position: sticky;
+        top: 0;
+    }
+</style>

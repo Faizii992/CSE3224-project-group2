@@ -1,0 +1,49 @@
+﻿@model productpagepr.Models.doctorModel
+
+@{
+    ViewBag.Title = "EditImg";
+    Layout = "~/Views/Shared/AdminDashboardLayout.cshtml";
+   
+}
+
+
+    <center>
+        <br />
+        <h2>Change Doctor's Image</h2>
+        <br />
+        <img width="500" src="@ViewData["img"]" style="  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" />
+        <hr />
+
+        @using (Html.BeginForm("EditImg", "Doctor", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.id)
+
+
+                <div class="form-group">
+                    <div>
+                        @Html.LabelFor(model => model.imgpath, "", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input type="file" name="file" id="filename" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <div class="button">
+                        <input type="submit" value="Upload" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>
+
+        }
+
+        <div>
+            @Html.ActionLink("Back to List", "AdminDoctorInfo")
+        </div>
+    </center>

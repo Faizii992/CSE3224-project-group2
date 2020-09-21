@@ -1,0 +1,261 @@
+﻿@model productpagepr.Models.User
+@{
+    ViewBag.Title = "Edit4";
+    Layout = null;
+}
+
+<link href="~/style/AccountEditPage.css" rel="stylesheet" />
+<link href="~/style/commonElements.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+<script>
+    function check_new() {
+
+
+        if (document.getElementById('new_password').value !=
+            document.getElementById('confirm_password').value) {
+            document.getElementById('message').style.color = 'red';
+            document.getElementById('message').innerHTML = '<strong>Not Matched</strong>';
+            return false;
+
+        } else{
+            document.getElementById('message').style.color = 'green';
+            document.getElementById('message').innerHTML = '<strong>Matched</strong>';
+            return true;
+        }
+
+
+
+    }
+
+    function check_old() {
+        var password = '@Html.Raw(Model.Password)';
+        if (document.getElementById('old_password').value != password) {
+            document.getElementById('message1').style.color = 'red';
+            document.getElementById('message1').innerHTML = '<strong>Wrong Password</strong>';
+            return false;
+        }
+        else {
+            document.getElementById('message1').style.color = 'green';
+            document.getElementById('message1').innerHTML = '<strong>Correct</strong>';
+            return true;
+        }
+
+    }
+
+    function check() {
+
+
+        var old = check_old(),
+            current = check_new();
+
+        return old && current ;
+
+    }
+
+
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#confirm_password');
+    const togglePassword_ = document.querySelector('#togglePassword_');
+    const opassword = document.querySelector('#old_password');
+
+    togglePassword.addEventListener('click', function (e) {
+        // toggle the type attribute
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        // toggle the eye slash icon
+        this.classList.toggle('fa-eye-slash');
+
+    });
+
+    togglePassword_.addEventListener('click', function (e) {
+        // toggle the type attribute
+        const type = opassword.getAttribute('type') === 'password' ? 'text' : 'password';
+        opassword.setAttribute('type', type);
+        // toggle the eye slash icon
+        this.classList.toggle('fa-eye-slash');
+
+    });
+
+    function showPassword() {
+        var x = document.getElementById("new_password");
+        if (x.type === "text") {
+            x.type = "password";
+        } else {
+            x.type = "text";
+        }
+    }
+</script>
+
+@using (Html.BeginForm("Edit4", "Account", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return check();" }))
+{
+
+    @Html.AntiForgeryToken()
+
+
+
+
+
+    <div class="container">
+        <div class="panelhead"></div>
+
+        <img src="~/accountimage/editpicture2.png" style="width:500px; height:600px; margin-left:-45px;" />
+
+
+        <div class="form-horizontal">
+            <p class="headings"><u>CHANGE YOUR PASSWORD</u></p>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.UserID)
+
+
+            <div class="form-group">
+                <label for="password" class="control-label col-md-2 edit-box">Current Password: </label>
+                <div class="col-md-10">
+                    <input type="password" class="label2" id="old_password" required onkeyup="check_old();">
+                    <i class="far fa-eye" id="togglePassword_"></i>
+                    <div class="span">
+                        <span id='message1'></span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password, "New Password:", htmlAttributes: new { @class = "control-label col-md-2 " })
+                <div class="col-md-10">
+
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control label2", @Value = "", @id = "new_password", @required = "required", @type = "password" } })
+                    <input type="checkbox" onclick="showPassword()">Show Password
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="control-label col-md-2 edit-box">Confirm Password: </label>
+                <div class="col-md-10">
+                    <input type="password" class="label2" id="confirm_password" required onkeyup="check_new();">
+                    <i class="far fa-eye" id="togglePassword"></i>
+                </div>
+                <div class="span">
+                    <span id='message'></span>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <p class="link-save">@Html.ActionLink("Already Done?", "Index") <input type="submit" value="Save" class="btn btn-success" /></p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+}
+
+
+
+
+
+<style>
+
+</style>
+
+
+
+<style type="text/css" media="screen  and (min-width:993px) ">
+    .panelhead {
+        height: 50px;
+        background-color: #00CC99;
+        opacity: 0.4;
+        margin-left: -45px;
+        margin-top: -15px;
+    }
+
+    .form-horizontal {
+        margin-top: -580px;
+        margin-left: -30px;
+        margin-bottom: 130px;
+    }
+
+    .headings {
+        color: #990000;
+        font-weight: bolder;
+        font-size: 20px;
+        margin-left: 100px;
+    }
+
+
+
+    .col-md-10 i {
+        margin-left: -30px;
+        cursor: pointer;
+    }
+
+    .col-md-2 {
+        color: #330099;
+        margin-top: 30px;
+    }
+
+    .btn {
+        margin-left: 150px;
+    }
+
+    .link-save {
+        margin-top: 50px;
+        font-weight: bold;
+        margin-left: -90px;
+        color: red;
+    }
+</style>
+
+<style type="text/css" media="screen and (max-width:992px) and (min-width:100px) ">
+
+
+    .panelhead {
+        height: 50px;
+        background-color: #00CC99;
+        opacity: 0.4;
+        margin-left: -45px;
+        margin-top: -15px;
+    }
+
+    .headings {
+        color: #990000;
+        font-weight: bolder;
+        font-size: 20px;
+    }
+
+    .form-horizontal {
+        margin-top: -580px;
+        margin-left: 50px;
+        margin-bottom: 130px;
+        height:400px;
+    }
+
+    .col-md-10 i {
+        margin-left: -30px;
+        cursor: pointer;
+    }
+
+    .col-md-2 {
+        color: #330099;
+        margin-top: 5px;
+    }
+
+    .btn {
+        margin-left: 150px;
+    }
+
+    .link-save {
+        margin-top: 50px;
+        font-weight: bold;
+        margin-left: 0px;
+        color: red;
+    }
+</style>
+

@@ -1,0 +1,127 @@
+﻿@model dynamic
+@using productpagepr.Models;
+@{
+    ViewBag.Title = "OrderConfirmation";
+    Layout = "~/Views/Shared/AdminDashboardLayout.cshtml";
+}
+<center><h2>OrderConfirmation</h2></center>
+
+<div class="container" style="margin-top:5%;display:flex;justify-content:center;">
+    <div class="row">
+        <div class="customerOrders mx-3">
+            <div class="alert alert-success" style="width:400px;">
+                <h4 style="text-align:center;"><b>Customer ordered these: </b></h4>
+                <hr />
+                <table class=" table table-hover table-fixed table-striped border-dark" style="width:100%;">
+                    <thead class="thead-dark">
+                        <tr>
+
+                            <th> Medicine</th>
+                            <th> Category</th>
+
+
+
+
+
+
+
+
+                        </tr>
+                    </thead>
+
+                    @foreach (orderModel orderedProducts in Model.OrderedProducts)
+                    {
+                        <tbody>
+                            <tr style="background-color:white;">
+
+                                <td>@orderedProducts.productname</td>
+
+                                <td>@orderedProducts.category</td>
+
+
+
+                            </tr>
+                        </tbody>
+                    }
+
+
+
+                </table>
+
+   <div style="display:flex;justify-content:center;">
+                    @foreach (customerModel cusID in Model.CustomerInfo)
+                    {
+                    <a href="@Url.Action("Accept","Customer",new { id = cusID.id })" class="btn btn-success mx-1"> <i class="fa fa-check" aria-hidden="true"></i>Accept</a>
+                        <a href="@Url.Action("Reject","Customer",new { id = cusID.id })" class="btn btn-danger mx-1"><i class="fa fa-ban" aria-hidden="true"></i>Reject</a>
+
+                    }
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="alert alert-dark">
+
+
+
+
+
+
+
+            @foreach (customerModel prescription in Model.CustomerInfo)
+            {
+                <img src="@prescription.imgpath" style="width:400px;" />
+
+            }
+
+
+        </div>
+    </div>
+    <div>
+
+    </div>
+</div>
+
+
+<h4 style="text-align:center;">Customer Information:</h4>
+<div class="table-responsive " style="display:flex;justify-content:center;">
+    <table class=" table table-hover table-fixed table-striped border-dark" style="width:50%;">
+        <thead class="thead-dark">
+            <tr>
+
+                <th> Time </th>
+                <th> Address</th>
+                <th>Phone  </th>
+                <th> Email </th>
+
+
+
+
+
+
+
+            </tr>
+        </thead>
+
+        @foreach (customerModel customer in Model.CustomerInfo)
+        {
+            <tbody>
+                <tr style="background-color:wheat;">
+
+                    <td>@customer.datetm</td>
+                    <td>@customer.address</td>
+
+                    <td>@customer.phone</td>
+                    <td>@customer.email</td>
+
+                </tr>
+            </tbody>
+        }
+
+
+
+    </table>
+</div>
+</div>

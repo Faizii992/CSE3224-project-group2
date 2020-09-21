@@ -1,0 +1,105 @@
+﻿.background {
+    background-color: #EDF8FF;
+    
+    height:600px;
+}
+
+
+
+.bg-picture{
+    border-width:thick;
+    border-color:black;
+    border-radius:20px;
+}
+
+.note{
+    font-size:50px;
+    font-weight:bolder;
+    margin-top:-400px;
+    margin-left:230px;
+    font-family:Gabriola;
+}
+
+.bored-emoji{
+    height:50px;
+    width:50px;
+    margin-left:500px;
+}
+
+
+
+
+
+.button{
+    margin-left:480px;
+}
+
+.happy-icon{
+    height:80px;
+    width:80px;
+    margin-top:-180px;
+    margin-left:780px;
+}
+
+
+
+.edit-img{
+    width:500px;
+    height:550px;
+    margin-left:-1000px;
+   
+   
+}
+
+.upper-bg{
+    background-color:white;
+    height:500px;
+    width:450px;
+    
+}
+
+
+
+.label2 {
+    color: black;
+    width: 220px;
+    margin-top: 30px;
+    border-width:2px;
+    border-color:black;
+}
+
+.label3 {
+    color: black;
+    width: 220px;
+    margin-top: 30px;
+    height: 100px;
+    border-width: 2px;
+    border-color: black;
+}
+
+    
+
+    .panel1 {
+        border-color: black;
+        border-width: 2px;
+        height: 50px;
+        width: 500px;
+        background-color: #00CC99;
+        opacity: 0.4;
+        margin-top: 145px;
+    }
+
+
+
+    .panel3 {
+        border-color: black;
+        border-width: 2px;
+        height: 50px;
+        width: 500px;
+        background-color: #00CC99;
+        opacity: 0.4;
+        margin-top: 224px;
+    }
+
+
+

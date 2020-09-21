@@ -1,0 +1,107 @@
+﻿@using productpagepr.Models;
+
+@model dynamic
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+
+}
+
+
+<link href="~/style/commonElements.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+<!-- jQuery Modal -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+
+
+
+@*@using (Html.BeginForm("Reply", "UserNotification", FormMethod.Get))
+    {*@
+
+<center>
+
+    <div class="message-box" style="background-color:#fbeded">
+        <div class="headline1">
+
+        </div>
+        <div class="headline">
+
+            <center>
+                <br/>
+                <h2 style="font-size:35px; font-weight:bolder;font-family:Apple Chancery, cursive;">Reply Of Your Message</h2>
+            
+ <br/>           </center>
+            <div class="box-main" style="background-image: radial-gradient( circle 993px at 0.5% 50.5%,  rgba(137,171,245,0.37) 0%, rgba(245,247,252,1) 100.2% );width:60%">
+                @foreach (HelplineModel msg in Model.msg)
+                {
+                    if (String.Equals(Session["userId"], msg.UserId))
+                    {
+
+
+                   
+                        <h3 style="font-size:28px; font-weight:bolder;font-family:Bookman Old Style; color:#002347; margin-left:20px;"> Subject:</h3>
+                    
+                        <p style="border:1px solid #9affc8;color:#48bbc7; font-size:24px; font-weight:bold;font-family:Palatino Linotype; color:black; margin-left:20px;">
+                        @msg.Subject
+                    </p>
+                   
+                    <h3 style="font-size: 24px;font-weight: bolder;font-family: Bookman Old Style;color: #002347; margin-left: 20px">Message:</h3>
+                    
+                    <p style="border:1px solid #4c0611 ;color:#48bbc7;font-size:22px; font-weight:bold;font-family:Palatino Linotype; color:black; margin-left:20px;">
+                        @msg.Message
+                    </p>
+
+                    <h3 style=" font-size: 24px;font-weight: bolder;font-family: Bookman Old Style; color: #002347;margin-left: 20px">Prescription:</h3>
+
+                        if (msg.Prescription.ToString() != "No Prescription")
+                        {
+                        <img src=" @msg.imgid" style="max-height :500px;max-width :500px;border:1px solid #ffca05" />
+
+                        }
+                        else
+                        {
+                      
+                            <p style="border:1px solid #e30048 ;color:#48bbc7;font-size:22px; font-weight:bold;font-family:Palatino Linotype; color:black; margin-left:20px;">@msg.Prescription</p>
+
+                        }
+                    }
+
+                }
+
+                @foreach (ReplyModel rpl in Model.Reply)
+                {
+                    if (String.Equals(Session["userId"], rpl.UserId))
+                    {
+
+
+                    <h3 style=" font-size: 24px;font-weight: bolder; font-family: Bookman Old Style; color: #002347; margin-left: 20px;">Reply:</h3>
+                   
+                    <p style="border:1px solid #d35400;color:#48bbc7;font-size:22px; font-weight:bold;font-family:Palatino Linotype; color:black; margin-left:20px;">
+                        @rpl.Reply
+                    </p>
+
+                    <hr />
+                    }
+                }
+                @* @using (Html.BeginForm("", "", FormMethod.Get))*@
+                
+                @Html.AntiForgeryToken()
+                <p>
+                    @*      input type="hidden" name="Id" value="@rpl.Id" />*@
+
+                    <a style="border:1.5px solid #87d37c ;color: black;margin-left: 20%;margin-bottom: 10%;font-size: 24px; font-weight:bold; font-family: Bookman Old Style;" href="@Url.Action("index", "Helpline")" class="btn btn-default">Send a new Message</a>
+
+                    <a style="border :1.5px solid  darkgreen;  color: black; font-size: 24px;font-weight:bold; font-family: Bookman Old Style; margin-right:20%;margin-bottom: 10%" href="@Url.Action("Index", "Home")" class="btn btn-default">Close</a>
+
+                </p>
+
+            </div>
+
+        </div>
+
+</center>

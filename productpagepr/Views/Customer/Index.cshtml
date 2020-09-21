@@ -1,0 +1,116 @@
+﻿
+@model System.Data.DataTable
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+
+}
+
+
+<link href="~/style/submission.css" rel="stylesheet" />
+<link href="~/style/commonElements.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<div class=" col-md-12 ">
+    <div class="col-md-12">
+
+        <center><h1 class="con">Congratulations!!!</h1></center>
+        <hr />
+        <center>
+            <h3 class="place">
+                Your order has been placed.
+            </h3>
+        </center>
+        <center>
+            <h5 class="detail">
+                <a href="#exampleModalScrollable" data-toggle="modal" data-target="#exampleModalScrollable" style="color: #C00006;
+        font-weight: 800; text-decoration:none;">Click Here </a> for more detail.
+            </h5>
+        </center>
+        <hr />
+        <center><a href="@Url.Action("Index", "Product")" class="shop">Shop More</a></center>
+        <br />
+        <br />
+    </div>
+</div>
+
+
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <!-- Modal -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <center><h2 style="color: #922B21;font-weight: bolder; font-family:Apple Chancery, cursive;">My Order List</h2></center>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top:-40px;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div id="scrollbox">
+                    <div class="tableFixedHead">
+                        <table id="table" class="table table-bordered">
+                            <thead class="heading">
+
+                                <tr>
+                                    <th scope="col">Order Id</th>
+                                    <th scope="col">Date &amp; Time</th>
+                                    <th scope="col">Day</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int i = 0; i < Model.Rows.Count; i++)
+                                {
+                                    if (String.Equals(Session["userId"], Model.Rows[i][0]))
+                                    {
+
+
+                                        <tr>
+
+
+                                            <td>@Model.Rows[i][1]</td>
+
+
+                                            <td>@Model.Rows[i][9]</td>
+                                            <td>@Model.Rows[i][10]</td>
+
+
+                                        </tr>
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<style>
+    a {
+        color: #FFF;
+        font-weight: bold;
+    }
+
+
+        a:hover {
+            color: #ffffff;
+            font-weight: bold;
+            text-decoration: none;
+        }
+</style>

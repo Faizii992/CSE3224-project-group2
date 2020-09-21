@@ -1,0 +1,109 @@
+﻿
+
+@using productpagepr.Models
+@model  ReplyModel
+
+
+@{
+    ViewBag.Title = "ReplyMsg";
+    Layout = "~/Views/Shared/AdminDashboardLayout.cshtml";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+<style>
+    .body {
+        width: 100%;
+    }
+
+    .text {
+        font-size: 20px;
+    }
+
+    .box2 {
+        text-align: center;
+        width: 800px;
+        background-color: #EBF4FA;
+        border-color: black;
+        border: thick;
+        border-width: 10px;
+      margin:auto;
+      display:block;
+        margin-bottom: 20%;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
+    }
+</style>
+<body>
+
+    <br />
+    <h2 class="text-center" style="color:#065F41; font-weight:bolder">Reply Message</h2>
+    <br />
+    <br />
+
+
+    @using (Html.BeginForm("ReplyMsg", "Admin", FormMethod.Post, new { @id = "Form1", enctype = "multipart/form-data" }))
+    { 
+<div class="col-md-9 box2">
+
+
+
+    @foreach (HelplineModel msg in Model.mesag)
+    {
+
+
+
+
+        <h2 style="color:#006633"><b><u>Email</u></b></h2>
+        <br />
+        <p class="text" style="">  @msg.Email</p>
+        <br />
+
+        <h2 style="color:#006633"><b><u>Subject</u></b></h2>
+        <br />
+        <p class="text">  @msg.Subject </p>
+        <br />
+        <h2 style="color:#006633"><b><u>Message</u></b></h2> <br />
+        <p class="text">  @msg.Message </p> <br />
+
+
+        <h2 style="color:#006633"><b><u>Prescription</u></b></h2> <br />
+        if (@msg.Prescription.ToString() != "No Prescription")
+        {
+            <img src="  @msg.imgid" style="max-height :500px;max-width :500px" />
+        }
+        else
+        {
+            <p class="text">  @msg.Prescription </p> <br />
+
+        }
+
+    }
+
+    @Html.AntiForgeryToken()
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+    <div class="form-group">
+
+        <h2 style="color:#006633"><b><u>Reply</u></b></h2>
+        <div class="col-md-9">
+            @Html.TextAreaFor(model => model.Reply, new { rows = 10, cols = 100, @class = "form-control", style = "font-size:20px;", placeholder = "ex : I can't understand what is written in the prescription", pattern = "[A-Za-z0-9]{}", @validate = "RequiredField" })
+            @Html.ValidationMessageFor(model => model.Reply, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Send Reply" class="btn btn-default" />
+        </div>
+    </div>
+    <br/>
+    <br/>
+</div>
+    }
+    
+</body>

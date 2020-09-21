@@ -1,0 +1,108 @@
+﻿@model System.Data.DataTable
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+<style>
+
+   
+
+    .img1 {
+        position: relative;
+    }
+</style>
+<link href="~/style/commonElements.css" rel="stylesheet" />
+<link href="~/style/aboutus.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="img" style="position: relative; left: 0; top: 0;">
+        <img src="~/aboutimages/about-us .png" class="img1" />
+
+
+        <div class="wwa">
+            <h1>@ViewBag.Message</h1>
+        </div>
+
+
+
+        <div class="us" style="position: relative; left: 0; top: 0;">
+            <div class="row">
+
+
+                @for (int i = 0; i < Model.Rows.Count; i++)
+                {
+                    <div class="col-sm-6 col-md-3" style="margin-bottom:2%;margin-top:1%;">
+                        <div class="card" >
+
+                            <img src="@Model.Rows[i][5]" class="center" id="AboutImage" style="width:250px;height:250px;border-radius:50%;border: 1px solid lightblue;filter: contrast(140%);position:static" />
+                            <div style=" margin: 3% 0% 0% 0%; border-radius: 5px 5px;font-family: Arial;padding: 4% 2% 1% 2%;text-align: center;background-color: aliceblue;height:250px">
+                                <p class="name" style="color: black;border-bottom:2px solid darkgrey"> @Model.Rows[i][1] </p>
+
+
+                                <div style=" word-wrap: break-word;">
+
+                                    <p class="info" style="color:blue;font-size: 20px;"> @Model.Rows[i][2] </p>
+                                    <p class="info" style="color:black;font-size: 20px;"> @Model.Rows[i][4] </p>
+                                    <p class="info" style="color:black;font-size: 20px;"> @Model.Rows[i][3] </p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        @*     <div class="executives" style=" background-color: lightblue; margin: .5% 3% 0% 3%; text-align: center; border-radius: 4px 4px;">
+
+
+            <center>@Html.ActionLink("Create New", "Create")</center>
+
+
+
+        </div>*@
+
+        <div class="abtlife">
+            <p style="text-align:center;font: bolder 22px arial, verdana ;border-bottom:2px solid #91A196;margin-bottom:4%">
+                lifeServeBD – Your Online Healthcare Solution
+            </p>
+
+            <p>
+                It is a Bangladesh based online healthcare website.
+            </p>
+
+            <p>
+
+                We are a ONE-STOP ONLINE Healthcare Solutions where we not only provide a wide range of medicines, we also offer a wide choice of healthcare products including wellness products, vitamins, diet/fitness supplements, herbal products, pain relievers, diabetic care kits, baby/mother care products, beauty care products and surgical supplies.
+
+            </p>
+            <p>
+
+                Considering prevailing busy city life where traffic, lack of parking, non-availability of medicines, we want to ensure Convenience to our valued customers. With easy access to reliable drug information, our customers will get to know all about medicine both locally produced and imported from abroad. Being a client of <a href="http://epharma.com.bd/" style="color:blueviolet">epharma.com.bd</a>, customer will get regular refill reminders, alternative medicine options staying at home to Make Your Life Easier.
+            </p>
+            <p>
+
+                Our Aim is to provide you with best & convenient healthcare, convenient and safe and secure online shopping experience. We endeavor to provide products at a very competitive price coupled with highest standards of delivery to customers.
+            </p>
+            <p>
+
+                We have our own drug license(license no: DC-1785) by Bangladesh Drug Authority, under the Bengal drugs rules, 1946 and we are active member of e-commerce association of Bangladesh(e-Cab, member no: 370). We have registered & reliable pharmacy stores and shops nation-wide so you can order from us with confidence.
+            </p>
+
+            <p>
+                <a href="http://lifeServeBD.com/" style="color:blueviolet"> lifeServeBD.com </a> is a brand of Limitless Solutions Limited.
+            </p>
+
+        </div>
+
+    </div>
+</body>
+
+
+
+
+
+

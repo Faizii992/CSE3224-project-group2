@@ -1,0 +1,76 @@
+﻿
+
+@model productpagepr.Models.AboutUsModel
+
+
+
+@{
+    ViewBag.Title = "AdminLogin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/style/LoginPage.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/style/commonElements.css" rel="stylesheet" />
+
+<center><h2>ADMIN LOGIN</h2></center>
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+    {
+        <div class="container">
+            <div class="mid-class">
+                <div class="img-left-side col-md-6">
+                    <img src="~/images/Login.jpg">
+                </div>
+                <div class="txt-right-side col-md-6">
+                    <h3> Login Here </h3>
+                    <hr />
+                    <div class="form-horizontal">
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group col-md-12">
+                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
+                            <br />
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control col-md-12", @pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            @Html.LabelFor(model => model.Pass, "Password", htmlAttributes: new { @class = "control-label" })
+                            <br />
+                            @Html.EditorFor(model => model.Pass, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                            @Html.ValidationMessageFor(model => model.Pass, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group col-md-10">
+                            <div class="text-danger text-center">
+                                @ViewBag.Message
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-md-10 text-center">
+                                <input type="submit" style="background-color: brown ; color:white; border-radius:12%" value="SIGN IN" class="btn btn-default" />
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+
+  
+}
+
+@section Scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

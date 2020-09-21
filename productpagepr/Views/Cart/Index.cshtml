@@ -1,0 +1,112 @@
+﻿@model System.Data.DataTable
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+
+}
+
+ <link href="~/style/modal.css" rel="stylesheet" />
+<link href="~/style/CartPage.css" rel="stylesheet" />
+<link href="~/style/commonElements.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+<!-- jQuery Modal -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+
+
+
+<div class="col-md-12">
+    <center><h1>YOUR CART IS CONTAINED WITH THESE ITEMS!</h1></center>
+
+    <center>
+
+        <div class="box">
+
+            <table id="table" class="table table-bordered">
+                <thead class="heading">
+
+                    <tr>
+                        <th style="visibility:hidden;">Uid</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Unit Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Total Price</th>
+
+                        <th scope="col">Change Quantity</th>
+                        <th scope="col">Remove Item</th>
+                        <th style="visibility:hidden;">Uid</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    @for (int i = 0; i < Model.Rows.Count; i++)
+                    {
+                        if (String.Equals(Session["userId"], Model.Rows[i][5]))
+                        {
+                            <tr>
+
+                                <td style="visibility:hidden; ">@Model.Rows[i][5]</td>
+                                <td>@Model.Rows[i][0]</td>
+
+
+                                <td>@Model.Rows[i][3]</td>
+
+
+                                <td><b>BDT  </b>@Model.Rows[i][1]</td>
+
+                                <td>@Model.Rows[i][2]</td>
+
+
+                                <td><b>BDT  </b>@Model.Rows[i][4]</td>
+
+
+                                <td><a href="@Url.Action("Edit", "Cart", new { @id = Model.Rows[i][6] })" rel="modal:open" class="Change">Change Quantity </a></td>
+
+                                <td><a href="@Url.Action("Delete", "Cart", new { @id = Model.Rows[i][6] })" class="Remove">Remove</a></td>
+
+
+                                <td style="visibility:hidden; ">@Model.Rows[i][4]</td>
+
+                            </tr>
+
+                        }
+                    }
+
+                </tbody>
+            </table>
+
+
+
+            <span style="color:#7C0A0A ;  font-size:25px; font-style:italic; font-weight:bolder; font-family:serif;" id="val"></span>
+            <script>
+
+                var table = document.getElementById("table"), sumVal = 0.0;
+                
+                for (var i = 1; i < table.rows.length; i++) {
+                    sumVal = sumVal + parseFloat(table.rows[i].cells[8].innerHTML);
+                }
+
+                document.getElementById("val").innerHTML = "Total = BDT " + sumVal;
+                console.log(sumVal);
+
+            </script>
+        </div>
+
+        <br />
+
+        <center><button class="btn btn-success">@Html.ActionLink("Click Here to shop more", "Index", "Product")</button></center>
+        <center><h3><b>OR</b></h3></center>
+        <center><button class="btn btn-dark">@Html.ActionLink("Proceed towards Checkout", "Index", "Order")</button></center>
+
+    </center>
+    <br />
+    <br />
+</div>
+
+

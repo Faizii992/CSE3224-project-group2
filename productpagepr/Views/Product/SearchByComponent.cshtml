@@ -1,0 +1,350 @@
+﻿@model System.Data.DataTable
+
+
+@{
+    ViewBag.Title = "AltIndex";
+
+}
+
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<link href="~/style/commonElements.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;1,200&display=swap" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+<link href="~/style/ProductPage.css" rel="stylesheet" />
+<style>
+    * {
+        font-family: "Poppins", sans-serif !important;
+    }
+</style>
+
+
+
+<center>
+    <div class="searchbar">
+        @using (Html.BeginForm("SearchByComponent", "Product", FormMethod.Get))
+        {
+            <input class="search_input" type="text" id="search_Bar" name="searchString" placeholder="Type What You're looking for" />
+
+            <button class="search_icon" type="submit" name="searchString" style="border:none;">
+                <img style="width:16px;" src="https://www.flaticon.com/svg/static/icons/svg/93/93642.svg" />
+
+            </button>
+        }
+
+    </div>
+
+
+</center>
+
+
+
+
+
+
+
+<center>
+    <div>
+        <div class="col-md-6">
+            @*<p>SHOW </p>*@
+
+
+            <form method="get" action="/Product/No_Products_toshow">
+
+                <select id="ddselect" onchange="this.form.submit(); selects();" name="product_no_show" class="form-control" style="width:270px; ">
+                    <option selected disabled>Select no of products to show</option>
+                    @*<option value="1">1</option>*@
+
+                    <option value="2">2</option>
+                    <option value="4">4</option>
+                    <option value="6">6</option>
+                    <option value="8">8</option>
+                    <option value="14">14</option>
+
+                </select>
+
+            </form>
+
+
+        </div>
+
+        <div class="col-md-6">
+
+           
+            <form method="get" action="/Product/SortBy">
+
+                <select id="ddselect" onchange="this.form.submit();selects();" name="sort" class="form-control" style="width:270px; ">
+                    <option selected disabled>Sort all the products by</option>
+                  
+                    <option value="PriceAsc">Price(Low to High)</option>
+                    <option value="PriceDesc">Price(High to Low)</option>
+                    <option value="NameAsc">Name(A-Z)</option>
+                    <option value="NameDesc">Name(Z-A)</option>
+                    <option value="Newest">New In</option>
+
+                </select>
+
+            </form>
+
+
+        </div>
+    </div>
+</center>
+
+
+
+
+<div class="col-md-12" style="padding:1%;">
+
+
+    @Html.Action("GetAllCompanies", "Product")
+
+
+
+    <div class="container col-md-9 col-sm-6" style="line-height:16px;">
+        <div class="row">
+
+            @for (int i = 0; i < Model.Rows.Count; i++)
+            {
+
+
+                <div class="col-md-4" style="margin-bottom:5%">
+                    <div class="card" style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);text-align: center;
+">
+                        <img class="card-img-top" src="@Model.Rows[i][4]" alt="Card image cap">
+                        @if (@Model.Rows[i][9].ToString() != "Available")
+                        {
+
+                            <div style="background-color:#f4f4f4; box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);padding-top:10%;padding-bottom:10%; width:80%;position:absolute;top:27%;margin-left:5%;" class="alert alert-secondary"><b>OUT OF STOCK</b></div>
+                        }
+
+                        <div class="card-body">
+                           
+
+                            <p>
+                                <b>
+                                    @Model.Rows[i][0]  @Model.Rows[i][2] mg
+                                </b>
+                            </p>
+
+                            <p style="color:forestgreen;">
+                                <b> BDT </b>  @Model.Rows[i][1]
+                            </p>
+
+
+
+                            <p>
+                                @Model.Rows[i][3]
+                            </p>
+
+
+
+                            <div class="Product_btns" style="margin:2%;">
+
+                                @using (Html.BeginForm("Cart", "Cart", new
+                                {
+                                    id = "cartform",
+                                    name = @Model.Rows[i][0],
+                                    price = @Model.Rows[i][1],
+                                    category = Model.Rows[i][8],
+                                    userid = Session["userId"],
+                                }))
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    <center>
+                                        <input type="number" id="quantity" onkeyup="manage(this)" name="quantity" min="1" max="20" required placeholder="place quantity here"
+                                               class="form-control" style="width:200px;" />
+                                    </center>
+                                    <a class="btn btn-success" href="@Url.Action("Details", "Product", new { @id = @Model.Rows[i][5]})">View Details </a>
+
+                                    if (@Model.Rows[i][9].ToString() == "Available")
+                                    {
+
+                                        if (Session["userId"] == null)
+                                        {
+                                            <button type="button" class="btn btn-success" style="padding:2%;" data-toggle="modal" data-target="#nonreg_alert">
+                                                ADD TO CART
+                                            </button>
+
+                                        }
+                                        else
+                                        {<button name="quantity" class="btn btn-success" style="padding:2%;">ADD TO CART</button> }
+
+
+                                    }
+                                    else
+                                    { <button name="quantity" class="btn btn-danger" disabled style="padding:2%;">ADD TO CART</button>
+                                    }
+
+                                }
+
+
+
+
+
+                                <a href="#AlternativeMed" data-component="@Model.Rows[i][3]" data-id="@Model.Rows[i][5]" data-sideeffect="@Model.Rows[i][6]" data-sideeffectpercentage="@Model.Rows[i][7]" data-toggle="modal" name="quantity" class="btn btn-success my-3 btn-block openmodal" style="padding:2%;margin-top:2%">VIEW ALTERNATIVES</a>
+                                <script>
+                                    $(document).on('click', '.openmodal', function () {
+
+                                        var MainMedicineId = $(this).data('id');
+                                        var MainMedicineComponent = $(this).data('component');
+                                        $(".prodcomponent").html($(this).data('component'));
+                                        $(".sideEffect").html($(this).data('sideeffect'));
+                                        $(".MainMedicineID").val(MainMedicineId);
+                                        $(".MainMedicineComponent").val(MainMedicineComponent);
+                                        $("#MainMedicineNAME").val(MainMedicineName);
+                                        $("#MainMedicinePRICE").val(MainMedicinePrice);
+
+
+
+
+                                    });
+
+
+                                </script>
+
+
+
+
+                            </div>
+                            <div class="modal" tabindex="-1" role="dialog" id="nonreg_alert">
+                                <div class="modal-dialog" role="document" style="">
+                                    <div class="modal-content">
+                                        <div class="modal-header" style="background-color:#90BAA9;">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+
+                                            <h3 class="modal-title" style="color:white;"><b>ACTION  NOT  POSSIBLE</b></h3>
+
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <h4><b>You need to login to avail this feature!</b></h4>
+
+                                            <h4 style="color:blue;"><u> @Html.ActionLink("Click on this link to go to the login page", "Login", "User")</u></h4>
+
+                                        </div>
+                                        <div class="modal-footer">
+
+                                            <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">CLOSE</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal" id="AlternativeMed">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header" style="background-color: #74a994;color:white;text-transform:uppercase">
+                                            <button type="button" style="color:black;border-radius:100%;padding:0.5% 1%;background-color:white;" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <div class="modal-title">
+                                                <h4> Alternative Suggestions</h4>
+                                            </div>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div>
+                                                <h3>Product Component:</h3>
+                                                <h4 class="prodcomponent" style="margin-top:2%;">
+                                                </h4>
+                                                <hr />
+
+
+                                            </div>
+                                            <div class="alert alert-success">
+                                                <button type="button" style="color:black;border-radius:100%;padding:0.5% 1%;background-color:white;" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4>You can consider some alternatives for this medicine we picked out for you based on the same medicine component.</h4>
+                                                <h5>Because the product you chose has the following side effects: </h5>
+                                            </div>
+                                            <div>
+
+                                                <h3>Product SideEffects:</h3>
+                                                <p class="sideEffect" style="margin-top:2%;">
+
+                                                </p>
+
+                                            </div>
+
+                                            <div class="container">
+                                                <div class="flex-cont" style="display: flex;justify-content: center;
+                                                                   transform: translateX(-26%);">
+
+
+                                                    @using (Html.BeginForm("BetterMedicineSuggestion", "Product", FormMethod.Get))
+                                                    {<input type="hidden" name="MainMedicineComponent" class="MainMedicineComponent" />
+                                                        <input type="hidden" name="MainMedicineID" class="MainMedicineID" />
+                                                        <button type="submit" class="btn btn-primary  mx-2 my-4">SEE BETTER SOLUTIONS.</button>
+
+                                                    }
+
+                                                    @using (Html.BeginForm("CheaperMedicineSuggestion", "Product", FormMethod.Get))
+                                                    {<input type="hidden" name="MainMedicineComponent" class="MainMedicineComponent" />
+                                                        <input type="hidden" name="MainMedicineID" class="MainMedicineID" />
+                                                        <button type="submit" class="btn btn-info mx-2  my-4">SEE CHEAPER SOLUTIONS.</button>
+
+                                                    }
+
+                                                </div>
+
+
+
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+
+        </div>
+
+
+
+    </div>
+</div>
+
+
+
+
+
+
+<style>
+    .product {
+        display: flex;
+    }
+
+    .wrapper {
+        margin: 20px auto;
+    }
+
+    button {
+        background-color: #000000;
+        color: #ffffff;
+    }
+
+    .active {
+        background-color: #a31d1d;
+    }
+</style>
+
+

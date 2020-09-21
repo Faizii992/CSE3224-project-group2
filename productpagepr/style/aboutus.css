@@ -1,0 +1,70 @@
+﻿body {
+    width: 100%;
+}
+
+.img {
+    position: absolute;margin: 5% 5% 5% 5%;border: 2px solid grey;align-content: space-evenly;
+}
+
+.img1 {
+    position: relative;
+    margin: 0% 3% 3% 3%;
+    width: 95%;
+    height: 450px;
+}
+
+.wwa {
+    margin: 3% 3% 0% 3%;
+    color: #EDE8FF;
+    background-color: #520b67;
+    text-align: center;
+    height: 50px;
+    font-size: 36px;
+    border-radius: 4px 4px;
+}
+
+    .wwa h1 {
+        font-size: 36px;
+        position: relative;
+        top: 14%;
+        text-align: center;
+    }
+
+.us {
+    margin: 3% 3% 0% 3%;
+    background-color: #D5F1F3;
+    border: 2px hidden yellow;
+    border-radius: 4px 4px;
+    padding: 2% 3% 2% 3%;
+    align-content: center;
+}
+#AboutImage {
+    border-radius: 50%;
+    border: 1px solid lightblue;
+    filter: contrast(120%);
+    position: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.name {
+    
+    font-family:'Palatino Linotype';
+    font-size:24px;
+    text-decoration-color:black;
+   
+
+}
+
+
+
+.abtlife {
+    margin: 2% 3% 5% 3%;
+    background-color: #D9D6CF;
+    color: #113F54;
+    padding: 3% 3% 3% 3%;
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 5px 5px;
+}
+

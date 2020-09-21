@@ -1,0 +1,47 @@
+﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "AllUserotification";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <link href="~/style/commonElements.css" rel="stylesheet" />
+<body>
+
+    <div class="card" style="margin: auto; background-origin:border-box;backface-visibility:hidden;
+        margin-top: 5%;
+        height: 700px;
+        overflow: scroll;
+        overflow-x: hidden;
+        width: 80%;">
+        <div class="card-body alert alert-success">
+
+
+            @for (int i = 0; i < Model.Rows.Count; i++)
+            {
+                if (String.Equals(Session["userId"], @Model.Rows[i][3]))
+                {
+                <div class="notifi__item my-3" style="display:flex;justify-content:space-between;">
+
+                    <div class="content">
+                        <p style="font-size:20px ">Your Message has been replied </p>
+                    </div>
+
+
+                    <div>
+                        @using (Html.BeginForm("Reply", "UserNotification", FormMethod.Get))
+                        {
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="Id" value="@Model.Rows[i][0]" />
+                            <button class="my-3 btn btn-success" type="submit" style="font-size:22px">View Reply</button>
+
+                        }
+                    </div>
+                </div>
+                <hr />
+                }
+            }
+        </div>
+
+    </div>
+
+</body>

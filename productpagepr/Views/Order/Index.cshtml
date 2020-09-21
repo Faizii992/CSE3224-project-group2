@@ -1,0 +1,421 @@
+﻿@using productpagepr.Models
+
+@model dynamic
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+}
+<link href="~/style/orderPage.css" rel="stylesheet" />
+<link href="~/style/commonElements.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+
+
+
+    function validateName() // Name Validation
+    {
+        var Name = document.getElementById("name").value;
+        var rel = /^[a-zA-Z\s\'\-]{2,100}$/;
+
+
+        if (rel.test(Name)) { // if Name is Falid
+            document.getElementById("namePrompt").style.color = "green";
+            document.getElementById("namePrompt").innerHTML = "<strong> Valid </strong>";
+            return true;
+        }
+        else { // if Name is Invalid
+            document.getElementById("namePrompt").style.color = "red";
+            document.getElementById("namePrompt").innerHTML = "<strong> InValid Name. Enter 2-20 letters </strong>";
+            return false;
+        }
+    }
+
+    function validateAddress() // Address Validation
+    {
+
+        var Address = document.getElementById("address").value;
+        var regex = /\W|_{8,}/g;
+
+
+        if (regex.test(Address)) { // If Address is Valid
+            document.getElementById("addressPrompt").style.color = "green";
+            document.getElementById("addressPrompt").innerHTML = "<strong> Valid </strong>";
+            return true;
+        }
+
+        else { // If Address is Invalid
+            document.getElementById("addressPrompt").style.color = "red";
+            document.getElementById("addressPrompt").innerHTML = "<strong>Invalid Address. Please enter Detail Address.</strong>";
+            return false;
+        }
+    }
+
+    function validateEmailAddress() // Email Validation
+    {
+        var eAddress = document.getElementById("email").value;
+        var regex1 = /\W|_{10,}/g;
+
+        if (regex1.test(eAddress)) { // If Email is Valid
+            document.getElementById("emailAddressPrompt").style.color = "green";
+            document.getElementById("emailAddressPrompt").innerHTML = "<strong> Valid </strong>";
+            return true;
+        }
+        else { // If Email is Invalid
+            document.getElementById("emailAddressPrompt").style.color = "red";
+            document.getElementById("emailAddressPrompt").innerHTML = "<strong>Invalid Email.Email Address should be more than 10 characters</strong>";
+            return false;
+        }
+    }
+
+    function validatePhoneNumber() // Phone Number Validation
+    {
+        var pNumber = document.getElementById("phoneNo").value;
+        var rel3 = /^[0-9]{11}$/;
+
+        if (rel3.test(pNumber)) { // If Phone No is Valid
+            document.getElementById("phoneNumberPrompt").style.color = "green";
+            document.getElementById("phoneNumberPrompt").innerHTML = "<strong> Valid </strong>";
+            return true;
+        }
+        else { // If Phone No is Invalid
+            document.getElementById("phoneNumberPrompt").style.color = "red";
+            document.getElementById("phoneNumberPrompt").innerHTML = "<strong> Invalid Number.Phone number should be 11 digits </strong>";
+            return false;
+        }
+    }
+
+
+
+    function IsEmpty() {
+
+        if (document.getElementById("table").rows.length === 1) {
+            alert("Your Cart is Empty.");
+            return false;
+        }
+        return true;
+
+    }
+
+    function validateForm() {
+        
+        var name = validateName();
+        var address = validateAddress();
+        var email = validateEmailAddress();
+        var phone = validatePhoneNumber();
+        var empty = IsEmpty();
+        
+       
+
+        
+        return name && address && email && phone && empty;
+
+    }
+
+
+
+
+
+</script>
+
+
+
+
+
+<div class="col-md-12">
+    <div class="col-md-6">
+        <center><h2 class="upper-heading">ORDER SUMMARY!</h2></center>
+
+        <center>
+
+            <div class="box">
+
+                <input type="hidden" id="orderid" name="orderid">
+                <table id="table" class="table table-bordered table1">
+
+                    <thead class="heading">
+
+
+
+                        <tr>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Unit Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Total Price</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (cartModel cart in Model.Carts)
+                        {
+
+                            if (String.Equals(Session["userId"], cart.userid))
+                            {
+
+                                <tr>
+
+                                    <td id="name">@cart.name</td>
+                                    <td id="category">@cart.category</td>
+                                    <td><p>BDT  &nbsp;@cart.price</p></td>
+
+                                    <td>@cart.quantity</td>
+
+                                    <td><p>BDT  &nbsp;@cart.totalprice</p></td>
+                                    <td style="visibility:hidden; ">@cart.totalprice</td>
+                                    <td style="visibility:hidden; ">@cart.userid</td>
+                                </tr>
+                            }
+                        }
+                </table>
+
+
+                <div class="box-2">
+                    <table id="table-2" class="table table-bordered">
+                        <tr><td><b style="color:#CD1919;">Sub Total:</b></td><td><span style=" font-weight:bolder; " id="val"></span></td></tr>
+                        <tr><td><b style="color:#CD1919;">Delivery Charge:</b></td><td><b>BDT &nbsp;60 </b></td></tr>
+                        <tr class="order-total"><td><b style="color:#CD1919;">Order Total:</b></td><td><span style=" font-weight:bolder; " id="val2" name="amount"></span></td></tr>
+                    </table>
+                </div>
+                <br />
+                <br />
+                <p style="font-style: italic; font-weight: bold;color: #EC2121;">Only cash on delivery service is available.</p>
+            </div>
+        </center>
+        <br />
+        <br />
+        
+        <button id="#exampleModalScrollable" data-toggle="modal" data-target="#exampleModalScrollable" style="color: #0E6655;
+            font-weight: 800; margin-left:10px;text-decoration: none;">
+            My Order List
+        </button>
+
+    </div>
+
+    <div class="col-md-6">
+        <div class="note">
+            <center>
+                <p>
+                    <b style="color: #EC2121;">N.B:</b> **If there are some non-regular items in your cart, then we have to do a quick check of your prescription
+                    given to you by your physician! It won't take that long. We can only let you proceed towards your order if you complete this step. Check our
+                    policies and instructions <a href="@Url.Action("Index", "Home")" style="color: #49CE40;"> here</a>.**
+                </p>
+            </center>
+        </div>
+
+
+        @using (Html.BeginForm("Order", "Order", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return validateForm();" }))
+        {
+           
+            @Html.AntiForgeryToken()
+            int flag = 0;
+            foreach (cartModel cart in Model.Carts)
+            {
+                if (String.Equals(Session["userId"], cart.userid))
+                {
+                    if (String.Equals(cart.category, "Non-Regular") && flag == 0)
+                    {
+                        flag = 1;
+                    }
+
+                    <script>
+                        function IsEmpty() {
+                            if (document.getElementById("flag").value == 1) {
+                                if (document.getElementById("imgpath").value === "") {
+                                    alert("Your Cart is contained with NON REGULAR items. Please attach a prescription.");
+                                    return false;
+                                }
+                            }
+                            true;
+                        }
+                    </script>
+                    <input type="hidden" id="flag" value=@flag name="flag">
+
+                    <input type="hidden" id="productname" value=@cart.name name="productname" required>
+
+                    <input type="hidden" id="category" value=@cart.category name="category" required>
+
+                    <input type="hidden" id="price" value=@cart.price name="price" required>
+
+                    <input type="hidden" id="quantity" value=@cart.quantity name="quantity" required />
+                }
+
+
+
+            }
+
+
+
+
+            <div class="form-group row row1">
+                <label for="prescription1" class="col-sm-2 col-form-label prescription">Attach Prescription: </label>
+                <input type="file" class="form-control-file" id="imgpath" name="file1">
+            </div>
+            <br /><br />
+            <h4 style="color:#CD1919; "><u><b>Additional (If Necessary): </b></u></h4>
+            <div class="form-group row row3">
+                <label for="prescription2" class="col-sm-2 col-form-label prescription2">Attach Prescription: </label>
+                <input type="file" class="form-control-file" id="imgpath" name="file2">
+            </div>
+
+            <div class="form-group row row3">
+                <label for="prescription2" class="col-sm-2 col-form-label prescription2">Attach Prescription: </label>
+                <input type="file" class="form-control-file" id="imgpath" name="file3">
+            </div>
+
+
+
+            <h2 class="customer-detail">CUSTOMER DETAIL:</h2>
+            <div class="form-box">
+
+
+
+
+                <input type="hidden" id="amount" name="amount">
+                <input type="hidden" id="id" value=@Session["userId"].ToString() name="id">
+
+                <div class="form-group row row2">
+                    <label for="name" class="col-sm-2 col-form-label panel1">Name: </label>
+
+                    <input type="text" class="first" id="name" value="@Session["firstName"].ToString() @Session["lastName"].ToString()" name="name" onblur="validateName();">
+                    <div class="span">
+                        <span id="namePrompt"></span>
+                    </div>
+
+                </div>
+                <div class="form-group row row2">
+                    <label for="name" class="col-sm-2 col-form-label panel2">Address: </label>
+                    <textarea class="second" id="address" name="address" required onblur="validateAddress()">@Session["address"].ToString()</textarea>
+                    <div class="span">
+                        <span id="addressPrompt"></span>
+                    </div>
+                </div>
+                <div class="form-group row row2">
+                    <label for="name" class="col-sm-2 col-form-label panel2">Email: </label>
+                    <input type="text" class="second" id="email" value="@Session["emailId"].ToString()" name="email" onblur="validateEmailAddress()">
+                    <div class="span">
+                        <span id="emailAddressPrompt"></span>
+                    </div>
+                </div>
+                <div class="form-group row row2">
+                    <label for="name" class="col-sm-2 col-form-label panel2">Phone: </label>
+                    <input type="text" class="second" id="phoneNo" value="@Session["phoneNo"].ToString()" name="phone" required onblur="validatePhoneNumber()">
+                    <div class="span">
+                        <span id="phoneNumberPrompt"></span>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+            </div>
+
+
+            <input type="submit" id="go" value="Confirm" class="btn btn-success confirm" style="padding:2%;" />
+
+
+
+
+        }
+
+        <br />
+        <br />
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+<!--Modal-->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <!-- Modal -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <center><h2 style="color: #922B21;font-weight: bolder; font-family:Apple Chancery, cursive;">My Order List</h2></center>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top:-40px;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div id="scrollbox">
+                    <table id="table2" class="table table-bordered">
+                        <thead class="headings">
+
+                            <tr>
+                                <th scope="col">Order Id</th>
+                                <th scope="col">Date &amp; Time</th>
+                                <th scope="col">Day</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (customerModel customer in Model.Customers)
+                            {
+                                if (String.Equals(Session["userId"], customer.customerid))
+                                {
+                                    <tr>
+                                        <td>@customer.orderid</td>
+                                        <td>@customer.datetm</td>
+                                        <td>@customer.day</td>
+                                    </tr>
+                                }
+
+                            }
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    var table = document.getElementById("table"), sumVal = 0.0;
+
+    for (var i = 1; i < table.rows.length; i++) {
+        sumVal = sumVal + parseFloat(table.rows[i].cells[5].innerHTML);
+    }
+
+    document.getElementById("val").innerHTML = "BDT " + sumVal;
+    console.log(sumVal);
+    document.getElementById("amount").value = sumVal;
+
+</script>
+
+
+<script>
+
+    var table = document.getElementById("table"), sumVal = 60.0;
+
+    for (var i = 1; i < table.rows.length; i++) {
+        sumVal = sumVal + parseFloat(table.rows[i].cells[5].innerHTML);
+    }
+
+    document.getElementById("val2").innerHTML = "BDT  " + sumVal;
+    console.log(sumVal);
+
+</script>
+
+

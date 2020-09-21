@@ -1,0 +1,112 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #DFDFDF !important;
+}
+
+ul {
+    margin: 0;
+}
+.notifi__item:hover {
+    background-color: #f4f4f4 !important; 
+}
+button,
+input[type='button'] {
+    cursor: pointer;
+}
+
+button:focus,
+input:focus,
+textarea:focus {
+    outline: none;
+}
+
+input, textarea {
+    border: none;
+}
+
+button {
+    border: none;
+    background: none;
+}
+a {
+    display: inline-block;
+}
+
+a:hover,
+a:focus,
+a:active {
+    text-decoration: none;
+    outline: none;
+}
+.page-container {
+    background: #e5e5e5;
+    padding-left: 300px;
+}
+
+@media (max-width: 991px) {
+    .page-container {
+        position: relative;
+        top: 88px;
+        padding-left: 0;
+    }
+}
+
+.navbar-sidebar {
+    padding: 35px;
+  
+}
+
+.navbar-sidebar  a {
+    display: block;
+    color: #555;
+    font-size: 16px;
+    padding: 15px 0;
+}
+
+.navbar-sidebar  i {
+    margin-right: 19px;
+}
+
+.navbar-sidebar .navbar__list li a:hover {
+    color: #4272d7;
+}
+
+@media (min-width: 991px) {
+    #AdminIndex {
+        height: 730px;
+        overflow: scroll;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+   
+    #welcometxtAdmin{
+        z-index:1;
+        margin:auto;
+        margin-top:40%;
+    }
+}
+
+
+
+
+
+@media only screen and (min-width:700px) {
+    .formProductTable{
+        margin-bottom:-3%;
+    }
+}
+
+@media only screen and (max-width:700px) {
+    .AddandSearchBar {
+        margin-left:10%;
+    }
+
+    .AddandSearchBar .addproduct {
+        margin-left: 25%;
+    }
+}

@@ -1,0 +1,77 @@
+﻿@model System.Data.DataTable
+
+@{
+    ViewBag.Title = "AboutInfoTable";
+    Layout = "~/Views/Shared/AdminDashboardLayout.cshtml";
+}
+
+    <div style="margin-top:10%; margin-left:20%;">
+        <center><h2>About Info Table</h2></center>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" type="text/css" />
+
+        <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+        <div class="executives" style=" background-color: lightblue; margin: 2% 3% 2% 3%; text-align: center; border-radius: 4px 4px;">
+
+
+            <center>@Html.ActionLink("Create New", "Create")</center>
+
+
+
+        </div>
+        <table class="table table-bordered table-striped table-responsive">
+
+            <tr>
+
+                <th> ID  </th>
+
+                <th> Name </th>
+
+                <th> Position  </th>
+
+                <th> Department </th>
+                <th> Workplace</th>
+
+                <th> Image</th>
+
+                <th> Email</th>
+
+
+                <th> Delete</th>
+
+
+
+            </tr>
+
+            @for (int i = 0; i < Model.Rows.Count; i++)
+            {
+
+        <tr>
+            <td>@Model.Rows[i][0]</td>
+
+            <td>@Model.Rows[i][1]</td>
+            <td>@Model.Rows[i][2]</td>
+            <td>@Model.Rows[i][3]</td>
+            @*</td>*@
+            <td>@Model.Rows[i][4]</td>
+            <td>@Model.Rows[i][6]</td>
+            <td style="width:500px;">
+                <img src="@Model.Rows[i][5]" id="AboutImage" style="height:150px;width:150px" />
+                <a href="@Url.Action("EditImg","AboutUs",new {@id=Model.Rows[i][0] })">Upload New</a>
+            </td>
+            @* <td>@Model.Rows[i]6]</td>*@
+
+
+
+            <td><a href="@Url.Action("Delete","AboutUs",new {@id=Model.Rows[i][0] })">Delete </a></td>
+
+        </tr>
+            }
+
+        </table>
+        <script src="~/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+        }
+    </div>

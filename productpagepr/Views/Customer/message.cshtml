@@ -1,0 +1,132 @@
+﻿@model System.Data.DataTable
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+
+}
+
+
+<link href="~/style/commonElements.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+<!-- jQuery Modal -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+
+
+<div class="col-md-12">
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-8">
+        <center>
+            <div class="col-md-12">
+                <div class="col-md-12 col-sm-12 message-box">
+                    <div class="col-md-12 col-sm-12 headline">
+
+                        <center><h1 style="font-weight:bolder;font-family:Apple Chancery, cursive;">Order Confirmation Messages</h1></center>
+                    </div>
+                    <div class="col-md-12 col-sm-12 box-main">
+                        @for (int i = 0; i < Model.Rows.Count; i++)
+                        {
+                            if (String.Equals(Session["userId"], Model.Rows[i][0]))
+                            {
+                                if (!String.IsNullOrWhiteSpace(Model.Rows[i][12].ToString()))
+                                {
+
+                                    <h3 style="font-size:20px; font-weight:bolder;font-family:Apple Chancery, cursive; color:#943126; margin-left:20px;">Order No:</h3>
+                                    <p style="font-size:15px; font-weight:bold;font-family:Apple Chancery, cursive; color:black; margin-left:20px;">
+                                        @Model.Rows[i][1]
+                                    </p>
+
+                                    <h3 style="font-size:20px; font-weight:bolder;font-family:Apple Chancery, cursive; color:#943126; margin-left:20px;">Acceptation/Rejection Date:</h3>
+                                    <p style="font-size:15px; font-weight:bold;font-family:Apple Chancery, cursive; color:black; margin-left:20px;">
+                                        @Model.Rows[i][13]
+                                    </p>
+
+                                    <h3 style="font-size:20px; font-weight:bolder;font-family:Apple Chancery, cursive; color:#943126; margin-left:20px;">Message:</h3>
+                                    <p style="font-size:15px; font-weight:bold;font-family:Apple Chancery, cursive; color:black; margin-left:20px;">
+                                        @Model.Rows[i][12]
+                                    </p>
+                                    <br />
+                                    <hr />
+
+
+                                }
+
+                            }
+                        }
+                    </div>
+
+
+                </div>
+            </div>
+        </center>
+
+    </div>
+    <div class="col-md-2">
+
+    </div>
+
+</div>
+
+
+
+<style>
+
+    .message-box {
+        background-color: #ABEBC6;
+        border: double;
+        border-radius: 20px;
+        margin-top: 30px;
+        width:100%;
+        margin-bottom:30px;
+    }
+
+    .headline {
+        height: 100px;
+        border-radius: 20px;
+        background-color: #AED6F1;
+        border: solid;
+    }
+
+
+
+    .box-main {
+        height: 450px;
+        align-content: center;
+        background-color: #EAFAF1;
+        margin-top: 20px;
+        border: solid;
+        border-radius: 20px;
+        overflow-y: scroll;
+        margin-bottom: 20px;
+    }
+    hr {
+        height: 2px;
+        background-color: black;
+        border: none;
+    }
+</style>
+
+<style type="text/css" media="screen and (max-width:700px) and (min-width:420px) ">
+
+    .headline {
+        height: 150px;
+        border-radius: 20px;
+        background-color: #AED6F1;
+        border: solid;
+    }
+</style>
+<style type="text/css" media="screen and (max-width:419px) and (min-width:100px) ">
+
+    .headline {
+        height: 200px;
+        border-radius: 20px;
+        background-color: #AED6F1;
+        border: solid;
+    }
+</style>

@@ -1,0 +1,108 @@
+﻿@model System.Data.DataTable
+@{
+    Layout = "~/Views/Shared/AdminDashboardLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <!-- Title Page-->
+    <title>Admin Information</title>
+
+    <!-- Fontfaces CSS-->
+    <link href="~/css/font-face.css" rel="stylesheet" media="all">
+    <link href="~/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="~/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="~/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+
+    <link href="~/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+
+
+    <!-- Main CSS-->
+    <link href="~/css/theme.css" rel="stylesheet" media="all">
+    <link href="~/css/theme2.css" rel="stylesheet" media="all">
+
+</head>
+
+<body style="background-color:#E5E5E5;">
+
+
+    <div class="section" style="margin-top:5%;">
+        <div class="container-fluid">
+            <div class="row" >
+
+                @for (int i = 0; i < Model.Rows.Count; i++)
+                {
+
+                    <div class="col-md-4 my-2">
+                        <div class="card" style="height:550px;width:300px">
+                            <div class="card-header">
+                                <strong class="card-title mb-3">Profile Card</strong>
+                            </div>
+                            <div class="card-body">
+                                <div class="mx-auto d-block">
+                                    <img class="rounded-circle mx-auto d-block" src="@Model.Rows[i][5]" style="height:280px;width:250px" alt="Card image cap">
+                                    <h5 class="text-sm-center mt-2 mb-1">@Model.Rows[i][1]</h5>
+                                    <div class="location text-sm-center">
+                                        <i class="fa fa-map-marker"></i> @Model.Rows[i][4]
+                                    </div>
+                                </div>
+                                <hr style="padding-bottom:5%">
+                                <div class="card-text text-sm-center">
+                                    <a href="https://www.facebook.com/anika1394">
+                                        <i class="fa fa-facebook pr-1"></i>
+                                    </a>
+                                    <a href="https://www.twitter.com/AftabAnika">
+                                        <i class="fa fa-twitter pr-1"></i>
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/faiza-noor-433167177/">
+                                        <i class="fa fa-linkedin pr-1"></i>
+                                    </a>
+                                    <a href="https://www.instagram.com/anikabinteeaftab">
+                                        <i class="fa fa-instagram pr-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+             
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Jquery JS-->
+    <script src="~/vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="~/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="~/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+
+    <script src="~/vendor/animsition/animsition.min.js"></script>
+
+
+    <!-- Main JS-->
+    <script src="~/js/main.js"></script>
+
+</body>
+
+</html>
+<!-- end document-->

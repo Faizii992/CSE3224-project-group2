@@ -1,0 +1,122 @@
+﻿@model IEnumerable<productpagepr.Models.User>
+
+@{
+    ViewBag.Title = "ShowAllUsers";
+    Layout = "~/Views/Shared/AdminDashboardLayout.cshtml";
+}
+
+<h2 class="heading text-center">List of Users</h2>
+
+<style>
+
+    .table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-left: 5px;
+        margin-right: 5px;
+        font-size: 0.9em;
+    }
+
+        .table th {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .table th, .table td {
+            padding: 12px 12px;
+        }
+
+        .table tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+            .table tr:nth-of-type(even) {
+                background-color: #f3f3f3;
+            }
+
+            .table tr:last-of-type {
+                border-bottom: 1px solid #009879;
+            }
+
+    .itemsSearch {
+        text-align: center;
+    }
+
+    input[type=text] {
+        padding: 8px 16px;
+        margin: 4px 2px;
+    }
+
+    input[type=submit] {
+        background-color: #009879;
+        color: white;
+        padding: 8px 16px;
+        margin: 4px 2px;
+    }
+</style>
+<div class="itemsSearch">
+    <p>
+        @*@Html.ActionLink("Create New", "Create")*@
+        @using (Html.BeginForm("ShowAllUsers", "Account", FormMethod.Get))
+        {
+            <input type="text" name="search" placeholder="Enter Username" />
+            <input type="submit" name="submit" value="Search" />
+        }
+    </p>
+
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            UserID
+        </th>
+        <th>
+            Username
+        </th>
+
+        <th>
+            Email ID
+        </th>
+        <th>
+            Phone No
+        </th>
+        <th>
+            Address
+        </th>
+        <th>
+            Password
+        </th>
+
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)  @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+
+        </tr>
+    }
+
+</table>
+

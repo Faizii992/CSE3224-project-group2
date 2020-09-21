@@ -1,0 +1,371 @@
+﻿
+@{
+    ViewBag.Title = "AdminDashboardLayout";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <!-- Title Page-->
+    <title>ADMIN PANEL</title>
+
+    <!-- Fontfaces CSS-->
+    <link href="~/css/font-face.css" rel="stylesheet" media="all">
+    <link href="~/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+
+    <link href="~/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+
+    <link href="~/css/theme2.css" rel="stylesheet" media="all">
+    <link href="~/css/theme.css" rel="stylesheet" media="all">
+
+    <style>
+        .hidden-mobile-nav{
+            display:none;
+        }
+        .navbar-mobile a{
+   color:black;
+   padding:2%;
+}
+
+        .show-mobile-nav{
+            display:block;
+        }
+
+    </style>
+   
+</head>
+
+<body>
+
+    <div class="modal" tabindex="-1" role="dialog" id="dropdown_mobile">
+        <div class="modal-dialog" role="document" style="">
+            <div class="modal-content">
+                <div class="card-header" style="text-align:center">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="navbar-mobile card" style="text-align:center;">
+                    <div class="container-fluid">
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="@Url.Action("Index", "Admin")">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                    <span>
+                                        <strong>Dashboard</strong>
+                                    </span>
+                                </a>
+
+                            </li>
+
+                            <li>
+                                <a href="@Url.Action("ProductTables", "Product")">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>
+                                        Product Tables
+                                    </span>
+                                </a>
+
+                            </li>
+
+                            <li>
+                                <a href="@Url.Action("AdminDoctorInfo", "Doctor")">
+                                    <i class="fas fa-desktop"></i>
+                                    <span>
+                                        Doctor's Info
+                                    </span>
+                                </a>
+
+                            </li>
+                            <li>
+                                <a href="@Url.Action("AdminDoctorCategory", "Doctor")">
+                                    <i class="fas fa-desktop"></i>
+                                    <span>
+                                        Doctors Category
+                                    </span>
+                                </a>
+
+                            </li>
+
+                            <li>
+                                <a href="@Url.Action("ShowAllUsers", "Account")">
+                                    <i class="fas fa-copy"></i>
+                                    <span>
+                                        User Accounts
+                                    </span>
+                                </a>
+
+                            </li>
+                            <li>
+                                <a href="@Url.Action("AdminCustomerInfo", "Customer")">
+                                    <i class="fas fa-table"></i>
+                                    <span>
+                                        Customer Info
+                                    </span>
+                                </a>
+
+                            </li>
+
+                            <li>
+                                <a href="@Url.Action("AdminOrderInfo", "AdminOrder")">
+                                    <i class="fas fa-check-square"></i>
+                                    <span>
+                                        Order List
+                                    </span>
+                                </a>
+
+                            </li>
+
+                            <li>
+                                <a href="@Url.Action("Index", "Payment")">
+                                    <i class="fas fa-check-square"></i>
+                                    <span>
+                                        Payment Details
+                                    </span>
+                                </a>
+
+                            </li>
+
+                            <li>
+                                <a href="@Url.Action("AdminProfileCardShow", "Admin")">
+                                    <i class="fas fa-check-square"></i>
+                                    <span>
+                                        Admin Information
+                                    </span>
+                                </a>
+
+                            </li>
+
+
+                            <li>
+                                <a href="@Url.Action("termsTable", "policyTerms")">
+                                    <i class="fas fa-check-square"></i>
+                                    <span>
+                                        Term Tables
+                                    </span>
+                                </a>
+
+                            </li>
+
+
+                            <li>
+                                <a href="@Url.Action("policyTable", "policyTerms")">
+                                    <i class="fas fa-check-square"></i>
+                                    <span>
+                                        Policy Tables
+                                    </span>
+                                </a>
+
+                            </li>
+
+
+
+                            <li>
+                                <a href="@Url.Action("Create", "AboutUs")" class="btn btn-info btn-sm" style="color:white;">
+                                    <i class="fas fa-desktop"></i>
+                                    <span>
+                                        REGISTER A NEW USER
+                                    </span>
+                                </a>
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <header class="header-mobile d-block d-lg-none">
+        <div class="header-mobile__bar">
+            <div class="container-fluid my-3">
+                <div class="header-mobile-inner">
+                    <a class="logo" href="index.html">
+                        <img width="50" src="~/productimages/lifeservelogo.jpg" alt="Lifeservelogo" />
+                    </a>
+                    <button class="hamburger-btn" data-toggle="modal" data-target="#dropdown_mobile" type="button">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <div>
+
+
+        <div class="menu_sidebar d-none d-lg-block" style="float:left;width:22.2%;height:680px;overflow:scroll;background-color:#ffffff; position:fixed;top:0px !important ;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+            <a href="#" style="display:flex;justify-content:center; ">
+                <img src="~/productimages/lifeservelogo.jpg" width="120" alt="Cool Admin" />
+            </a>
+            <nav class="navbar-sidebar">
+
+                <ul class="list-unstyled navbar__list">
+
+                    <li>
+                        <a href="@Url.Action("Index", "Admin")">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>
+                                <strong>Dashboard</strong>
+                            </span>
+                        </a>
+
+                    </li>
+
+                    <li>
+                        <a href="@Url.Action("ProductTables", "Product")">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>
+                                Product Tables
+                            </span>
+                        </a>
+
+                    </li>
+
+                    <li>
+                        <a href="@Url.Action("AdminDoctorInfo", "Doctor")">
+                            <i class="fas fa-desktop"></i>
+                            <span>
+                                Doctor's Info
+                            </span>
+                        </a>
+
+                    </li>
+                    <li>
+                        <a href="@Url.Action("AdminDoctorCategory", "Doctor")">
+                            <i class="fas fa-check-square"></i>
+                            <span>
+                                Doctor's Category
+                            </span>
+                        </a>
+
+                    </li>
+
+                    <li>
+                        <a href="@Url.Action("ShowAllUsers", "Account")">
+                            <i class="fas fa-copy"></i>
+                            <span>
+                                User Accounts
+                            </span>
+                        </a>
+
+                    </li>
+                    <li>
+                        <a href="@Url.Action("AdminCustomerInfo", "Customer")">
+                            <i class="fas fa-table"></i>
+                            <span>
+                                Customer Info
+                            </span>
+                        </a>
+
+                    </li>
+
+                    <li>
+                        <a href="@Url.Action("AdminOrderInfo", "AdminOrder")">
+                            <i class="fas fa-check-square"></i>
+                            <span>
+                                Order List
+                            </span>
+                        </a>
+
+                    </li>
+
+                    <li>
+                        <a href="@Url.Action("Index", "Payment")">
+                            <i class="fa fa-file-text"></i>
+                            <span>
+                                Payment Details
+                            </span>
+                        </a>
+
+                    </li>
+
+
+                    <li>
+                        <a href="@Url.Action("termsTable", "policyTerms")">
+                            <i class="fa fa-file-word-o"></i>
+                            <span>
+                                Term Tables
+                            </span>
+                        </a>
+
+                    </li>
+
+
+                    <li>
+                        <a href="@Url.Action("policyTable", "policyTerms")">
+                            <i class="fas fa-folder"></i>
+                            <span>
+                                Policy Tables
+                            </span>
+                        </a>
+
+                    </li>
+
+                    <li>
+                        <a href="@Url.Action("AdminProfileCardShow", "Admin")">
+                            <i class="fas fa-check-square"></i>
+                            <span>
+                                Admin Information
+                            </span>
+                        </a>
+
+                    </li>
+
+
+
+
+
+
+                    <li style="margin-bottom:5%;">
+                        <a href="@Url.Action("Create", "AboutUs")" class="btn btn-info btn-sm" style="color:white;">
+                            <i class="fa fa-plus-circle"></i>
+                            <span>
+                                ADD NEW ADMIN
+                            </span>
+                        </a>
+
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+
+    <div class="page-container">
+
+
+
+        <script src="~/vendor/jquery-3.2.1.min.js"></script>
+
+        <script src="~/vendor/bootstrap-4.1/popper.min.js"></script>
+        <script src="~/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+
+
+        <script src="~/vendor/animsition/animsition.min.js"></script>
+
+
+        <script src="~/js/main.js"></script>
+
+
+</body>
+
+</html>
+
+@RenderBody()

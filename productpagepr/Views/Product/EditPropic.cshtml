@@ -1,0 +1,50 @@
+﻿@model productpagepr.Models.productModel
+
+@{
+    ViewBag.Title = "EditPropic";
+    Layout = "~/Views/Shared/AdminDashboardLayout.cshtml";
+}
+
+
+<div class="col-md-9" style="margin:0%;">
+    <center>
+        <img width="460" src="@ViewData["img"]" style="  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);margin-top:8%;" />
+
+        @using (Html.BeginForm("EditProPic", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="form-group" style="display:none;">
+            @Html.LabelFor(model => model.Product_ID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Product_ID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Product_ID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Product_ImagePath, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="file" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save Changes" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+        }
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </center>
+
+</div>

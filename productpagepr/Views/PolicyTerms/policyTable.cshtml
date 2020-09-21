@@ -1,0 +1,52 @@
+﻿@model System.Data.DataTable
+
+@{
+    ViewBag.Title = "policyTable";
+    Layout = "~/Views/Shared/AdminDashboardLayout.cshtml";
+}
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" type="text/css" />
+
+<link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+
+<div style="margin-top:10%; margin-left:20%;">
+    <center><h2>Policy Table</h2></center>
+    <p>
+        @Html.ActionLink("Create New", "CreatePolicy")
+    </p>
+    <table class="table table-bordered table-striped table-responsive">
+
+        <tr>
+
+            <th> policy_id </th>
+
+            <th> policies </th>
+            @*<th> Edit</th>*@
+            <th> Delete</th>
+
+        </tr>
+
+        @for (int i = 0; i < Model.Rows.Count; i++)
+        {
+
+    <tr>
+        <td>@Model.Rows[i][0]</td>
+
+        <td>@Model.Rows[i][1]</td>
+
+        @*<td><a href="@Url.Action("EditTerms","PolicyTerms",new {@id=Model.Rows[i][0] })">Edit </a></td>*@
+
+
+        <td><a href="@Url.Action("DeletePolicy","PolicyTerms",new {@id=Model.Rows[i][0] })">Delete </a></td>
+
+    </tr>
+        }
+
+    </table>
+
+    <script src="~/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+</div>

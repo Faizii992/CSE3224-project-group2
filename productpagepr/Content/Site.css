@@ -1,0 +1,88 @@
+﻿body {
+    
+    margin:0px;
+    width:100%;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+
+    width:100%;
+  
+}
+
+
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 450px;
+}
+
+
+.lifeServeLogo {
+    height:80px;
+
+        width:100px;
+        margin:0.5%;
+}
+
+.search_input {
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 250px;
+    /*text-align:center;*/
+    margin-top: 2%;
+    margin-left: 18%;
+}
+
+
+.searchbar {
+    margin: 5%;
+    height: 40px;
+    background-color: rgba(128, 128, 128,0.5);
+    border-radius: 30px;
+    max-width: 450px;
+}
+
+.search_icon {
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: white;
+    background: #599c81;
+}
+
+
+footer
+{
+   
+    background:black;
+    line-height:15px;
+
+}
+a{
+
+color:black;
+opacity:0.8;
+
+}
+.pre_footer
+{
+
+    background:#599c81;
+}

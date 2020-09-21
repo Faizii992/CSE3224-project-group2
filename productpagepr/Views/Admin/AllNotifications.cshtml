@@ -1,0 +1,46 @@
+﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "AllNotifications";
+    Layout = "~/Views/Shared/AdminDashboardLayout.cshtml";
+}
+
+
+    <body style="background-color:#E5E5E5;">
+
+        <div class="card" style="margin: auto;
+        margin-top: 5%;
+        height: 700px;
+        overflow: scroll;
+        overflow-x: hidden;
+        width: 80%;">
+            <div class="card-body alert alert-success">
+
+
+                @for (int i = 0; i < Model.Rows.Count; i++)
+                {
+
+                    <div class="notifi__item my-3" style="display:flex;justify-content:space-between;">
+
+                        <div class="content">
+                            <p>You got a new order from @Model.Rows[i][2] </p>
+                            <span class="date">@Model.Rows[i][5] @Model.Rows[i][4] </span>
+                        </div>
+
+                    
+                        <div>
+                            @using (Html.BeginForm("NotificationDetails", "Admin", FormMethod.Get))
+                            {
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="orderID" value="@Model.Rows[i][6]" />
+                                <button class="my-3 btn btn-success" type="submit" >View Details</button>
+
+                            }
+                        </div>
+                    </div>
+                    <hr />
+                }
+            </div>
+
+        </div>
+       
+    </body>

@@ -1,0 +1,223 @@
+﻿
+body {
+    width: 100%;
+}
+
+.slider-image {
+    opacity: 0.5;
+    width: 100%;
+}
+
+.container-fluid {
+    padding: 5%;
+}
+
+.transparent-box {
+    margin-top: -400px;
+    margin-bottom: 100px;
+    height: 300px;
+    margin-left: 50px;
+    margin-right: 50px;
+    color: gray;
+    border: 150px solid;
+}
+
+.head {
+    color: #ffffff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+    font-family: Courier New;
+    font-size: 100px;
+    font-weight: bolder;
+}
+
+@media (max-width: 767.98px) {
+    .content.title {
+        font-size: 1.5rem !important;
+    }
+
+    .content.semester {
+        font-size: 3rem !important;
+    }
+}
+
+
+.note {
+    margin-top: 40px;
+    font-weight: 500;
+    font-size: 25px;
+    font-family: 'Segoe UI';
+    margin-bottom: 40px;
+}
+
+hr {
+    height: 1px;
+    color: black;
+    background-color: black;
+    border: none;
+}
+
+
+
+.head2 {
+    color: #A9A9A9;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+
+
+.list-group-item {
+    background: #98AFC7;
+    opacity: 1;
+    color: green;
+    font-size: 16px;
+}
+
+.id {
+    color: #82E0AA;
+    font-size: 2px;
+}
+
+.info {
+    font-family: 'Segoe UI';
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.view-button {
+    border-radius: 8px;
+    background-color: #117A65;
+    height: 40px;
+    width: 100px;
+    font-weight: bolder;
+    font-size: 15px;
+    -webkit-box-shadow: 10px 10px 5px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px -1px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px -1px rgba(0,0,0,0.75);
+}
+
+.navbar-inverse {
+    background-color: #179269;
+    color: white;
+    border: none;
+    text-align: center;
+}
+
+.container .navbar-brand {
+    padding: 50%;
+    text-align: center;
+    margin: auto;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: white;
+    font-size: 16px;
+}
+
+.navbar-inverse .navbar-brand {
+    color: white;
+}
+
+
+
+.list-group-item .a {
+    color: white;
+}
+
+.list-group-item:hover {
+}
+
+#productImage {
+    max-width: 300px;
+    min-width: 250px;
+    max-height: 250px;
+}
+
+
+
+.box {
+    text-align: center;
+    height: 350px;
+    width: 220px;
+    background: #82E0AA;
+    opacity: 0.8;
+    margin-left: 50px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
+}
+
+@media only screen and (max-width:768px) {
+    .box {
+        text-align: center;
+        height: 300px;
+        width: 410px;
+        background: #82E0AA;
+        opacity: 0.8;
+        margin-left: 30px;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
+    }
+}
+
+    .view-button-div {
+        width: 220px;
+        height: 50px;
+        background: #82E0AA;
+        opacity: 0.8;
+        margin-left: 50px;
+        margin-bottom: 20%;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
+    }
+
+@media only screen and (max-width:768px) {
+    .view-button-div {
+        width: 410px;
+        height: 50px;
+        background: #82E0AA;
+        opacity: 0.8;
+        margin-bottom: 20%;
+        margin-left:30px;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
+    }
+}
+
+
+
+    a.list-group-item, button.list-group-item {
+        color: white;
+    }
+
+    .black-box {
+        width: 100%;
+        background-color: #463E3F;
+    }
+
+    .card {
+        margin-top: 50px;
+        margin-bottom: 100px;
+    }
+
+    .heading3 {
+        font-size: 60px;
+        font-weight: bolder;
+        color: white;
+        margin-top: 50px;
+    }
+
+    .list-sugg {
+        color: white;
+        font-weight: bolder;
+        font-size: 20px;
+        margin-top: 50px;
+    }
+
+    .card1 {
+        margin-right: 50px;
+        margin-left: 30px;
+        margin-bottom: 100px;
+    }
+

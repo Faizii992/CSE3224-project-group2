@@ -1,0 +1,254 @@
+﻿
+@using productpagepr.Models;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/css/admin-header.css" rel="stylesheet" media="all">
+    <title>Notification</title>
+    <style>
+       
+
+        .hidden_account {
+            opacity: 0;
+        }
+
+       
+     
+    </style>
+</head>
+
+<body>
+    <script>
+        $(document).ready(function () {
+
+
+            document.getElementById("toggle_account_btn").addEventListener('click', function () {
+                document.getElementById("account_card").classList.toggle("hidden_account");
+
+            });
+
+
+
+        });
+    </script>
+   
+                <div class="modal" tabindex="-1" role="dialog" id="mailnotification">
+                    <div class="modal-dialog" role="document" style="">
+                        <div class="modal-content">
+
+                            <div class="helpline_notification">
+
+                                <div id="msg_card" class="card  hidden_msg">
+                                    <div class="card-header" style="text-align:center">
+                                        Youve got new messages<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="card-body">
+                                        @foreach (HelplineModel hmsg in Model.msgs)
+                                        {
+
+                                            <div class="notifi__item my-2" style=" display: flex;
+        justify-content: space-between;">
+
+                                                <div class="content">
+                                                    <p>You got a new Message from @hmsg.Name </p>
+                                                    @* <span class="date">
+                                                                   @ViewData["fDt"]
+                                                        </spa*@
+                                                </div>
+                                                <div>
+                                                    @using (Html.BeginForm("HelplineMsg", "Admin", FormMethod.Get))
+                                                    {
+                                                        @Html.AntiForgeryToken()
+                                                        <input type="hidden" name="Id" value="@hmsg.Id" />
+                                                        <button style="transform:translateY(50%);" type="submit" class="btn btn-default">View Message</button>
+
+                                                    }
+                                                </div>
+
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="card-footer bg-info" style="text-align:center">
+                                        <a style="color:white;" href="@Url.Action("Msg_Notification", "Admin")" class="btn btn-default">View All notifications</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal" tabindex="-1" role="dialog" id="ordernotification">
+                    <div class="modal-dialog" role="document" style="">
+                        <div class="modal-content">
+
+
+
+
+
+                            <div id="notif_card" class="card ">
+                                <div class="card-header" style="text-align:center">
+                                    Youve got new notifications<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="card-body">
+                                    @foreach (customerModel notification in Model.notifs)
+                                    {
+
+                                        <div class="notifi__item my-2" style="display:flex;justify-content:space-around;">
+
+                                            <div class="content">
+
+                                                <p>You got a new order from  @notification.email</p>
+
+                                                @notification.datetm
+                                                @notification.day
+
+                                            </div>
+                                            <div>
+                                                @using (Html.BeginForm("NotificationDetails", "Admin", FormMethod.Get))
+                                                {
+                                                    @Html.AntiForgeryToken()
+                                                    <input type="hidden" name="orderID" value="@notification.orderid" />
+                                                    <button style="transform:translateY(50%);" type="submit" class="btn btn-outline-success detailsview">Details</button>
+
+                                                }
+
+                                            </div>
+
+                                        </div>
+                                        <hr />
+                                    }
+                                </div>
+                                <div class="card-footer bg-success" style="text-align:center">
+                                    <a style="color:white;" href="@Url.Action("AllNotifications", "Admin")" class="btn btn-default">View All notifications</a>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div style="z-index:3;width:100%;height:82px;background-color:#f4f4f4;position:fixed;top:0px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);">
+
+                    <div class="header_elements my-3" style="justify-content:center;display:flex;">
+
+
+                        
+                       
+
+                        <div class="notification-div" style="position:absolute;top:30%;left:35%;">
+                            <button id="toggle_notif_btn" style="color:black;" data-toggle="modal" data-target="#ordernotification">
+                                <i style="font-size:33px;color:black;" class="zmdi zmdi-notifications"></i>
+                            </button>
+
+                            @*<span class="quantity">3</span>*@
+                        </div>
+
+                        <div class="mail-div" style="position:absolute;top:30%;left:30%;">
+                            <button id="toggle_mail_btn" style="color:black;" data-toggle="modal" data-target="#mailnotification">
+                                <i class="fa fa-envelope" aria-hidden="true" style="font-size:33px;"></i>
+                            </button>
+                            <span class="quantity">3</span>
+                        </div>
+
+                        <div class="account-div" style="position:absolute;top:20%;display:flex;right:35%;justify-content:space-around;">
+                            <div class="admin-account-dp">
+                                <img src="@Session["imgid"]" style="width:55px;height:55px;" />
+                            </div>
+                            <div>
+                                <button class="my-3" id="toggle_account_btn" style="color:black;">
+                                    @Session["Name"] <i class="fas fa-caret-down"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="header-button " style="margin-right:10%;">
+                            <div class="noti-wrap">
+                                <div class="admin-account-card hidden_account" id="account_card">
+                                    <div class="card">
+                                        <div class="card-header" style="display:flex;justify-content:space-between;">
+                                            <div>
+                                                <img src="@Session["imgid"]" style="width:50px;height:50px;" />
+                                            </div>
+                                            <div style="margin-left:5%;">
+                                                <h6> @Session["Name"]</h6>
+                                                <p>@Session["Email"].ToString()</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <p><i class="fas fa-user"></i> Account </p>
+                                            <hr />
+                                            <p><i class="fas fa-sign-out-alt"></i>  @Html.ActionLink("LOGOUT", "Logout", "Admin")</p>
+                                            <hr />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @*<div class="order_notification">
+
+                    <div id="notification_card" class="card  hidden_notif">
+                        <div class="card-header" style="text-align:center">
+                            Youve got new notifications
+                        </div>
+                        <div class="card-body">
+                            @for (int i = 0; i < Model.Rows.Count; i++)
+                            {
+
+                                <div class="notifi__item my-2" style="display:flex;justify-content:space-around;">
+
+                                    <div class="content">
+
+                                        <p>You got a new order from @Model.Rows[i][2] </p>
+
+                                        @Model.Rows[i][4]
+                                        @Model.Rows[i][5]
+
+                                    </div>
+                                    <div>
+                                        @using (Html.BeginForm("NotificationDetails", "Admin", FormMethod.Get))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="orderID" value="@Model.Rows[i][6]" />
+                                            <button style="transform:translateY(50%);" type="submit" class="btn btn-outline-success detailsview">Details</button>
+
+                                        }
+
+                                    </div>
+
+                                </div>
+                                <hr />
+                            }
+                        </div>
+                        <div class="card-footer bg-success" style="text-align:center">
+                            <a style="color:white;" href="@Url.Action("AllNotifications", "Admin")" class="btn btn-default">View All notifications</a>
+                        </div>
+                    </div>
+                </div>*@
+                            </div>
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                </div>
+</body>
+</html>
