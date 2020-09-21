@@ -159,17 +159,17 @@ namespace productpagepr.Controllers
             SqlParameter chamber1 = cmd.Parameters.AddWithValue("@Chamber1", ob.Chamber1);
             if (ob.Chamber1 == null)
             {
-                chamber1.Value = "NULL";
+                chamber1.Value = "N/A";
             }
             SqlParameter chamber2 = cmd.Parameters.AddWithValue("@Chamber2", ob.Chamber2);
             if (ob.Chamber2 == null)
             {
-                chamber2.Value = "NULL";
+                chamber2.Value = "N/A";
             }
             SqlParameter chamber3 = cmd.Parameters.AddWithValue("@Chamber3", ob.Chamber3);
             if (ob.Chamber3 == null)
             {
-                chamber3.Value = "NULL";
+                chamber3.Value = "N/A";
             }
             cmd.Parameters.AddWithValue("@ContactNo", ob.ContactNo);
             cmd.Parameters.AddWithValue("@Email", ob.Email);
